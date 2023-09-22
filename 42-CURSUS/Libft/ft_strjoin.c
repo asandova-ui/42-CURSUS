@@ -12,30 +12,24 @@
 
 #include "stdlib.h"
 
-char    *ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-    size_t  size1;
-    size_t  size2;
-    size_t  new_len;
-    char    *new_str;
+	int		i;
+	int		j;
+	char	*str;
 
-    new_len = 0;
-    size1 = ft_strlen(s1);
-    size2 = ft_strlen(s2);
-    if(*s1 == '\0' && *s2 == '\0')
-        return (NULL);
-    if(!(new_str=(char *)malloc(sizeof(char) * (size1 + size2 +1))))
-        return (NULL);
-    while (*s1)
-    {
-        new_str[new_len] = s1;
-        s1 ++;
-    }
-    while (*s1)
-    {
-        new_str[new_len] = s2;
-        s1 ++;
-    }
-    new_str[new_len] = '\0';
-    return (new_len);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+		str[i++] = s2[j++];
+	str[i] = '\0';
+	return (str);
 }
