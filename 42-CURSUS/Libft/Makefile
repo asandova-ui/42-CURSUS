@@ -10,113 +10,47 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft
-LNAME = libft.a
-
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
-RM = rm -f
-HDIR = -I ./
-LIBS = libft.h
-
-#################### Files for Libft ####################
-
-FILES =	ft_atoi \
-	ft_bzero \
-	ft_calloc \
-	ft_isalnum \
-	ft_isalpha \
-	ft_isascii \
-	ft_isdigit \
-	ft_isprint \
-	ft_itoa \
-	ft_memccpy \
-	ft_memchr \
-	ft_memcmp \
-	ft_memcpy \
-	ft_memmove \
-	ft_memset \
-	ft_putchar_fd \
-	ft_putendl_fd \
-	ft_putnbr_fd \
-	ft_putstr_fd \
-	ft_split \
-	ft_strchr \
-	ft_strdup \
-	ft_strjoin \
-	ft_strlcat \
-	ft_strlcpy \
-	ft_strlen \
-	ft_strmapi \
-	ft_strncmp \
-	ft_strnstr \
-	ft_strrchr \
-	ft_strtrim \
-	ft_substr \
-	ft_tolower \
-	ft_toupper
-
-FILES_B = ft_lstadd_back \
-	ft_lstadd_front \
-	ft_lstclear \
-	ft_lstdelone \
-	ft_lstiter \
-	ft_lstlast \
-	ft_lstmap \
-	ft_lstnew \
-	ft_lstsize
-
-SRCS = $(addsuffix .c, $(FILES))
-SRCS_B = $(addsuffix .c, $(FILES_B))
+SRCS = 	ft_isalnum.c ft_isprint.c ft_memcmp.c \
+		ft_putchar_fd.c ft_split.c ft_strlcat.c ft_strncmp.c ft_substr.c \
+		ft_atoi.c ft_isalpha.c ft_itoa.c ft_memcpy.c ft_putendl_fd.c \
+		ft_strchr.c ft_strlcpy.c ft_strnstr.c ft_tolower.c ft_bzero.c  \
+		ft_isascii.c ft_memccpy.c ft_memmove.c ft_putnbr_fd.c ft_strdup.c \
+		ft_strlen.c ft_strrchr.c ft_toupper.c ft_calloc.c ft_isdigit.c \
+		ft_memchr.c ft_memset.c ft_putstr_fd.c ft_strjoin.c ft_strmapi.c \
+		ft_strtrim.c ft_striteri.c
 
 OBJS = $(SRCS:.c=.o)
-OBJS_B = $(SRCS_B:.c=.o)
 
-#################### Colors ####################
+BONUS =	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
+		ft_lstdelone.c ft_lstiter.c ft_lstlast.c \
+		ft_lstmap.c ft_lstnew.c ft_lstsize.c
 
-R = \033[31;1m
-G = \033[32;1m
-Y = \033[33;1m
-B = \033[34;1m
-P = \033[35;1m
-GR = \033[30;1m
-END = \033[0m
+BONUS_OBJS = $(BONUS:.c=.o)
 
-#################### Rules ####################
+CC = cc
+RM = rm -f
+CFLAGS = -Wall -Wextra -Werror
+
+NAME = libft.a
+BONUS_NAME = .bonus
 
 all: $(NAME)
 
-$(NAME) : $(OBJS)
-	@echo "\n$(GR)[Compiling original $(B)'$(LNAME)'$(GR). Please, wait a few seconds...]${END}\n"
-	$(CC) $(CFLAGS) -c $(SRCS) $(HDIR)
-	$(AR) $(LNAME) $(OBJS)
-	@echo "\n$(G)[Compiled $(B)'$(NAME)' $(G)successfully]${END}\n"
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+
+bonus: $(BONUS_NAME)
 
 clean:
-	$(RM) $(OBJS) $(OBJS_B)
-	@echo "\n$(R)[Cleaned $(B)objects $(R)successfully]$(END)\n"
+	$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	$(RM) $(LNAME)
-	@echo "$(R)[Removed $(B)'$(NAME)' $(R)successfully]$(END)\n"
+	$(RM) $(NAME) $(BONUS_NAME)
 
 re: fclean all
 
-bonus: $(OBJS) $(OBJS_B)
-	@echo "\n$(GR)[Compiling original$(B)'$(LNAME)'$(GR) + bonus. Please, wait a few seconds...]${END}\n"
-	$(CC) $(CFLAGS) -c $(SRCS) $(SRCS_B) $(HDIR)
-	$(AR) $(LNAME) $(OBJS) $(OBJS_B)
-	@echo "\n$(G)[Compiled $(B)bonus '$(LNAME)' $(G)successfully]${END}\n"
+$(BONUS_NAME): $(OBJS) $(BONUS_OBJS)
+	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+	ar rcs $(BONUS_NAME) $(OBJS) $(BONUS_OBJS)
 
-Norme:
-	norminette -R CheckForbiddenSourceHeader $(SRCS) $(SRCS_B) $(LIBS)
-	@echo "\n$(Y)[Checked norminette in $(B)'$(NAME)' $(Y)successfully]$(END)\n"
-
-Leaks: CFLAGS += -g3 -fsanitize=address
-Leaks: re
-	@echo "\n$(Y)[Checked leaks in $(B)'$(LNAME)' $(Y)successfully]$(END)\n"
-
-.PHONY: all clean fclean re bonus Norme Leaks
-
-$(V).SILENT:
+.PHONY: all clean fclean re
