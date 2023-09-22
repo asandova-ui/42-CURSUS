@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include "./stdlib.h"
 static int	count_words(const char *str, char c)
 {
 	int			flag;
