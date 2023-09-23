@@ -19,12 +19,11 @@
 # include <unistd.h>
 # include <limits.h>
 
-typedef struct      s_list
+typedef struct		s_list
 {
-    void            *content;
-    struct s_list   *next;
-}                   t_list;
-
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *dst, int val, size_t n);

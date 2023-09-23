@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "./stdlib.h"
+
 static int	count_words(const char *str, char c)
 {
 	int			flag;
@@ -74,11 +75,11 @@ static void	free_tab(char **tab, int size)
 	free(tab);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-    char **str;
-    int			i;
-	int			j;
+    char	**str;
+    int		i;
+	int		j;
 
 	j = count_words(s, c);
 	str = (char **)malloc(sizeof(char *) * (j + 1));
