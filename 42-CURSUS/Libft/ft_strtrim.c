@@ -12,21 +12,41 @@
 
 #include "./libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+static int	is_sep(char c, const char *sep)
 {
-	size_t	start;
-	size_t	end;
+	size_t		i;
+	const char	*aux;
 
-	if (s1 == '\0' || set == '\0')
-		return (NULL);
-	start = 0;
-	while (s1[start] && ft_strchr(set, s1[start]))
-		start++;
-	end = ft_strlen(&s1[start]);
-	if (end)
+	i = 0;
+	aux = sep;
+	while (aux[i])
 	{
-		while (s1[start + end - 1] && ft_strchr(set, s1[start + end - 1]))
-			end--;
+		if ((int)aux[i] == (int)c)
+			return (1);
+		i++;
 	}
-	return (ft_substr(s1, start, end));
+	return (0);
+}
+
+char	*ft_strtrim(const char *s1, const char *set)
+{
+	char		*str;
+	size_t		i;
+	const char	*start;
+	const char	*end;
+
+	start = s1;
+	end = start + ft_strlen(s1) - 1;
+	while (*start && is_sep(*start, set))
+		start++;
+	while (end > start && is_sep(*end, set))
+		end--;
+	str = (char *)malloc(sizeof(char) * (end - start + 2));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (start <= end)
+		str[i++] = *start++;
+	str[i] = '\0';
+	return (str);
 }
