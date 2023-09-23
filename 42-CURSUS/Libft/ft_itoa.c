@@ -19,13 +19,17 @@ char	*ft_itoa(int n)
 	size_t	len;
 	int		i;
 
-	s = (n < 0) ? -1 : 1;
+	if (n < 0)
+		s = -1;
+	else
+		s = 1;
 	len = 2 + (n < 0);
 	i = n;
 	while ((n = n / 10))
 		len++;
-	if (!(r = (char *)malloc(sizeof(char) * len--)))
-		return (NULL);
+	(r = (char *)malloc(sizeof(char) * len--));
+	if (!r)
+		return (NULL)a;
 	r[len--] = '\0';
 	r[len--] = s * (i % 10) + 48;
 	while ((i = i / 10))
