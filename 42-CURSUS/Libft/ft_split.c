@@ -77,8 +77,8 @@ static void	free_tab(char **tab, int size)
 
 char	**ft_split(char const *s, char c)
 {
-    char	**str;
-    int		i;
+	char	**str;
+	int		i;
 	int		j;
 
 	j = count_words(s, c);
