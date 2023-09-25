@@ -1,0 +1,1 @@
+printf("hola buenas %d que tal %s",123, "NUNCA");
