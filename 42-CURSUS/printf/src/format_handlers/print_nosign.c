@@ -15,7 +15,7 @@
 
 int	print_nosign(const char *ptr, va_list args, int fd)
 {
-    char	*value;
+    const char	*value;
 	unsigned int		n;
 	int lenght;
 

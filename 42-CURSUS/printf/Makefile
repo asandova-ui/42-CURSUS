@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = $(addprefix src/, ft_printf.c) $(wildcard srcs/format_handlers/*.c)
+SRCS = $(addprefix src/, ft_printf.c) $(wildcard src/format_handlers/*.c)
 
 OBJS = $(SRCS:.c=.o)
 
