@@ -10,13 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = $(addprefix srcs/, ft_printf.c) $(wildcard srcs/format_handlers/*.c)
+SRCS = $(addprefix src/, ft_printf.c) $(wildcard srcs/format_handlers/*.c)
 
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
-
 CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror -Iincludes
