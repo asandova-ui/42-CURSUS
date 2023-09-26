@@ -15,7 +15,7 @@
 
 int	print_integer(const char *ptr, va_list args, int fd)
 {
-    char	*value;
+    const char	*value;
 	int		n;
 	int		length;
 

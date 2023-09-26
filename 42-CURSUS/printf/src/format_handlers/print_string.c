@@ -15,7 +15,7 @@
 
 int	print_string(const char *ptr, va_list args, int fd)
 {
-	char	*value;
+	const char	*value;
 	int		length;
 
 	value = va_arg(args, char*);

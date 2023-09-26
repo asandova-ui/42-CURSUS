@@ -28,11 +28,11 @@ int ft_printf(const char *format, ...)
 		if (*ptr == '%')
 		{
 			ptr ++;
-			chars_written += format_manager(*ptr,args);
+			chars_written += format_manager(ptr,args);
         }
 		else
 		{
-			ft_putchar(*ptr);
+			ft_putstr_fd(ptr, 1);
             chars_written++;
 		}
 		ptr ++;
@@ -53,12 +53,10 @@ int	format_manager(const char *ptr, va_list args)
     } 
 	else if (*ptr == 'x') //HECHA
 	{
-        int int_arg = va_arg(args, int);
         return(print_minushex(ptr, args, 1));
     } 
 	else if (*ptr == 'X') //HECHA
 	{
-        int int_arg = va_arg(args, int);
         return(print_mayushex(ptr, args, 1));
     } 
 	else if (*ptr == 'c') //HECHA
