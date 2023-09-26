@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
-#include "../includes/libft.h"
+#include "../includes/Libft/libft.h"
 
-int	print_nosign(const char *ptr, va_list args)
+int	print_nosign(const char *ptr, va_list args, int fd)
 {
     char	*value;
 	unsigned int		n;
@@ -21,7 +21,7 @@ int	print_nosign(const char *ptr, va_list args)
 
 	n = va_arg(args, unsigned int);
     value = ft_uitoa(n);
-	ft_putstr(value);
+	ft_putstr_fd(value, fd);
 	lenght = ft_strlen(value);
 	free(value);
 	return (lenght);

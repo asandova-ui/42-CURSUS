@@ -11,13 +11,18 @@
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
-#include "../includes/libft.h"
+#include "../includes/Libft/libft.h"
 
-int	print_minushex(const char *ptr, va_list args)
+int	print_minushex(const char *ptr, va_list args, int fd)
 {
     char	*value;
 	int		n;
 	int		length;
 
-    
+    n = va_arg(args, unsigned int);
+	value = ft_itoa_base(n, "0123456789abcdef");
+	ft_putstr_fd(value, fd);
+	length = ft_strlen(value);
+	free(value);
+	return (length);
 }

@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
-#include "../includes/libft.h"
+#include "../includes/Libft/libft.h"
 
-int	ft_integer(const char *ptr, va_list args)
+int	print_integer(const char *ptr, va_list args, int fd)
 {
     char	*value;
 	int		n;
@@ -21,7 +21,7 @@ int	ft_integer(const char *ptr, va_list args)
 
 	n = va_arg(args, int);
     value = ft_itoa(n);
-	ft_putstr(value);
+	ft_putstr_fd(value, fd);
 	length = ft_strlen(value);
 	free(value);
 	return (length);

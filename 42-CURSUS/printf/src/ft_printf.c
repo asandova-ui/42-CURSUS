@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/Libft/libft.h"
 #include "../includes/printf.h"
 
 int ft_printf(const char *format, ...)
@@ -44,40 +44,37 @@ int	format_manager(const char *ptr, va_list args)
 {
 	if (*ptr == 'd' || *ptr == 'i') //HECHA
 	{
-        return(print_integer(ptr, args));
+        return(print_integer(ptr, args, 1));
     } 
 	else if (*ptr == 'u')//HECHA
 	{
-        return(print_nosign(ptr, args));
+        return(print_nosign(ptr, args, 1));
     } 
-	else if (*ptr == 'x') //hexa minuscula
+	else if (*ptr == 'x') //HECHA
 	{
         int int_arg = va_arg(args, int);
-        return(ft_putnbr(int_arg));
+        return(print_minushex(ptr, args, 1));
     } 
-	else if (*ptr == 'X') //hexa maxus
+	else if (*ptr == 'X') //HECHA
 	{
         int int_arg = va_arg(args, int);
-        return(ft_putnbr(int_arg));
+        return(print_mayushex(ptr, args, 1));
     } 
-	else if (*ptr == 'c') //1 solo caracter
+	else if (*ptr == 'c') //HECHA
 	{
-        int int_arg = va_arg(args, int);
-        return(ft_putnbr(int_arg));
+        return(print_character(ptr, args, 1));
     } 
-	else if (*ptr == 's') //String
+	else if (*ptr == 's') //HECHA
 	{
-        int int_arg = va_arg(args, int);
-        return(ft_putnbr(int_arg));
+        return(print_string(ptr, args, 1));
     } 
 	else if (*ptr == 'p') //void * se imprime en hexadecimal
 	{
-        int int_arg = va_arg(args, int);
-        return(ft_putnbr(int_arg));
+        return(print_ptrhexa(ptr, args, 1));
     } 
 	else //imprime un porcentaje
 	{
-        ft_putchar('%');
+        ft_putchar_fd('%', 1);
         return (1);
     }
 }

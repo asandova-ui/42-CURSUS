@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_mayushex.c                                   :+:      :+:    :+:   */
+/*   print_ptrhexa.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 18:38:32 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/25 18:38:32 by marvin           ###   ########.fr       */
+/*   Created: 2023/09/26 17:27:27 by marvin            #+#    #+#             */
+/*   Updated: 2023/09/26 17:27:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
 #include "../includes/Libft/libft.h"
 
-int	print_mayushex(const char *ptr, va_list args, int fd)
+print_ptrhexa(const char *ptr, va_list args, int fd)
 {
-    char	*value;
-	int		n;
-	int		length;
-
-    n = va_arg(args, unsigned int);
-	value = ft_itoa_base(n, "0123456789ABCDEF");
-	ft_putstr_fd(value, fd);
-	length = ft_strlen(value);
-	free(value);
-	return (length);
+    void *value;
+    char    *hex_value;
+    int     length;
+    
+    value = va_arg(args, void *);
+    hex_value = ft_itoa_base((unsigned long)value, "0123456789abcdef");
+    ft_putstr_fd(hex_value, fd);
+    length = ft_strlen(hex_value);
+    free(hex_value);
+    return (length);
 }
