@@ -25,8 +25,7 @@ NAME = libftprintf.a
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	cp $(LIBFT) $(NAME)
-	ar rcs $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJS) $(LIBFT)
 
 $(LIBFT):
 	make -C $(LIBFT_PATH) all
