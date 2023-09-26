@@ -26,6 +26,7 @@ int	print_mayushex(const char *ptr, va_list args, int fd);
 int	print_minushex(const char *ptr, va_list args, int fd);
 int	print_character(const char *ptr, va_list args, int fd);
 int	print_string(const char *ptr, va_list args, int fd);
+int print_ptrhexa(const char *ptr, va_list args, int fd);
 
 
 char *ft_uitoa(unsigned int n);

@@ -13,7 +13,7 @@
 #include "../includes/printf.h"
 #include "../includes/Libft/libft.h"
 
-print_ptrhexa(const char *ptr, va_list args, int fd)
+int print_ptrhexa(const char *ptr, va_list args, int fd)
 {
     void *value;
     char    *hex_value;
