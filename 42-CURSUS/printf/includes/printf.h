@@ -20,13 +20,13 @@
 # include <limits.h>
 # include <stdarg.h>
 
-int	print_integer(const char *ptr, va_list args, int fd);
-int	print_nosign(const char *ptr, va_list args, int fd);
-int	print_mayushex(const char *ptr, va_list args, int fd);
-int	print_minushex(const char *ptr, va_list args, int fd);
-int	print_character(const char *ptr, va_list args, int fd);
-int	print_string(const char *ptr, va_list args, int fd);
-int print_ptrhexa(const char *ptr, va_list args, int fd);
+int	print_integer(va_list args, int fd);
+int	print_nosign(va_list args, int fd);
+int	print_mayushex(va_list args, int fd);
+int	print_minushex(va_list args, int fd);
+int	print_character(va_list args, int fd);
+int	print_string(va_list args, int fd);
+int print_ptrhexa(va_list args, int fd);
 
 
 char *ft_uitoa(unsigned int n);
