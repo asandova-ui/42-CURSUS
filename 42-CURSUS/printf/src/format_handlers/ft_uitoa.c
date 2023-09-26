@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
-#include "../Libft/libft.h"
+#include "../libft/libft.h"
 
 static void ft_revstr(char *str)
 {

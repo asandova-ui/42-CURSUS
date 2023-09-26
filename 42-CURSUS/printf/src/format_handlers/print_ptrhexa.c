@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
-#include "../Libft/libft.h"
+#include "../libft/libft.h"
 
-int print_ptrhexa(const char *ptr, va_list args, int fd)
+int print_ptrhexa(va_list args, int fd)
 {
     void *value;
-    char    *hex_value;
+    const char    *hex_value;
     int     length;
     
     value = va_arg(args, void *);

@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
-#include "../Libft/libft.h"
+#include "../libft/libft.h"
 
-int	print_minushex(const char *ptr, va_list args, int fd)
+int	print_minushex(va_list args, int fd)
 {
     const char	*value;
 	int		n;
