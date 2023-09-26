@@ -1,0 +1,45 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/09/26 17:52:09 by marvin            #+#    #+#              #
+#    Updated: 2023/09/26 17:52:09 by marvin           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SRCS = $(addprefix srcs/, ft_printf.c) $(wildcard srcs/format_handlers/*.c)
+
+OBJS = $(SRCS:.c=.o)
+
+LIBFT_PATH = ./libft
+LIBFT = $(LIBFT_PATH)/libft.a
+
+CC = cc
+RM = rm -f
+CFLAGS = -Wall -Wextra -Werror -Iincludes
+
+NAME = libftprintf.a
+
+all: $(NAME)
+
+$(NAME): $(LIBFT) $(OBJS)
+	cp $(LIBFT) $(NAME)
+	ar rcs $(NAME) $(OBJS)
+
+$(LIBFT):
+	make -C $(LIBFT_PATH) all
+
+clean:
+	make -C $(LIBFT_PATH) clean
+	$(RM) $(OBJS) $(BONUS_OBJS)
+
+fclean: clean
+	make -C $(LIBFT_PATH) fclean
+	$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re libft

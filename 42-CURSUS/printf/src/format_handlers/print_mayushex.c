@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
-#include "../includes/Libft/libft.h"
+#include "../Libft/libft.h"
 
 int	print_mayushex(const char *ptr, va_list args, int fd)
 {
