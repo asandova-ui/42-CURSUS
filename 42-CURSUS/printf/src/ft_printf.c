@@ -38,6 +38,7 @@ int ft_printf(const char *format, ...)
 		ptr ++;
 	}
 	va_end(args);
+	return (chars_written);
 }
 
 int	format_manager(const char *ptr, va_list args)
@@ -68,11 +69,11 @@ int	format_manager(const char *ptr, va_list args)
 	{
         return(print_string(ptr, args, 1));
     } 
-	else if (*ptr == 'p') //void * se imprime en hexadecimal
+	else if (*ptr == 'p') //HECHA
 	{
         return(print_ptrhexa(ptr, args, 1));
     } 
-	else //imprime un porcentaje
+	else //HECHO EL %
 	{
         ft_putchar_fd('%', 1);
         return (1);

@@ -32,4 +32,7 @@ int print_ptrhexa(const char *ptr, va_list args, int fd);
 char *ft_uitoa(unsigned int n);
 char	*ft_itoa_base(unsigned int n, char *base);
 
+int ft_printf(const char *format, ...);
+int	format_manager(const char *ptr, va_list args);
+
 #endif
