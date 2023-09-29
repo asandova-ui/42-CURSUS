@@ -13,30 +13,36 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stddef.h>
-#include <stdbool.h>
-#define BUFFER_SIZE 1024
+# include <stdbool.h>
+# include <stddef.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+/*# define BUFFER_SIZE*/
 
 typedef struct s_fd_storage
 {
-    char *storage;
-    size_t length;
-} t_fd_storage;
+	char			*storage;
+	size_t			length;
+}					t_fd_storage;
 
-char	*get_next_line(int fd);
-static char *read_file(int fd, t_fd_storage *fd_storage);
-static char *get_line(char *str);
-static void free_fd_storage(char **fd_storage);
-static void update_fd_storage(char **fd_storage, char *new_data);
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 
-char	*ft_strchr(const char *s, int c);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strdup(const char *s1);
+/*static char			*custom_free(char **str);
+static char			*free_stored_line(t_fd_storage *fd_storage);
+static char			*ft_get_line(t_fd_storage *fd_storage);
+static char			*read_file(int fd, t_fd_storage *fd_storage);
+char				*get_next_line(int fd);*/
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-size_t	ft_strlcat(char *dst, const char *src, size_t size);
+char				*ft_strchr(const char *s, int c);
+char				*ft_substr(char const *s, unsigned int start, size_t len);
+char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strdup(const char *s1);
+
+size_t				ft_strlen(const char *str);
+
 #endif
