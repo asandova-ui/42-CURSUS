@@ -45,31 +45,31 @@ int	format_manager(const char *ptr, va_list args)
 {
 	if (*ptr == 'd' || *ptr == 'i') //HECHA
 	{
-        return(print_integer(ptr, args, 1));
+        return(print_integer(args, 1));
     } 
 	else if (*ptr == 'u')//HECHA
 	{
-        return(print_nosign(ptr, args, 1));
+        return(print_nosign(args, 1));
     } 
 	else if (*ptr == 'x') //HECHA
 	{
-        return(print_minushex(ptr, args, 1));
+        return(print_minushex(args, 1));
     } 
 	else if (*ptr == 'X') //HECHA
 	{
-        return(print_mayushex(ptr, args, 1));
+        return(print_mayushex(args, 1));
     } 
 	else if (*ptr == 'c') //HECHA
 	{
-        return(print_character(ptr, args, 1));
+        return(print_character(args, 1));
     } 
 	else if (*ptr == 's') //HECHA
 	{
-        return(print_string(ptr, args, 1));
+        return(print_string(args, 1));
     } 
 	else if (*ptr == 'p') //HECHA
 	{
-        return(print_ptrhexa(ptr, args, 1));
+        return(print_ptrhexa(args, 1));
     } 
 	else //HECHO EL %
 	{
