@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_integer_nosign.c                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 18:12:42 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/25 18:12:42 by marvin           ###   ########.fr       */
+/*   Created: 2023/09/26 18:09:22 by marvin            #+#    #+#             */
+/*   Updated: 2023/09/29 18:28:52 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
 #include "../libft/libft.h"
+#include "../includes/printf.h"
 
-int	print_nosign(va_list args, int fd)
+int	main(void)
 {
-    const char	*value;
-	unsigned int		n;
-	int lenght;
+	int	cant;
 
-	n = va_arg(args, unsigned int);
-    value = ft_uitoa(n);
-	ft_putstr_fd(value, fd);
-	lenght = ft_strlen(value);
-	free(value);
-	return (lenght);
+	cant = ft_printf("%d", 123);
+	printf("Numero de caracteres que escribo: %d", cant);
+	return (0);
 }

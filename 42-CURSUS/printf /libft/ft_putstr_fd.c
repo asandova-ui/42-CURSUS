@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_character.c                                  :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 16:46:42 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/26 16:46:42 by marvin           ###   ########.fr       */
+/*   Created: 2023/09/22 11:24:27 by asandova          #+#    #+#             */
+/*   Updated: 2023/09/29 18:04:26 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
-#include "../libft/libft.h"
+#include "./libft.h"
 
-int	print_character(va_list args, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-	char	value;
-	int		length;
+	char	*temp;
 
-	value = va_arg(args, int);
-	ft_putchar_fd(value, fd);
-	length = 1;
-	return(length);
+	temp = s;
+	while (*temp)
+	{
+		ft_putchar_fd(*temp, fd);
+		temp++;
+	}
 }

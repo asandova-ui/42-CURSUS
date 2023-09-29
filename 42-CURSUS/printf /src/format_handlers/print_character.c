@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_character.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 18:09:22 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/26 18:09:22 by marvin           ###   ########.fr       */
+/*   Created: 2023/09/26 16:46:42 by marvin            #+#    #+#             */
+/*   Updated: 2023/09/29 18:28:27 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../Libft/libft.h"
-#include "./../includes/printf.h"
+#include "../../includes/printf.h"
+#include "../../libft/libft.h"
 
-int main(void)
+int	print_character(va_list args, int fd)
 {
-    int cant;
+	char	value;
+	int		length;
 
-    cant = ft_printf("%d", 123);
-    printf("Numero de caracteres que escribo: %d", cant);
-    return (0);
+	value = va_arg(args, int);
+	ft_putchar_fd(value, fd);
+	length = 1;
+	return (length);
 }

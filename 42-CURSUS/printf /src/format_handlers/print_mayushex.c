@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_string.c                                     :+:      :+:    :+:   */
+/*   print_mayushex.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 16:57:52 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/26 16:57:52 by marvin           ###   ########.fr       */
+/*   Created: 2023/09/25 18:38:32 by marvin            #+#    #+#             */
+/*   Updated: 2023/09/29 18:28:29 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
-#include "../libft/libft.h"
+#include "../../includes/printf.h"
+#include "../../libft/libft.h"
 
-int	print_string(va_list args, int fd)
+int	print_mayushex(va_list args, int fd)
 {
-	const char	*value;
+	char	*value;
+	int		n;
 	int		length;
 
-	value = va_arg(args, char*);
+	n = va_arg(args, unsigned int);
+	value = ft_itoa_base(n, "0123456789ABCDEF");
 	ft_putstr_fd(value, fd);
 	length = ft_strlen(value);
+	free((void *)value);
 	return (length);
 }

@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoabase.c                                      :+:      :+:    :+:   */
+/*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 18:42:07 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/25 18:42:07 by marvin           ###   ########.fr       */
+/*   Created: 2023/09/25 18:21:53 by marvin            #+#    #+#             */
+/*   Updated: 2023/09/29 18:28:25 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
-#include "../libft/libft.h"
+#include "../../includes/printf.h"
+#include "../../libft/libft.h"
 
-static void	ft_revstr(char *str, int size)
+static void	ft_revstr(char *str)
 {
+	int		size;
 	char	tmp;
 	char	*start;
 	char	*end;
 
+	size = ft_strlen(str);
 	start = str;
-	end = str + size;
+	end = str + size - 1;
 	while (start < end)
 	{
 		tmp = *start;
@@ -31,27 +33,25 @@ static void	ft_revstr(char *str, int size)
 	}
 }
 
-static int	num_len(unsigned int n, unsigned int base_len)
+static int	num_len(unsigned int n)
 {
 	int	count;
 
 	count = 1;
-	while (n > base_len - 1)
+	while (n > 9)
 	{
-		n /= base_len;
+		n /= 10;
 		count++;
 	}
 	return (count);
 }
 
-char	*ft_itoa_base(unsigned int n, char *base)
+char	*ft_uitoa(unsigned int n)
 {
-	char			*str;
-	unsigned int	length;
-	int				base_len;
+	char	*str;
+	size_t	length;
 
-	base_len = (int)ft_strlen(base);
-	str = ft_calloc(num_len(n, base_len) + 1, sizeof(char));
+	str = (char *)ft_calloc(num_len(n) + 1, sizeof(char));
 	if (!str)
 		return (NULL);
 	if (n == 0)
@@ -59,9 +59,9 @@ char	*ft_itoa_base(unsigned int n, char *base)
 	length = 0;
 	while (n != 0)
 	{
-		str[++length] = base[n % base_len];
-		n = (n / base_len);
+		str[length++] = '0' + (n % 10);
+		n /= 10;
 	}
-	ft_revstr(str, length);
+	ft_revstr(str);
 	return (str);
 }
