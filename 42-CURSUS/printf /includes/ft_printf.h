@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:09:56 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/29 18:04:02 by asandova         ###   ########.fr       */
+/*   Updated: 2023/09/29 18:32:04 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <limits.h>
 # include <stdarg.h>

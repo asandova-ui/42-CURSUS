@@ -6,11 +6,11 @@
 /*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 11:43:48 by asandova          #+#    #+#             */
-/*   Updated: 2023/09/29 18:29:06 by asandova         ###   ########.fr       */
+/*   Updated: 2023/09/29 18:31:41 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
 int	ft_printf(const char *format, ...)

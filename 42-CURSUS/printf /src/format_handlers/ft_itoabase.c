@@ -6,11 +6,11 @@
 /*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 18:42:07 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/29 18:28:24 by asandova         ###   ########.fr       */
+/*   Updated: 2023/09/29 18:31:14 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/printf.h"
+#include "../../includes/ft_printf.h"
 #include "../../libft/libft.h"
 
 static void	ft_revstr(char *str, int size)

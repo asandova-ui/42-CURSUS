@@ -6,12 +6,12 @@
 /*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:09:22 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/29 18:28:52 by asandova         ###   ########.fr       */
+/*   Updated: 2023/09/29 18:31:45 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
-#include "../includes/printf.h"
+#include "../includes/ft_printf.h"
 
 int	main(void)
 {
