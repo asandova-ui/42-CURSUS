@@ -69,7 +69,8 @@ char	*read_file(int fd, t_fd_storage *fd_storage)
     if (!buffer)
         return (custom_free(fd_storage));
     buffer[0] = '\0';
-    while (bytes_read > 0 && !ft_strchr(fd_storage->storage, '\n'))
+
+    while (bytes_read > 0)
     {
         bytes_read = read(fd, buffer, BUFFER_SIZE);
         if (bytes_read > 0)
@@ -86,16 +87,22 @@ char	*read_file(int fd, t_fd_storage *fd_storage)
             fd_storage->length += bytes_read;
         }
     }
+
     free(buffer);
+
     if (bytes_read == -1)
         return (custom_free(fd_storage));
-    if (bytes_read == 0 && fd_storage->length == 0)
+
+    if (fd_storage->length == 0)
     {
+        // Si no se leyó nada, hemos llegado al final del archivo
         custom_free(fd_storage);
         return NULL;
     }
+
     return (fd_storage->storage);
 }
+
 
 
 char	*get_next_line(int fd)
