@@ -17,6 +17,7 @@ t_fd_storage	*custom_free(t_fd_storage *fd_storage)
 	free(fd_storage->storage);
 	fd_storage->storage = NULL;
 	fd_storage->length = 0;
+	free(fd_storage);
 	return (NULL);
 }
 
@@ -103,7 +104,7 @@ t_fd_storage	*read_file(int fd, t_fd_storage *fd_storage)
 char	*get_next_line(int fd)
 {
 	static t_fd_storage	*fd_storage;
-	t_fd_storage		*line;
+	char				*line;
 
 	if (fd < 0)
 		return (NULL);
@@ -111,9 +112,9 @@ char	*get_next_line(int fd)
 		fd_storage = read_file(fd, fd_storage);
 	if (!fd_storage)
 		return (NULL);
-	line = ft_get_line(fd_storage);
+	line = ft_get_line(fd_storage)->storage;
 	if (!line)
 		return (custom_free(fd_storage));
 	fd_storage = free_stored_line(fd_storage);
-	return (line->storage);
+	return (line);
 }
