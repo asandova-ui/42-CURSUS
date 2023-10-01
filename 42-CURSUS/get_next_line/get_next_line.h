@@ -34,10 +34,14 @@ char	*ft_get_line(t_fd_storage *fd_storage);
 char	*read_file(int fd, t_fd_storage *fd_storage);
 char	*get_next_line(int fd);
 
-char	*ft_strdup(char *str);
+char	*ft_strdup(char *s1);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char *str, unsigned int start, size_t len);
 char	*ft_strchr(char *str, int c);
 size_t	ft_strlen(char *str);
+
+char *ft_strndup(char *str, size_t n);
+char *ft_strcat(char *dest, char *src);
+
 
 #endif

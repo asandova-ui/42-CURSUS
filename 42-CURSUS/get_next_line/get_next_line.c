@@ -35,15 +35,12 @@ char	*free_stored_line(t_fd_storage *fd_storage)
 		len = ptr - fd_storage->storage + 1;
 	if (!fd_storage->storage[len])
 		return (custom_free(fd_storage));
-
-	// Utilizar ft_substr sin usar fd_storage->storage directamente
-	new_storage = ft_substr(fd_storage->storage, len, fd_storage->length - len);
+	new_storage = ft_strdup(fd_storage->storage + len);
 	custom_free(fd_storage);
 	if (!new_storage)
 		return (NULL);
 	return (new_storage);
 }
-
 
 char	*ft_get_line(t_fd_storage *fd_storage)
 {
@@ -56,7 +53,7 @@ char	*ft_get_line(t_fd_storage *fd_storage)
 		len = (int)fd_storage->length;
 	else
 		len = ptr - fd_storage->storage + 1;
-	line = ft_substr(fd_storage->storage, 0, len);
+	line = ft_strndup(fd_storage->storage, len);
 	if (!line)
 		return (NULL);
 	return (line);
@@ -78,7 +75,7 @@ char	*read_file(int fd, t_fd_storage *fd_storage)
 		if (bytes_read > 0)
 		{
 			buffer[bytes_read] = '\0';
-			fd_storage->storage = ft_strjoin(fd_storage->storage, buffer);
+			fd_storage->storage = ft_strcat(fd_storage->storage, buffer);
 			fd_storage->length += bytes_read;
 		}
 	}
