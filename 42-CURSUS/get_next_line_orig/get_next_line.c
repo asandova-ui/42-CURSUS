@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:43:54 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/01 13:21:13 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/01 13:30:49 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,19 @@ char	*read_file(int fd, t_fd_storage *fd_storage)
 	//buffer[0] = '\0';
 	fd_storage->storage = ft_strdup("");
 	while (bytes_read > 0 && !ft_strchr(fd_storage->storage, '\n'))
-	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read > 0)
-		{
-			buffer[bytes_read] = '\0';
-			new_storage = ft_strjoin(fd_storage->storage, buffer);
-			free(fd_storage->storage);
-			if (!new_storage)
-				return (NULL);
-			fd_storage->storage = new_storage;
-			fd_storage->length += bytes_read;
-		}
-	}
+{
+    bytes_read = read(fd, buffer, BUFFER_SIZE);
+    if (bytes_read > 0)
+    {
+        buffer[bytes_read] = '\0';
+        new_storage = ft_strjoin(fd_storage->storage, buffer);
+        free(fd_storage->storage);
+        if (!new_storage)
+            return (NULL);
+        fd_storage->storage = new_storage;
+        fd_storage->length += bytes_read;
+    }
+}
 	if (bytes_read == -1 || fd_storage->length == 0)
 	{
 		free(fd_storage->storage);
