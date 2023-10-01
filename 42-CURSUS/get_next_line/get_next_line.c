@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:43:54 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/01 13:15:26 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/01 13:21:13 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*read_file(int fd, t_fd_storage *fd_storage)
 	char	*new_storage;
 
 	bytes_read = 1;
-	buffer[0] = '\0';
+	//buffer[0] = '\0';
 	fd_storage->storage = ft_strdup("");
 	while (bytes_read > 0 && !ft_strchr(fd_storage->storage, '\n'))
 	{
