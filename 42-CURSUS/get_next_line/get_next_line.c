@@ -14,8 +14,8 @@
 
 void	update_rest(char **line, char **rest)
 {
-	char *temp;
-	char *newline;
+	char	*newline;
+	char	*temp;
 
 	newline = ft_strchr(*rest, '\n');
 	if (newline)
@@ -36,21 +36,19 @@ char	*read_line(int fd, char **rest, char *buffer, int *bytes_read)
 {
 	char	*line;
 	char	*temp;
-	*bytes_read = 1;
 
 	line = ft_strdup(*rest);
-	while (!ft_strchr(*rest, '\n') && *bytes_read > 0)
+	while (!ft_strchr(*rest, '\n') && (*bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
-		*bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (*bytes_read < 0)
-			return (NULL);
 		buffer[*bytes_read] = '\0';
 		temp = ft_strjoin(line, buffer);
 		if (!temp)
 			return (NULL);
+		free(line);
 		line = temp;
 	}
-	update_rest(&line, rest);
+	if (*bytes_read >= 0)
+		update_rest(&line, rest);
 	return (line);
 }
 
