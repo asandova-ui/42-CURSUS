@@ -17,12 +17,23 @@ void	update_rest(char **line, char **rest)
 	char	*newline;
 	char	*temp;
 
+	if (!*rest)
+		return;
+
 	newline = ft_strchr(*rest, '\n');
 	if (newline)
 	{
 		*rest = ft_strdup(newline + 1);
+		if (!*rest)
+			return; // Manejar error de asignación de memoria
 		temp = ft_substr(*line, 0, ft_strlen(*line) - ft_strlen(newline + 1));
 		free(*line);
+		if (!temp)
+		{
+			free(*rest);
+			*rest = NULL;
+			return; // Manejar error de asignación de memoria
+		}
 		*line = temp;
 	}
 	else
@@ -31,6 +42,7 @@ void	update_rest(char **line, char **rest)
 		*rest = NULL;
 	}
 }
+
 
 char	*read_line(int fd, char **rest, char *buffer, int *bytes_read)
 {
