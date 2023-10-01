@@ -17,8 +17,8 @@
 #  define BUFFER_SIZE 32
 # endif
 
-#include <unistd.h>
-#include <stdlib.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
