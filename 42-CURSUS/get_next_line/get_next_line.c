@@ -35,12 +35,15 @@ char	*free_stored_line(t_fd_storage *fd_storage)
 		len = ptr - fd_storage->storage + 1;
 	if (!fd_storage->storage[len])
 		return (custom_free(fd_storage));
+
+	// Utilizar ft_substr sin usar fd_storage->storage directamente
 	new_storage = ft_substr(fd_storage->storage, len, fd_storage->length - len);
 	custom_free(fd_storage);
 	if (!new_storage)
 		return (NULL);
 	return (new_storage);
 }
+
 
 char	*ft_get_line(t_fd_storage *fd_storage)
 {
@@ -97,8 +100,8 @@ char	*get_next_line(int fd)
 		fd_storage.storage = read_file(fd, &fd_storage);
 		fd_storage.length = ft_strlen(fd_storage.storage);
 	}
-	/*if (!fd_storage.storage)
-		return (NULL);*/
+	if (!fd_storage.storage)
+		return (NULL);
 	line = ft_get_line(&fd_storage);
 	if (!line)
 		return (custom_free(&fd_storage));
