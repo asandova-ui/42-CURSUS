@@ -12,6 +12,25 @@
 
 #include "get_next_line.h"
 
+void	update_rest(char **line, char **rest)
+{
+	char *temp;
+	char *newline;
+
+	newline = ft_strchr(*rest, '\n');
+	if (newline)
+	{
+		*rest = ft_strdup(newline + 1);
+		temp = ft_substr(*line, 0, ft_strlen(*line) - ft_strlen(newline + 1));
+		free(*line);
+		*line = temp;
+	}
+	else
+	{
+		free(*rest);
+		*rest = NULL;
+	}
+}
 
 char	*read_line(int fd, char **rest, char *buffer, int *bytes_read)
 {
