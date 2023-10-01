@@ -51,8 +51,11 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_strchr(remainder, '\n');
 	if (line)
-		*line++ = '\0';
-	temp = remainder;
-	remainder = (line) ? ft_strdup(line) : NULL;
+		*line = '\0';
+	temp = ft_strdup(remainder);
+	if (line)
+		*line = '\n';
+	free(remainder);
+	remainder = (line) ? ft_strdup(line + 1) : NULL;
 	return (temp);
 }
