@@ -54,15 +54,20 @@ char	*read_line(int fd, char **rest, char *buffer, int *bytes_read)
 	{
 		buffer[*bytes_read] = '\0';
 		temp = ft_strjoin(line, buffer);
+		free(line);
 		if (!temp)
 			return (NULL);
-		free(line);
 		line = temp;
 	}
-	if (*bytes_read >= 0)
-		update_rest(&line, rest);
+	if (*bytes_read == -1)
+	{
+		free(line);
+		return (NULL); // Manejar error de lectura
+	}
+	update_rest(&line, rest);
 	return (line);
 }
+
 
 char	*get_next_line(int fd)
 {
