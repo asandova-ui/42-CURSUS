@@ -56,6 +56,7 @@ char	*ft_strdup(char *s1)
 char *ft_strndup(char *str, size_t n)
 {
     size_t len = 0;
+	size_t i = 0;
 
     while (len < n && str[len] != '\0') {
         len++;
@@ -64,9 +65,11 @@ char *ft_strndup(char *str, size_t n)
     if (result == NULL) {
         return NULL;
     }
-    for (size_t i = 0; i < len; i++) {
-        result[i] = str[i];
-    }
+	while(i < len)
+	{
+		result[i] = str[i];
+		i ++;
+	}
     result[len] = '\0';
     return result;
 }
