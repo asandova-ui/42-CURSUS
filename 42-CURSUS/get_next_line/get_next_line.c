@@ -13,56 +13,46 @@
 #include "get_next_line.h"
 
 
-static int	read_line(int fd, char **remainder)
+char	*read_line(int fd, char **rest, char *buffer, int *bytes_read)
 {
-	char	buffer[BUFFER_SIZE + 1];
-	int		bytes_read;
+	char	*line;
 	char	*temp;
+	*bytes_read = 1;
 
-	while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
+	line = ft_strdup(*rest);
+	while (!ft_strchr(*rest, '\n') && *bytes_read > 0)
 	{
-		buffer[bytes_read] = '\0';
-		if (*remainder)
-		{
-			temp = *remainder;
-			*remainder = ft_strjoin(temp, buffer);
-			free(temp);
-		}
-		else
-			*remainder = ft_strjoin("", buffer);
-		if (ft_strchr(*remainder, '\n'))
-			return (1);
+		*bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (*bytes_read < 0)
+			return (NULL);
+		buffer[*bytes_read] = '\0';
+		temp = ft_strjoin(line, buffer);
+		if (!temp)
+			return (NULL);
+		line = temp;
 	}
-	return (bytes_read);
+	update_rest(&line, rest);
+	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*remainder;
+	static char	*rest;
+	char		*buffer;
 	char		*line;
-	char		*temp;
 	int			bytes_read;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
 		return (NULL);
-	bytes_read = read_line(fd, &remainder);
-	if (bytes_read < 0)
+
+	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buffer)
 		return (NULL);
-	if (!bytes_read && !remainder)
+
+	line = read_line(fd, &rest, buffer, &bytes_read);
+
+	free(buffer);
+	if (bytes_read == -1)
 		return (NULL);
-	line = ft_strchr(remainder, '\n');
-	if (line)
-		*line = '\0';
-	temp = ft_strdup(remainder);
-	if (line)
-	{
-		*line = '\n';
-		remainder = ft_strdup(line + 1);
-	}
-	else
-	{
-		free(remainder);
-		remainder = NULL;
-	}
-	return (temp);
+	return (line);
 }
