@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:42:11 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/01 13:10:52 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/01 13:12:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,27 +55,28 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
-	int		i;
-	int		c;
+	size_t	i;
+	size_t	j;
 
-	if (!s1)
-	{
-		s1 = (char *)malloc(sizeof(char));
-		if (!s1)
-			return (NULL);
-		s1[0] = '\0';
-	}
-	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!s1 || !s2)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!str)
-		return (custom_free(&s1));
-	i = -1;
-	while (s1[++i])
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
 		str[i] = s1[i];
-	c = -1;
-	while (s2[++c])
-		str[i + c] = s2[c];
-	str[i + c] = '\0';
-	free(s1);
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		str[i] = s2[j];
+		i++;
+		j++;
+	}
+	str[i] = '\0';
 	return (str);
 }
 
