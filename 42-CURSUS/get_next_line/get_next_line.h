@@ -22,11 +22,17 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-char	*custom_free(char **str);
-char	*free_stored_line(char *str);
-char	*ft_get_line(char *str);
-char	*read_file(int fd, char *str);
-char	*get_next_line(int fd);
+typedef struct s_fd_storage
+{
+	char			*storage;
+	size_t			length;
+}					t_fd_storage;
+
+t_fd_storage	*custom_free(t_fd_storage *fd_storage);
+t_fd_storage	*free_stored_line(t_fd_storage *fd_storage);
+t_fd_storage	*ft_get_line(t_fd_storage *fd_storage);
+t_fd_storage	*read_file(int fd, t_fd_storage *fd_storage);
+char			*get_next_line(int fd);
 
 char	*ft_strdup(char *str);
 char	*ft_strjoin(char *s1, char *s2);
