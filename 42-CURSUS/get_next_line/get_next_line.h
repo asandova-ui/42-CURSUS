@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:44:28 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/29 12:36:20 by asandova         ###   ########.fr       */
+/*   Updated: 2023/10/01 12:59:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@ typedef struct s_fd_storage
 	char			*storage;
 	size_t			length;
 }					t_fd_storage;
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
 
 char				*custom_free(char **str);
 char				*free_stored_line(t_fd_storage *fd_storage);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:43:54 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/29 12:36:28 by asandova         ###   ########.fr       */
+/*   Updated: 2023/10/01 13:11:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ char	*get_next_line(int fd)
 
 	fd_storage.storage = NULL;
 	fd_storage.length = 0;
-	if (fd < 0)
+	if (fd < 0)//fd incorrecto
 		return (NULL);
 	if (!fd_storage.storage || !ft_strchr(fd_storage.storage, '\n'))
 		fd_storage.storage = read_file(fd, &fd_storage);
