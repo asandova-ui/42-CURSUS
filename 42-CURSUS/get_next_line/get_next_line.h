@@ -28,11 +28,11 @@ typedef struct s_fd_storage
 	size_t			length;
 }					t_fd_storage;
 
-t_fd_storage	*custom_free(t_fd_storage *fd_storage);
-t_fd_storage	*free_stored_line(t_fd_storage *fd_storage);
-t_fd_storage	*ft_get_line(t_fd_storage *fd_storage);
-t_fd_storage	*read_file(int fd, t_fd_storage *fd_storage);
-char			*get_next_line(int fd);
+char	*custom_free(t_fd_storage *str);
+char	*free_stored_line(t_fd_storage *fd_storage);
+char	*ft_get_line(t_fd_storage *fd_storage);
+char	*read_file(int fd, t_fd_storage *fd_storage);
+char	*get_next_line(int fd);
 
 char	*ft_strdup(char *str);
 char	*ft_strjoin(char *s1, char *s2);

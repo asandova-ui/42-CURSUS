@@ -12,20 +12,18 @@
 
 #include "get_next_line.h"
 
-t_fd_storage	*custom_free(t_fd_storage *fd_storage)
+char	*custom_free(t_fd_storage *str)
 {
-	free(fd_storage->storage);
-	fd_storage->storage = NULL;
-	fd_storage->length = 0;
-	free(fd_storage);
+	free(str->storage);
+	str->storage = NULL;
 	return (NULL);
 }
 
-t_fd_storage	*free_stored_line(t_fd_storage *fd_storage)
+char	*free_stored_line(t_fd_storage *fd_storage)
 {
-	t_fd_storage	*new_storage;
-	char			*ptr;
-	int				len;
+	char	*new_storage;
+	char	*ptr;
+	int		len;
 
 	ptr = ft_strchr(fd_storage->storage, '\n');
 	if (!ptr)
@@ -37,45 +35,31 @@ t_fd_storage	*free_stored_line(t_fd_storage *fd_storage)
 		len = ptr - fd_storage->storage + 1;
 	if (!fd_storage->storage[len])
 		return (custom_free(fd_storage));
-	new_storage = (t_fd_storage *)malloc(sizeof(t_fd_storage));
+	new_storage = ft_substr(fd_storage->storage, len, fd_storage->length - len);
+	custom_free(fd_storage);
 	if (!new_storage)
 		return (NULL);
-	new_storage->storage = ft_substr(fd_storage->storage, len, fd_storage->length - len);
-	custom_free(fd_storage);
-	if (!new_storage->storage)
-	{
-		free(new_storage);
-		return (NULL);
-	}
-	new_storage->length = ft_strlen(new_storage->storage);
 	return (new_storage);
 }
 
-t_fd_storage	*ft_get_line(t_fd_storage *fd_storage)
+char	*ft_get_line(t_fd_storage *fd_storage)
 {
-	t_fd_storage	*line;
-	char			*ptr;
-	int				len;
+	char	*line;
+	char	*ptr;
+	int		len;
 
 	ptr = ft_strchr(fd_storage->storage, '\n');
 	if (!ptr)
 		len = (int)fd_storage->length;
 	else
 		len = ptr - fd_storage->storage + 1;
-	line = (t_fd_storage *)malloc(sizeof(t_fd_storage));
+	line = ft_substr(fd_storage->storage, 0, len);
 	if (!line)
 		return (NULL);
-	line->storage = ft_substr(fd_storage->storage, 0, len);
-	if (!line->storage)
-	{
-		free(line);
-		return (NULL);
-	}
-	line->length = ft_strlen(line->storage);
 	return (line);
 }
 
-t_fd_storage	*read_file(int fd, t_fd_storage *fd_storage)
+char	*read_file(int fd, t_fd_storage *fd_storage)
 {
 	int		bytes_read;
 	char	*buffer;
@@ -92,29 +76,33 @@ t_fd_storage	*read_file(int fd, t_fd_storage *fd_storage)
 		{
 			buffer[bytes_read] = '\0';
 			fd_storage->storage = ft_strjoin(fd_storage->storage, buffer);
-			fd_storage->length = ft_strlen(fd_storage->storage);
+			fd_storage->length += bytes_read;
 		}
 	}
 	free(buffer);
 	if (bytes_read == -1)
 		return (custom_free(fd_storage));
-	return (fd_storage);
+	return (fd_storage->storage);
 }
 
 char	*get_next_line(int fd)
 {
-	static t_fd_storage	*fd_storage;
+	static t_fd_storage	fd_storage;
 	char				*line;
 
 	if (fd < 0)
 		return (NULL);
-	if (!fd_storage || !ft_strchr(fd_storage->storage, '\n'))
-		fd_storage = read_file(fd, fd_storage);
-	if (!fd_storage)
+	if (!fd_storage.storage || !ft_strchr(fd_storage.storage, '\n'))
+	{
+		fd_storage.storage = read_file(fd, &fd_storage);
+		fd_storage.length = ft_strlen(fd_storage.storage);
+	}
+	if (!fd_storage.storage)
 		return (NULL);
-	line = ft_get_line(fd_storage)->storage;
+	line = ft_get_line(&fd_storage);
 	if (!line)
-		return (custom_free(fd_storage));
-	fd_storage = free_stored_line(fd_storage);
+		return (custom_free(&fd_storage));
+	fd_storage.storage = free_stored_line(&fd_storage);
+	fd_storage.length = fd_storage.storage ? ft_strlen(fd_storage.storage) : 0;
 	return (line);
 }
