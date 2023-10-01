@@ -70,7 +70,7 @@ char	*read_file(int fd, t_fd_storage *fd_storage)
         return (custom_free(fd_storage));
     buffer[0] = '\0';
 
-    while (bytes_read > 0 || fd_storage->length == 0)
+    while (bytes_read > 0)
     {
         bytes_read = read(fd, buffer, BUFFER_SIZE);
         if (bytes_read > 0)
@@ -100,8 +100,22 @@ char	*read_file(int fd, t_fd_storage *fd_storage)
         return NULL;
     }
 
+    if (fd_storage->length > 0 && fd_storage->storage[fd_storage->length - 1] != '\n')
+    {
+        // Añadir un carácter de nueva línea al final para que la última línea se maneje correctamente
+        char *temp = ft_strjoin(fd_storage->storage, "\n");
+        if (!temp)
+        {
+            return (custom_free(fd_storage));
+        }
+        free(fd_storage->storage);
+        fd_storage->storage = temp;
+        fd_storage->length += 1; // Incrementar la longitud para reflejar el nuevo carácter
+    }
+
     return (fd_storage->storage);
 }
+
 
 
 
