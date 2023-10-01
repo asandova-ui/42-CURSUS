@@ -70,7 +70,7 @@ char	*read_file(int fd, t_fd_storage *fd_storage)
         return (custom_free(fd_storage));
     buffer[0] = '\0';
 
-    while (bytes_read > 0)
+    while (bytes_read > 0 || fd_storage->length == 0)
     {
         bytes_read = read(fd, buffer, BUFFER_SIZE);
         if (bytes_read > 0)
@@ -102,6 +102,7 @@ char	*read_file(int fd, t_fd_storage *fd_storage)
 
     return (fd_storage->storage);
 }
+
 
 
 
