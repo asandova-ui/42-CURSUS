@@ -12,6 +12,7 @@
 
 #include "get_next_line.h"
 
+
 static int	read_line(int fd, char **remainder)
 {
 	char	buffer[BUFFER_SIZE + 1];
@@ -54,8 +55,14 @@ char	*get_next_line(int fd)
 		*line = '\0';
 	temp = ft_strdup(remainder);
 	if (line)
+	{
 		*line = '\n';
-	free(remainder);
-	remainder = (line) ? ft_strdup(line + 1) : NULL;
+		remainder = ft_strdup(line + 1);
+	}
+	else
+	{
+		free(remainder);
+		remainder = NULL;
+	}
 	return (temp);
 }
