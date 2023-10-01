@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 11:43:54 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/01 13:21:13 by marvin           ###   ########.fr       */
+/*   Created: 2023/10/01 13:29:25 by marvin            #+#    #+#             */
+/*   Updated: 2023/10/01 13:29:25 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,92 +19,85 @@ char	*custom_free(char **str)
 	return (NULL);
 }
 
-char	*free_stored_line(t_fd_storage *fd_storage)
+char	*free_stored_line(char *fd_storage)
 {
 	char	*new_storage;
 	char	*ptr;
 	int		len;
 
-	ptr = ft_strchr(fd_storage->storage, '\n');
+	ptr = ft_strchr(fd_storage, '\n');
 	if (!ptr)
-		return (custom_free(&fd_storage->storage));
+	{
+		new_storage = NULL;
+		return (custom_free(&fd_storage));
+	}
 	else
-		len = ptr - fd_storage->storage + 1;
-	if (!fd_storage->storage[len])
-		return (custom_free(&fd_storage->storage));
-	new_storage = ft_strdup(fd_storage->storage + len + 1);
-	free(fd_storage->storage);
+		len = ptr - fd_storage + 1;
+	if (!fd_storage[len])
+		return (custom_free(&fd_storage));
+	new_storage = ft_substr(fd_storage, len, ft_strlen(fd_storage) - len);
+	custom_free(&fd_storage);
 	if (!new_storage)
 		return (NULL);
-	fd_storage->storage = new_storage;
-	fd_storage->length -= len;
 	return (new_storage);
 }
 
-char	*ft_get_line(t_fd_storage *fd_storage)
+char	*ft_get_line(char *fd_storage)
 {
 	char	*line;
 	char	*ptr;
 	int		len;
 
-	ptr = ft_strchr(fd_storage->storage, '\n');
+	ptr = ft_strchr(fd_storage, '\n');
 	if (!ptr)
-		len = (int)fd_storage->length;
+		len = (int)ft_strlen(fd_storage);
 	else
-		len = ptr - fd_storage->storage + 1;
-	line = ft_substr(fd_storage->storage, 0, len);
+		len = ptr - fd_storage + 1;
+	line = ft_substr(fd_storage, 0, len);
 	if (!line)
 		return (NULL);
 	return (line);
 }
 
-char	*read_file(int fd, t_fd_storage *fd_storage)
+char	*read_file(int fd, char *fd_storage)
 {
 	int		bytes_read;
-	char	buffer[BUFFER_SIZE + 2];
-	char	*new_storage;
+	char	*buffer;
 
 	bytes_read = 1;
-	//buffer[0] = '\0';
-	fd_storage->storage = ft_strdup("");
-	while (bytes_read > 0 && !ft_strchr(fd_storage->storage, '\n'))
+	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (custom_free(&fd_storage));
+	buffer[0] = '\0';
+	while (bytes_read > 0 && !ft_strchr(fd_storage, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read > 0)
 		{
 			buffer[bytes_read] = '\0';
-			new_storage = ft_strjoin(fd_storage->storage, buffer);
-			free(fd_storage->storage);
-			if (!new_storage)
-				return (NULL);
-			fd_storage->storage = new_storage;
-			fd_storage->length += bytes_read;
+			fd_storage = ft_strjoin(fd_storage, buffer);
 		}
 	}
-	if (bytes_read == -1 || fd_storage->length == 0)
-	{
-		free(fd_storage->storage);
-		return (NULL);
-	}
-	return (fd_storage->storage);
+	free(buffer);
+	if (bytes_read == -1)
+		return (custom_free(&fd_storage));
+	return (fd_storage);
 }
 
 char	*get_next_line(int fd)
 {
-	static t_fd_storage	fd_storage;
-	char				*line;
+	static char	*fd_storage;
+	char		*line;
 
-	fd_storage.storage = NULL;
-	fd_storage.length = 0;
-	if (fd < 0)//fd incorrecto
+	if (fd < 0)
 		return (NULL);
-	if (!fd_storage.storage || !ft_strchr(fd_storage.storage, '\n'))
-		fd_storage.storage = read_file(fd, &fd_storage);
-	if (!fd_storage.storage)
+	if (!fd_storage || !ft_strchr(fd_storage, '\n'))
+		fd_storage = read_file(fd, fd_storage);
+	if (!fd_storage)
 		return (NULL);
-	line = ft_get_line(&fd_storage);
+	line = ft_get_line(fd_storage);
 	if (!line)
-		return (custom_free(&fd_storage.storage));
-	fd_storage.storage = free_stored_line(&fd_storage);
+		return (custom_free(&fd_storage));
+	fd_storage = free_stored_line(fd_storage);
 	return (line);
 }
