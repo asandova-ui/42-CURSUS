@@ -42,6 +42,6 @@ size_t	ft_strlen(char *str);
 
 char *ft_strndup(char *str, size_t n);
 char *ft_strcat(char *dest, char *src);
-
+char	*ft_strjoin(char *s1, char *s2);
 
 #endif

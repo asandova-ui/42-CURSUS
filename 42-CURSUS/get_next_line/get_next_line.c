@@ -75,7 +75,14 @@ char	*read_file(int fd, t_fd_storage *fd_storage)
 		if (bytes_read > 0)
 		{
 			buffer[bytes_read] = '\0';
-			fd_storage->storage = ft_strcat(fd_storage->storage, buffer);
+			char *temp = ft_strjoin(fd_storage->storage, buffer);
+			if (!temp)
+			{
+				free(buffer);
+				return (custom_free(fd_storage));
+			}
+			free(fd_storage->storage);
+			fd_storage->storage = temp;
 			fd_storage->length += bytes_read;
 		}
 	}
