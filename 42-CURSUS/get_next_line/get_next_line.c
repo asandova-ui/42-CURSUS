@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:43:54 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/01 13:14:56 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/01 13:15:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*ft_get_line(t_fd_storage *fd_storage)
 char	*read_file(int fd, t_fd_storage *fd_storage)
 {
 	int		bytes_read;
-	char	buffer[BUFFER_SIZE ];
+	char	buffer[BUFFER_SIZE + 2];
 	char	*new_storage;
 
 	bytes_read = 1;
