@@ -16,6 +16,7 @@ OBJS = $(SRCS:.c=.o)
 
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
+
 CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror -Iincludes
@@ -25,7 +26,8 @@ NAME = libftprintf.a
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	ar rcs $(NAME) $(OBJS) $(LIBFT)
+	cp $(LIBFT) $(NAME)
+	ar rcs $(NAME) $(OBJS)
 
 $(LIBFT):
 	make -C $(LIBFT_PATH) all
