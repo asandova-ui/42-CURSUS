@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:27:27 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/02 17:12:42 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/02 17:16:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ static void	ft_putnbr_hex(uintptr_t n, int fd)
 
 int	print_ptrhexa(va_list args, int fd)
 {
-	uintptr_t	ptr_value = va_arg(args, uintptr_t);
-	int			chars_written = 0;
+	uintptr_t	ptr_value;
+	int			chars_written;
 
+	ptr_value = va_arg(args, uintptr_t);
+	chars_written = 0;
 	ft_putchar_fd('0', fd);
 	ft_putchar_fd('x', fd);
 	chars_written += 2;
