@@ -6,17 +6,12 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:27:27 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/02 17:02:33 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/02 17:03:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 #include "../../libft/libft.h"
-
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
 
 static void	ft_putnbr_hex(uintptr_t n, int fd)
 {
