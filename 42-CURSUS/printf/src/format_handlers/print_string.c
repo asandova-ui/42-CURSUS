@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:57:52 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/02 17:07:01 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/02 17:07:54 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int	print_string(va_list args, int fd)
 	char	*value;
 	int		length;
 
+	value = va_arg(args, char *);
 	if (value == NULL)
 	{
 		ft_putstr_fd("(null)", fd);
 		length = 6;
 		return (length);
 	}
-	value = va_arg(args, char *);
 	ft_putstr_fd(value, fd);
 	length = ft_strlen(value);
 	return (length);
