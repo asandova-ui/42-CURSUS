@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:27:27 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/02 17:11:05 by marvin           ###   ########.fr       */
+/*   Updated: 2023/10/02 17:11:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	print_ptrhexa(va_list args, int fd)
 	{
 		ft_putchar_fd('0', fd);
 		chars_written ++;
-		return ;
+		return (chars_written);
 	}
 	chars_written += 2;
 	ft_putnbr_hex(ptr_value, fd);
