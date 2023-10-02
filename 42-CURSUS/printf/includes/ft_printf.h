@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 17:09:56 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/29 18:32:04 by asandova         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:29:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ char	*ft_itoa_base(unsigned int n, char *base);
 
 int		ft_printf(const char *format, ...);
 int		format_manager(const char *ptr, va_list args);
-
+void	ft_putchar_fd(char c, int fd);
 #endif

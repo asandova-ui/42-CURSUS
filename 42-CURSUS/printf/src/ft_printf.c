@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 11:43:48 by asandova          #+#    #+#             */
-/*   Updated: 2023/09/29 18:31:41 by asandova         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:30:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write (fd, &c, 1);
+}
 
 int	ft_printf(const char *format, ...)
 {
@@ -32,7 +37,7 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 		{
-			ft_putstr_fd((char *)ptr, 1);
+			ft_putchar_fd(&ptr, 1);
 			chars_written++;
 		}
 		ptr++;
