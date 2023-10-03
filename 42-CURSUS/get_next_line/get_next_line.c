@@ -67,7 +67,7 @@ char	*read_file(int fd, t_fd_storage *fd_storage)
 	bytes_read = 1;
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
-		return (custom_free(buffer));
+		return (custom_free(&buffer));
 	fd_storage->storage = ft_strdup("");
 	while (bytes_read > 0 && !ft_strchr(fd_storage->storage, '\n'))
 	{
