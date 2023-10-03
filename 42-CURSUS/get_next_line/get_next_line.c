@@ -100,6 +100,11 @@ char	*get_next_line(int fd)
 	if (!line)
 		return (custom_free(&fd_storage.storage));
 	fd_storage.storage = free_stored_line(&fd_storage);
+	if (!ft_strchr(line, '\n'))
+	{
+		line[ft_strlen(line)] = '\0';
+		return (line);
+	}
 	return (line);
 }
 
