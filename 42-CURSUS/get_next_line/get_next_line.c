@@ -61,26 +61,29 @@ char	*ft_get_line(t_fd_storage *fd_storage)
 char	*read_file(int fd, t_fd_storage *fd_storage)
 {
 	int		bytes_read;
-	char	buffer[BUFFER_SIZE + 2];
+	char	*buffer;
 	char	*new_storage;
 
 	bytes_read = 1;
-	//buffer[0] = '\0';
+	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (custom_free(buffer));
 	fd_storage->storage = ft_strdup("");
 	while (bytes_read > 0 && !ft_strchr(fd_storage->storage, '\n'))
-{
-    bytes_read = read(fd, buffer, BUFFER_SIZE);
-    if (bytes_read > 0)
-    {
-        buffer[bytes_read] = '\0';
-        new_storage = ft_strjoin(fd_storage->storage, buffer);
-        free(fd_storage->storage);
-        if (!new_storage)
-            return (NULL);
-        fd_storage->storage = new_storage;
-        fd_storage->length += bytes_read;
-    }
-}
+	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read > 0)
+		{
+			buffer[bytes_read] = '\0';
+			new_storage = ft_strjoin(fd_storage->storage, buffer);
+			free(fd_storage->storage);
+			if (!new_storage)
+				return (NULL);
+			fd_storage->storage = new_storage;
+			fd_storage->length += bytes_read;
+    	}
+	}
+	free(buffer);
 	if (bytes_read == -1 || fd_storage->length == 0)
 	{
 		free(fd_storage->storage);
