@@ -93,8 +93,8 @@ char	*get_next_line(int fd)
 	static t_fd_storage	fd_storage;
 	char				*line;
 
-	/*fd_storage.storage = NULL;
-	fd_storage.length = 0;*/
+	fd_storage.storage = NULL;
+	fd_storage.length = 0;
 	if (fd < 0)//fd incorrecto
 		return (NULL);
 	if (!fd_storage.storage || !ft_strchr(fd_storage.storage, '\n'))
