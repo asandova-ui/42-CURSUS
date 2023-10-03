@@ -27,17 +27,20 @@ char	*free_stored_line(t_fd_storage *fd_storage)
 
 	ptr = ft_strchr(fd_storage->storage, '\n');
 	if (!ptr)
+	{
+		new_storage = NULL;
 		return (custom_free(&fd_storage->storage));
+	}
 	else
 		len = ptr - fd_storage->storage + 1;
 	if (!fd_storage->storage[len])
 		return (custom_free(&fd_storage->storage));
-	new_storage = ft_strdup(fd_storage->storage + len + 1);
-	free(fd_storage->storage);
+	new_storage = ft_substr(fd_storage, len, ft_strlen(fd_storage) - len);
+	custom_free(&fd_storage->storage);
 	if (!new_storage)
 		return (NULL);
-	fd_storage->storage = new_storage;
-	fd_storage->length -= len;
+	/*fd_storage->storage = new_storage;
+	fd_storage->length -= len;*/
 	return (new_storage);
 }
 
@@ -49,7 +52,7 @@ char	*ft_get_line(t_fd_storage *fd_storage)
 
 	ptr = ft_strchr(fd_storage->storage, '\n');
 	if (!ptr)
-		len = (int)fd_storage->length;
+		len = (int)ft_strlen(fd_storage->storage);
 	else
 		len = ptr - fd_storage->storage + 1;
 	line = ft_substr(fd_storage->storage, 0, len);
@@ -62,7 +65,6 @@ char	*read_file(int fd, t_fd_storage *fd_storage)
 {
 	int		bytes_read;
 	char	*buffer;
-	char	*new_storage;
 
 	bytes_read = 1;
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
@@ -75,20 +77,13 @@ char	*read_file(int fd, t_fd_storage *fd_storage)
 		if (bytes_read > 0)
 		{
 			buffer[bytes_read] = '\0';
-			new_storage = ft_strjoin(fd_storage->storage, buffer);
-			free(fd_storage->storage);
-			if (!new_storage)
-				return (NULL);
-			fd_storage->storage = new_storage;
+			fd_storage->storage = ft_strjoin(fd_storage->storage, buffer);
 			fd_storage->length += bytes_read;
     	}
 	}
 	free(buffer);
 	if (bytes_read == -1 || fd_storage->length == 0)
-	{
-		free(fd_storage->storage);
-		return (NULL);
-	}
+		return (custom_free(&fd_storage->storage));
 	return (fd_storage->storage);
 }
 
@@ -98,8 +93,8 @@ char	*get_next_line(int fd)
 	static t_fd_storage	fd_storage;
 	char				*line;
 
-	fd_storage.storage = NULL;
-	fd_storage.length = 0;
+	/*fd_storage.storage = NULL;
+	fd_storage.length = 0;*/
 	if (fd < 0)//fd incorrecto
 		return (NULL);
 	if (!fd_storage.storage || !ft_strchr(fd_storage.storage, '\n'))
