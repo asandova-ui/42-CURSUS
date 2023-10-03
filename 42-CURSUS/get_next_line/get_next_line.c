@@ -35,7 +35,7 @@ char	*free_stored_line(t_fd_storage *fd_storage)
 		len = ptr - fd_storage->storage + 1;
 	if (!fd_storage->storage[len])
 		return (custom_free(&fd_storage->storage));
-	new_storage = ft_substr(fd_storage, len, ft_strlen(fd_storage) - len);
+	new_storage = ft_substr(fd_storage->storage, len, ft_strlen(fd_storage->storage) - len);
 	custom_free(&fd_storage->storage);
 	if (!new_storage)
 		return (NULL);
