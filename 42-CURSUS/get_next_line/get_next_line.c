@@ -130,7 +130,7 @@ char	*free_stored_line(t_fd_storage *fd_storage)
 	custom_free(&fd_storage->storage);
 	if (!new_storage)
 		return (NULL);
-	/*fd_storage->storage = new_storage;
+	fd_storage->storage = new_storage;
 	fd_storage->length -= len;
 	return (new_storage);
 }
