@@ -13,75 +13,75 @@
 #include "get_next_line.h"
 
 
-char	*custom_free(char **str)
+char	*remix_free(char **storage)
 {
-	free(*str);
-	*str = NULL;
+	free(*storage);
+	*storage = NULL;
 	return (NULL);
 }
 
-char	*free_stored_line(t_fd_storage *fd_storage)
+char	*line_keep(t_fd_storage *fd_storage)
 {
-	char	*new_storage;
+	char	*temp_st;
 	char	*ptr;
-	int		len;
+	int		lo;
 
 	ptr = ft_strchr(fd_storage->storage, '\n');
 	if (!ptr)
 	{
-		new_storage = NULL;
-		return (custom_free(&fd_storage->storage));
+		temp_st = NULL;
+		return (remix_free(&fd_storage->storage));
 	}
 	else
-		len = ptr - fd_storage->storage + 1;
-	if (!fd_storage->storage[len])
-		return (custom_free(&fd_storage->storage));
-	new_storage = ft_substr(fd_storage->storage, len, ft_strlen(fd_storage->storage) - len);
-	custom_free(&fd_storage->storage);
-	if (!new_storage)
+		lo = ptr - fd_storage->storage + 1;
+	if (!fd_storage->storage[lo])
+		return (remix_free(&fd_storage->storage));
+	temp_st = ft_substr(fd_storage->storage, 0, ft_strlen(fd_storage->storage) - lo);
+	remix_free(&fd_storage->storage);
+	if (!temp_st)
 		return (NULL);
-	return (new_storage);
+	return (temp_st);
 }
 
-char	*ft_get_line(t_fd_storage *fd_storage)
+char	*line_getting(t_fd_storage *fd_storage)
 {
-	char	*line;
-	char	*ptr;
-	int		len;
+	char	*returning_line;
+	char	*sto;
+	int		lo;
 
-	ptr = ft_strchr(fd_storage->storage, '\n');
-	if (!ptr)
-		len = (int)ft_strlen(fd_storage->storage);
+	sto = ft_strchr(fd_storage->storage, '\n');
+	if (!sto)
+		lo = (int)ft_strlen(fd_storage->storage);
 	else
-		len = ptr - fd_storage->storage + 1;
-	line = ft_substr(fd_storage->storage, 0, len);
-	if (!line)
+		lo = sto - fd_storage->storage + 1;
+	returning_line = ft_substr(fd_storage->storage, 0, lo);
+	if (!returning_line)
 		return (NULL);
-	return (line);
+	return (returning_line);
 }
 
-char	*read_file(int fd, t_fd_storage *fd_storage)
+char	*base_file_reading(int fd, t_fd_storage *fd_storage)
 {
-	int		bytes_read;
-	char	*buffer;
+	int		lo_bytes;
+	char	*buff;
 
-	bytes_read = 1;
-	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer)
-		return (custom_free(&fd_storage->storage));
-	buffer[0] = '\0';
-	while (bytes_read > 0 && !ft_strchr(fd_storage->storage, '\n'))
+	lo_bytes = 1;
+	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buff)
+		return (remix_free(&fd_storage->storage));
+	buff[0] = '\0';
+	while (lo_bytes > 0 && !ft_strchr(fd_storage->storage, '\n'))
 	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read > 0)
+		lo_bytes = read(fd, buff, BUFFER_SIZE);
+		if (lo_bytes > 0)
 		{
-			buffer[bytes_read] = '\0';
-			fd_storage->storage = ft_strjoin(fd_storage->storage, buffer);
+			buff[lo_bytes] = '\0';
+			fd_storage->storage = ft_strjoin(fd_storage->storage, buff);
 		}
 	}
-	free(buffer);
-	if (bytes_read == -1)
-		return (custom_free(&fd_storage->storage));
+	free(buff);
+	if (lo_bytes == -1)
+		return (remix_free(&fd_storage->storage));
 	return (fd_storage->storage);
 }
 
@@ -93,13 +93,13 @@ char	*get_next_line(int fd)
 	if (fd < 0)
 		return (NULL);
 	if (!fd_storage.storage || !ft_strchr(fd_storage.storage, '\n'))
-		fd_storage.storage = read_file(fd, &fd_storage);
+		fd_storage.storage = base_file_reading(fd, &fd_storage);
 	if (!fd_storage.storage)
 		return (NULL);
-	line = ft_get_line(&fd_storage);
+	line = line_getting(&fd_storage);
 	if (!line)
-		return (custom_free(&fd_storage.storage));
-	fd_storage.storage = free_stored_line(&fd_storage);
+		return (remix_free(&fd_storage.storage));
+	fd_storage.storage = line_keep(&fd_storage);
 	if (!ft_strchr(line, '\n'))
 	{
 		line[ft_strlen(line)] = '\0';
@@ -108,14 +108,14 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*char	*custom_free(char **str)
+/*char	*remix_free(char **str)
 {
 	free(*str);
 	*str = NULL;
 	return (NULL);
 }
 
-char	*free_stored_line(t_fd_storage *fd_storage)
+char	*line_keep(t_fd_storage *fd_storage)
 {
 	char	*new_storage;
 	char	*ptr;
@@ -125,14 +125,14 @@ char	*free_stored_line(t_fd_storage *fd_storage)
 	if (!ptr)
 	{
 		new_storage = NULL;
-		return (custom_free(&fd_storage->storage));
+		return (remix_free(&fd_storage->storage));
 	}
 	else
 		len = ptr - fd_storage->storage + 1;
 	if (!fd_storage->storage[len])
-		return (custom_free(&fd_storage->storage));
+		return (remix_free(&fd_storage->storage));
 	new_storage = ft_substr(fd_storage->storage, len, ft_strlen(fd_storage->storage) - len);
-	custom_free(&fd_storage->storage);
+	remix_free(&fd_storage->storage);
 	if (!new_storage)
 		return (NULL);
 	fd_storage->storage = new_storage;
@@ -140,7 +140,7 @@ char	*free_stored_line(t_fd_storage *fd_storage)
 	return (new_storage);
 }
 
-char	*ft_get_line(t_fd_storage *fd_storage)
+char	*line_getting(t_fd_storage *fd_storage)
 {
 	char	*line;
 	char	*ptr;
@@ -157,7 +157,7 @@ char	*ft_get_line(t_fd_storage *fd_storage)
 	return (line);
 }
 
-char	*read_file(int fd, t_fd_storage *fd_storage)
+char	*base_file_reading(int fd, t_fd_storage *fd_storage)
 {
 	int		bytes_read;
 	char	*buffer;
@@ -165,7 +165,7 @@ char	*read_file(int fd, t_fd_storage *fd_storage)
 	bytes_read = 1;
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
-		return (custom_free(&buffer));
+		return (remix_free(&buffer));
 	fd_storage->storage = ft_strdup("");
 	while (bytes_read > 0 && !ft_strchr(fd_storage->storage, '\n'))
 	{
@@ -179,7 +179,7 @@ char	*read_file(int fd, t_fd_storage *fd_storage)
 	}
 	free(buffer);
 	if (bytes_read == -1 || fd_storage->length == 0)
-		return (custom_free(&fd_storage->storage));
+		return (remix_free(&fd_storage->storage));
 	return (fd_storage->storage);
 }
 
@@ -194,13 +194,13 @@ char	*get_next_line(int fd)
 	if (fd < 0)//fd incorrecto
 		return (NULL);
 	if (fd_storage.storage == NULL|| !ft_strchr(fd_storage.storage, '\n'))
-		fd_storage.storage = read_file(fd, &fd_storage);
+		fd_storage.storage = base_file_reading(fd, &fd_storage);
 	if (!fd_storage.storage)
 		return (NULL);
-	line = ft_get_line(&fd_storage);
+	line = line_getting(&fd_storage);
 	if (!line)
-		return (custom_free(&fd_storage.storage));
-	fd_storage.storage = free_stored_line(&fd_storage);
+		return (remix_free(&fd_storage.storage));
+	fd_storage.storage = line_keep(&fd_storage);
 	return (line);
 }
 */

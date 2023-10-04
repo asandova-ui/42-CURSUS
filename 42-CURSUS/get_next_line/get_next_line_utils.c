@@ -27,7 +27,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!str)
-		return (custom_free(&s1));
+		return (remix_free(&s1));
 	i = -1;
 	while (s1[++i])
 		str[i] = s1[i];
