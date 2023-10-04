@@ -35,7 +35,7 @@ typedef struct s_fd_storage
 }			t_fd_storage;
 
 char		*remix_free(char **str);
-char	*line_keep(t_fd_storage *fd_storage);
+char		*line_keep(t_fd_storage *fd_storage);
 char		*line_getting(t_fd_storage *fd_storage);
 char		*base_file_reading(int fd, t_fd_storage *fd_storage);
 char		*get_next_line(int fd);
