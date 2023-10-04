@@ -10,48 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-
-typedef struct	s_fd_list
-{
-	int				fd;
-	t_fd_storage	fd_storage;
-	struct s_fd_list	*next;
-}				t_fd_list;
-
-// Variable estática para almacenar la lista de fd
-static t_fd_list	*fd_list = NULL;
+#include "get_next_line_bonus.h"
 
 char	*remix_free(char **storage)
 {
 	free(*storage);
 	*storage = NULL;
 	return (NULL);
-}
-
-static t_fd_storage	*get_fd_storage(int fd)
-{
-	t_fd_list	*current = fd_list;
-
-	// Buscar la estructura correspondiente al fd
-	while (current)
-	{
-		if (current->fd == fd)
-			return &(current->fd_storage);
-		current = current->next;
-	}
-
-	// Si no se encuentra, crear una nueva estructura y agregarla a la lista
-	t_fd_list	*new_fd = (t_fd_list *)malloc(sizeof(t_fd_list));
-	if (!new_fd)
-		return (NULL);
-	new_fd->fd = fd;
-	new_fd->fd_storage.storage = NULL;
-	new_fd->next = fd_list;
-	fd_list = new_fd;
-
-	return &(new_fd->fd_storage);
 }
 
 char	*line_keep(t_fd_storage *fd_storage)
@@ -122,19 +87,19 @@ char	*base_file_reading(int fd, t_fd_storage *fd_storage)
 
 char	*get_next_line(int fd)
 {
-	t_fd_storage	*fd_storage = get_fd_storage(fd);
-	char			*line;
+	static t_fd_storage	fd_storages[MAX_FD];
+	char				*line;
 
-	if (fd < 0 || !fd_storage)
+	if (fd < 0 || fd >= MAX_FD)
 		return (NULL);
-	if (!fd_storage->storage || !ft_strchr(fd_storage->storage, '\n'))
-		fd_storage->storage = base_file_reading(fd, fd_storage);
-	if (!fd_storage->storage)
+	if (!fd_storages[fd].storage || !ft_strchr(fd_storages[fd].storage, '\n'))
+		fd_storages[fd].storage = base_file_reading(fd, &fd_storages[fd]);
+	if (!fd_storages[fd].storage)
 		return (NULL);
-	line = line_getting(fd_storage);
+	line = line_getting(&fd_storages[fd]);
 	if (!line)
-		return (remix_free(&fd_storage->storage));
-	fd_storage->storage = line_keep(fd_storage);
+		return (remix_free(&fd_storages[fd].storage));
+	fd_storages[fd].storage = line_keep(&fd_storages[fd]);
 	if (!ft_strchr(line, '\n'))
 	{
 		line[ft_strlen(line)] = '\0';

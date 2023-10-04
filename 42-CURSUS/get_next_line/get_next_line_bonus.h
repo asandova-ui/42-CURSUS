@@ -17,6 +17,10 @@
 #  define BUFFER_SIZE 32
 # endif
 
+# ifndef MAX_FD
+#  define MAX_FD 23
+# endif
+
 # include <fcntl.h>
 # include <stdbool.h>
 # include <stddef.h>
@@ -30,9 +34,16 @@ typedef struct s_fd_storage
 	size_t	length;
 }			t_fd_storage;
 
+/*typedef struct	s_fd_list
+{
+	int				fd;
+	t_fd_storage	fd_storage;
+}				t_fd_list;
+
+static t_fd_list	*fd_list = NULL;*/
 char		*remix_free(char **str);
-char		*line_keep(t_fd_storage *fd_storage);
-char		*line_getting(t_fd_storage *fd_storage);
+char	*line_keep(t_fd_storage *fd_storage, int fd);
+char		*line_getting(t_fd_storage *fd_storage, int fd);
 char		*base_file_reading(int fd, t_fd_storage *fd_storage);
 char		*get_next_line(int fd);
 
