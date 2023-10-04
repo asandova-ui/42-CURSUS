@@ -90,8 +90,6 @@ char	*get_next_line(int fd)
 	static t_fd_storage	fd_storage;
 	char				*line;
 
-	fd_storage.storage = NULL;
-	fd_storage.length = 0;
 	if (fd < 0)
 		return (NULL);
 	if (!fd_storage.storage || !ft_strchr(fd_storage.storage, '\n'))
@@ -102,6 +100,11 @@ char	*get_next_line(int fd)
 	if (!line)
 		return (custom_free(&fd_storage.storage));
 	fd_storage.storage = free_stored_line(&fd_storage);
+	if (!ft_strchr(line, '\n'))
+	{
+		line[ft_strlen(line)] = '\0';
+		return (line);
+	}
 	return (line);
 }
 

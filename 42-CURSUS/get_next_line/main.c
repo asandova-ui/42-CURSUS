@@ -12,9 +12,7 @@ int main(void)
         perror("Error al abrir el archivo");
         return (0);
     }
-            printf("%s", "hooollalaaa");
-
-	 while (i < 10)
+	 while (i < 100)
     {
         printf("%s", "hooollalaaa");
         char *line = get_next_line(fd);
@@ -24,7 +22,7 @@ int main(void)
             close(fd);
             return (0);
         }
-        printf("%s", line);
+        printf("%s ", line);
         free(line);
         i++;
     }
