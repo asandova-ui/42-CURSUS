@@ -34,13 +34,6 @@ typedef struct s_fd_storage
 	size_t	length;
 }			t_fd_storage;
 
-/*typedef struct	s_fd_list
-{
-	int				fd;
-	t_fd_storage	fd_storage;
-}				t_fd_list;
-
-static t_fd_list	*fd_list = NULL;*/
 char		*remix_free(char **str);
 char	*line_keep(t_fd_storage *fd_storage);
 char		*line_getting(t_fd_storage *fd_storage);
