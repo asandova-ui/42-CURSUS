@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: asandova <asandova@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 17:52:09 by marvin            #+#    #+#              #
-#    Updated: 2023/09/26 17:52:09 by marvin           ###   ########.fr        #
+#    Updated: 2023/10/06 15:21:53 by asandova         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = $(addprefix src/, ft_printf.c) $(wildcard src/format_handlers/*.c)
+SRCS = src/ft_printf.c src/format_handlers/ft_itoabase.c src/format_handlers/ft_uitoa.c src/format_handlers/print_character.c src/format_handlers/print_integer.c src/format_handlers/print_mayushex.c src/format_handlers/print_minushex.c src/format_handlers/print_nosign.c src/format_handlers/print_ptrhexa.c src/format_handlers/print_string.c
 
 OBJS = $(SRCS:.c=.o)
 
