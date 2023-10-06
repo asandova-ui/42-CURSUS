@@ -34,7 +34,7 @@ $(LIBFT):
 
 clean:
 	make -C $(LIBFT_PATH) clean
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
 	make -C $(LIBFT_PATH) fclean
