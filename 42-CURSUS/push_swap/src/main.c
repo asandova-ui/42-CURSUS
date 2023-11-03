@@ -27,10 +27,14 @@ int	main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
+	//tengo que crear yo la pila, con los datos metidos por teclado
+	//antes de meter, necesito un checker
+	error_check(argc, *argv);
+	//una vez hemos hecho el control de errores metemos 1 a 1 en la pila
 
 
-	(void)argc;
-	(void)argv;
+	/*(void)argc;
+	(void)argv;*/
 	initialize(&a);
 	initialize(&b);
 	push(&a, 3);
