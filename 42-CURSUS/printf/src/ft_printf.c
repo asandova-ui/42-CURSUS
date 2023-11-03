@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 11:43:48 by asandova          #+#    #+#             */
-/*   Updated: 2023/10/02 16:32:16 by marvin           ###   ########.fr       */
+/*   Updated: 2023/11/03 10:10:01 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	ft_printf(const char *format, ...)
 
 	va_start(args, format);
 	ptr = format;
-	va_start(args, format);
 	chars_written = 0;
 	while (*ptr != '\0')
 	{
@@ -53,9 +52,9 @@ int	format_manager(const char *ptr, va_list args)
 	else if (*ptr == 'u')
 		return (print_nosign(args, 1));
 	else if (*ptr == 'x')
-		return (print_minushex(args, 1));
+		return (print_lowhex(args, 1));
 	else if (*ptr == 'X')
-		return (print_mayushex(args, 1));
+		return (print_highhex(args, 1));
 	else if (*ptr == 'c')
 		return (print_character(args, 1));
 	else if (*ptr == 's')
