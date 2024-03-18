@@ -6,7 +6,7 @@
 /*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:07:55 by asandova          #+#    #+#             */
-/*   Updated: 2023/10/06 14:05:30 by asandova         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:25:59 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef struct s_stack
 int		is_empty(t_stack *s);
 void	initialize(t_stack *s);
 
-void	algorithm(t_stack *a, t_stack *b);
+void algorithm(t_stack  *stack_a, t_stack *stack_b);
+
 void	sort_stack(t_stack *a, t_stack *b);
 
 void	rra(t_stack *a);
