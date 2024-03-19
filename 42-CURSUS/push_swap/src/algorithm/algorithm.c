@@ -1,21 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pa.c                                               :+:      :+:    :+:   */
+/*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 12:06:39 by asandova          #+#    #+#             */
-/*   Updated: 2023/10/06 14:07:26 by asandova         ###   ########.fr       */
+/*   Created: 2023/10/06 12:47:03 by asandova          #+#    #+#             */
+/*   Updated: 2023/11/03 12:52:37 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+#include "../../printf/includes/ft_printf.h"
 
-void	pa(t_stack *a, t_stack *b)
-{
-	if (!is_empty(b))
-	{
-		push(a, pop(b));
-	}
-}

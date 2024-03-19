@@ -1,25 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sb.c                                               :+:      :+:    :+:   */
+/*   error_control.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 12:38:05 by asandova          #+#    #+#             */
-/*   Updated: 2023/10/06 12:38:41 by asandova         ###   ########.fr       */
+/*   Created: 2023/10/10 09:32:24 by marvin            #+#    #+#             */
+/*   Updated: 2023/10/10 09:32:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-void	sb(t_stack *b)
-{
-	int	temp;
-
-	if (b->top > 0)
-	{
-		temp = b->array[0];
-		b->array[0] = b->array[1];
-		b->array[1] = temp;
-	}
-}
+#include "../../printf/includes/ft_printf.h"
