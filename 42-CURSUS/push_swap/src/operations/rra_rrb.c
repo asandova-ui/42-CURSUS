@@ -12,6 +12,7 @@
 
 #include "../../includes/push_swap.h"
 #include "../../printf/includes/ft_printf.h"
+#include "../../printf/libft/libft.h"
 
 static int	rotate(t_list2 **stack)
 {

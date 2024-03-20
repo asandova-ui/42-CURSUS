@@ -12,6 +12,7 @@
 
 #include "../../includes/push_swap.h"
 #include "../../printf/includes/ft_printf.h"
+#include "../../printf/libft/libft.h"
 
 static int	ft_contains(int num, char **argv, int i)
 {

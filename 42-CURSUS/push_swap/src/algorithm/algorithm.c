@@ -12,6 +12,7 @@
 
 #include "../../includes/push_swap.h"
 #include "../../printf/includes/ft_printf.h"
+#include "../../printf/libft/libft.h"
 
 void	radix_sort(t_list2 **stack_a, t_list2 **stack_b)
 {

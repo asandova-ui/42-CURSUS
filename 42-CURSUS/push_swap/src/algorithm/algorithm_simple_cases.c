@@ -12,6 +12,7 @@
 
 #include "../../includes/push_swap.h"
 #include "../../printf/includes/ft_printf.h"
+#include "../../printf/libft/libft.h"
 
 void	sort_3(t_list2 **stack_a)
 {
