@@ -22,7 +22,7 @@ static int	reverse(t_list2 **stack)
 	if (ft_lstsize2(*stack) < 2)
 		return (-1);
 	head = *stack;
-	tail = ft_lstlast(head);
+	tail = ft_lstlast2(head);
 	while (head)
 	{
 		if (head->next->next == NULL)
@@ -55,7 +55,7 @@ int	rrb(t_list2 **stack_b)
 
 int	rrr(t_list2 **stack_a, t_list2 **stack_b)
 {
-	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
+	if ((ft_lstsize2(*stack_a) < 2) || (ft_lstsize2(*stack_b) < 2))
 		return (-1);
 	reverse(stack_a);
 	reverse(stack_b);
