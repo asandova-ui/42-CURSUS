@@ -14,35 +14,6 @@
 #include "../../printf/includes/ft_printf.h"
 #include "../../printf/libft/libft.h"
 
-void	radix_sort(t_list2 **stack_a, t_list2 **stack_b)
-{
-	t_list2	*head_a;
-	int		i;
-	int		j;
-	int		size;
-	int		max_bits;
-
-	i = 0;
-	head_a = *stack_a;
-	size = ft_lstsize(head_a);
-	max_bits = get_max_bits(stack_a);
-	while (i < max_bits)
-	{
-		j = 0;
-		while (j++ < size)
-		{
-			head_a = *stack_a;
-			if (((head_a->index >> i) & 1) == 1)
-				ra(stack_a);
-			else
-				pb(stack_a, stack_b);
-		}
-		while (ft_lstsize(*stack_b) != 0)
-			pa(stack_a, stack_b);
-		i++;
-	}
-}
-
 static int	get_max_bits(t_list2 **stack)
 {
 	t_list2	*head;
@@ -63,14 +34,43 @@ static int	get_max_bits(t_list2 **stack)
 	return (max_bits);
 }
 
+void	radix_sort(t_list2 **stack_a, t_list2 **stack_b)
+{
+	t_list2	*head_a;
+	int		i;
+	int		j;
+	int		size;
+	int		max_bits;
+
+	i = 0;
+	head_a = *stack_a;
+	size = ft_lstsize2(head_a);
+	max_bits = get_max_bits(stack_a);
+	while (i < max_bits)
+	{
+		j = 0;
+		while (j++ < size)
+		{
+			head_a = *stack_a;
+			if (((head_a->index >> i) & 1) == 1)
+				ra(stack_a);
+			else
+				pb(stack_a, stack_b);
+		}
+		while (ft_lstsize(*stack_b) != 0)
+			pa(stack_a, stack_b);
+		i++;
+	}
+}
+
 void	simple_sort(t_list2 **stack_a, t_list2 **stack_b)
 {
 	int	size;
 
-	if (is_sorted(stack_a) || ft_lstsize(*stack_a) == 0
+	if (is_sorted(stack_a) || ft_lstsize2(*stack_a) == 0
 		|| ft_lstsize(*stack_a) == 1)
 		return ;
-	size = ft_lstsize(*stack_a);
+	size = ft_lstsize2(*stack_a);
 	if (size == 2)
 		sa(stack_a);
 	else if (size == 3)
