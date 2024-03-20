@@ -58,3 +58,17 @@ int	ft_lstsize2(t_list2 *head)
 	}
 	return (i);
 }
+
+t_list2	*ft_lstlast2(t_list2 *head)
+{
+	t_list2	*tmp;
+
+	tmp = head;
+	while (tmp->next)
+	{
+		tmp = tmp->next;
+		if (tmp->next == NULL)
+			return (tmp);
+	}
+	return (tmp);
+}

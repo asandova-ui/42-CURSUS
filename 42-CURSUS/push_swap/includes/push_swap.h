@@ -86,4 +86,5 @@ void	sort_3(t_list2 **stack_a);
 t_list2	*ft_lstnew2(int value);
 void	ft_lstadd_back2(t_list2 **stack, t_list2 *new);
 int	ft_lstsize2(t_list2 *head);
+t_list2	*ft_lstlast2(t_list2 *head);
 #endif

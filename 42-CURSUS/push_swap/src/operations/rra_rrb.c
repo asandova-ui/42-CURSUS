@@ -22,7 +22,7 @@ static int	rotate(t_list2 **stack)
 	if (ft_lstsize2(*stack) < 2)
 		return (-1);
 	head = *stack;
-	tail = ft_lstlast(head);
+	tail = ft_lstlast2(head);
 	*stack = head->next;
 	head->next = NULL;
 	tail->next = head;
@@ -47,7 +47,7 @@ int	rb(t_list2 **stack_b)
 
 int	rr(t_list2 **stack_a, t_list2 **stack_b)
 {
-	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
+	if ((ft_lstsize2(*stack_a) < 2) || (ft_lstsize2(*stack_b) < 2))
 		return (-1);
 	rotate(stack_a);
 	rotate(stack_b);
