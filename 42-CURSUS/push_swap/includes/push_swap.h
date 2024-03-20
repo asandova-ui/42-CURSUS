@@ -78,9 +78,9 @@ void	sort_5(t_list2 **stack_a, t_list2 **stack_b);
 void	sort_4(t_list2 **stack_a, t_list2 **stack_b);
 
 void	sort_3(t_list2 **stack_a);
-//static void	sort_312(t_list2 **stack_a, t_list2 *head, int min);
-//static void	sort_231(t_list2 **stack_a, t_list2 *head, int min);
-//static void	sort_132(t_list2 **stack_a);
+static void	sort_312(t_list2 **stack_a, t_list2 *head, int min);
+static void	sort_231(t_list2 **stack_a, t_list2 *head, int min);
+static void	sort_132(t_list2 **stack_a);
 
 //extras
 t_list2	*ft_lstnew2(int value);
