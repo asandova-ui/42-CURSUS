@@ -33,7 +33,7 @@ void	ft_lstadd_back2(t_list2 **stack, t_list2 *new)
 
 	if (*stack)
 	{
-		node = ft_lstlast(*stack);
+		node = ft_lstlast2(*stack);
 		node->next = new;
 		new->next = NULL;
 	}
