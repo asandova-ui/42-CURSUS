@@ -57,7 +57,7 @@ void	radix_sort(t_list2 **stack_a, t_list2 **stack_b)
 			else
 				pb(stack_a, stack_b);
 		}
-		while (ft_lstsize(*stack_b) != 0)
+		while (ft_lstsize2(*stack_b) != 0)
 			pa(stack_a, stack_b);
 		i++;
 	}
@@ -68,7 +68,7 @@ void	simple_sort(t_list2 **stack_a, t_list2 **stack_b)
 	int	size;
 
 	if (is_sorted(stack_a) || ft_lstsize2(*stack_a) == 0
-		|| ft_lstsize(*stack_a) == 1)
+		|| ft_lstsize2(*stack_a) == 1)
 		return ;
 	size = ft_lstsize2(*stack_a);
 	if (size == 2)
