@@ -15,7 +15,7 @@ NAME = push_swap
 all: $(NAME)
 
 $(NAME): $(LIBFTPRINTF) $(OBJS)
-    $(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFTPRINTF)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFTPRINTF)
 
 $(LIBFTPRINTF):
 	make -C $(LIBFTPRINTF_PATH) all
