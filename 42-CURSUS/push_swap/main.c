@@ -39,7 +39,7 @@ static void	init_stack(t_list2 **stack, int argc, char **argv)
 	}
 	while (args[i])
 	{
-		new = ft_lstnew((void *) ft_atoi(args[i]));
+		new = ft_lstnew2(ft_atoi(args[i]));
 		ft_lstadd_back(stack, new);
 		i++;
 	}
