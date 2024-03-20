@@ -13,9 +13,9 @@
 #include "../../includes/push_swap.h"
 #include "../../printf/includes/ft_printf.h"
 
-void	sort_3(t_list **stack_a)
+void	sort_3(t_list2 **stack_a)
 {
-	t_list	*head;
+	t_list2	*head;
 	int		min;
 	int		next_min;
 
@@ -32,7 +32,7 @@ void	sort_3(t_list **stack_a)
 		sort_312(stack_a, head, min);
 }
 
-static void	sort_312(t_list **stack_a, t_list *head, int min)
+static void	sort_312(t_list2 **stack_a, t_list2 *head, int min)
 {
 	if (head->next->index == min)
 		ra(stack_a);
@@ -43,7 +43,7 @@ static void	sort_312(t_list **stack_a, t_list *head, int min)
 	}
 }
 
-static void	sort_231(t_list **stack_a, t_list *head, int min)
+static void	sort_231(t_list2 **stack_a, t_list2 *head, int min)
 {
 	if (head->next->index == min)
 		sa(stack_a);
@@ -51,7 +51,7 @@ static void	sort_231(t_list **stack_a, t_list *head, int min)
 		rra(stack_a);
 }
 
-static void	sort_132(t_list **stack_a)
+static void	sort_132(t_list2 **stack_a)
 {
 	ra(stack_a);
 	sa(stack_a);

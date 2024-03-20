@@ -13,9 +13,9 @@
 #include "../../includes/push_swap.h"
 #include "../../printf/includes/ft_printf.h"
 
-int	index_distance_head(t_list **stack, int index)
+int	index_distance_head(t_list2 **stack, int index)
 {
-	t_list	*head;
+	t_list2	*head;
 	int		distance;
 
 	distance = 0;
@@ -30,9 +30,9 @@ int	index_distance_head(t_list **stack, int index)
 	return (distance);
 }
 
-int	get_min(t_list **stack, int val)
+int	get_min(t_list2 **stack, int val)
 {
-	t_list	*head;
+	t_list2	*head;
 	int		min;
 
 	head = *stack;
@@ -46,10 +46,10 @@ int	get_min(t_list **stack, int val)
 	return (min);
 }
 
-static t_list	*get_next_min(t_list **stack)
+static t_list2	*get_next_min(t_list2 **stack)
 {
-	t_list	*head;
-	t_list	*min;
+	t_list2	*head;
+	t_list2	*min;
 	int		has_min;
 
 	min = NULL;
@@ -70,9 +70,9 @@ static t_list	*get_next_min(t_list **stack)
 	return (min);
 }
 
-void	index_stack(t_list **stack)
+void	index_stack(t_list2 **stack)
 {
-	t_list	*head;
+	t_list2	*head;
 	int		index;
 
 	index = 0;
@@ -84,9 +84,9 @@ void	index_stack(t_list **stack)
 	}
 }
 
-int	is_sorted(t_list **stack)
+int	is_sorted(t_list2 **stack)
 {
-	t_list	*head;
+	t_list2	*head;
 
 	head = *stack;
 	while (head && head->next)

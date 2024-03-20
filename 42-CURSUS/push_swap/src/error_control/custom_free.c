@@ -25,10 +25,10 @@ void	free_string(char **str)
 	free(str);
 }
 
-void	free_stack(t_list **stack)
+void	free_stack(t_list2 **stack)
 {
-	t_list	*head;
-	t_list	*tmp;
+	t_list2	*head;
+	t_list2	*tmp;
 
 	head = *stack;
 	while (head)

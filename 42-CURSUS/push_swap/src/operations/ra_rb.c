@@ -13,10 +13,10 @@
 #include "../../includes/push_swap.h"
 #include "../../printf/includes/ft_printf.h"
 
-static int	reverse(t_list **stack)
+static int	reverse(t_list2 **stack)
 {
-	t_list	*head;
-	t_list	*tail;
+	t_list2	*head;
+	t_list2	*tail;
 
 	if (ft_lstsize(*stack) < 2)
 		return (-1);
@@ -36,7 +36,7 @@ static int	reverse(t_list **stack)
 	return (0);
 }
 
-int	rra(t_list **stack_a)
+int	rra(t_list2 **stack_a)
 {
 	if (reverse(stack_a) == -1)
 		return (-1);
@@ -44,7 +44,7 @@ int	rra(t_list **stack_a)
 	return (0);
 }
 
-int	rrb(t_list **stack_b)
+int	rrb(t_list2 **stack_b)
 {
 	if (reverse(stack_b) == -1)
 		return (-1);
@@ -52,7 +52,7 @@ int	rrb(t_list **stack_b)
 	return (0);
 }
 
-int	rrr(t_list **stack_a, t_list **stack_b)
+int	rrr(t_list2 **stack_a, t_list2 **stack_b)
 {
 	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
 		return (-1);

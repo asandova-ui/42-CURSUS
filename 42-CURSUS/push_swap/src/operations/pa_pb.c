@@ -13,11 +13,11 @@
 #include "../../includes/push_swap.h"
 #include "../../printf/includes/ft_printf.h"
 
-static int	push(t_list **stack_to, t_list **stack_from)
+static int	push(t_list2 **stack_to, t_list2 **stack_from)
 {
-	t_list	*tmp;
-	t_list	*head_to;
-	t_list	*head_from;
+	t_list2	*tmp;
+	t_list2	*head_to;
+	t_list2	*head_from;
 
 	if (ft_lstsize(*stack_from) == 0)
 		return (-1);
@@ -40,7 +40,7 @@ static int	push(t_list **stack_to, t_list **stack_from)
 	return (0);
 }
 
-int	pa(t_list **stack_a, t_list **stack_b)
+int	pa(t_list2 **stack_a, t_list2 **stack_b)
 {
 	if (push(stack_a, stack_b) == -1)
 		return (-1);
@@ -48,7 +48,7 @@ int	pa(t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
-int	pb(t_list **stack_a, t_list **stack_b)
+int	pb(t_list2 **stack_a, t_list2 **stack_b)
 {
 	if (push(stack_b, stack_a) == -1)
 		return (-1);
