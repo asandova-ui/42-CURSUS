@@ -3,6 +3,7 @@
         "get_next_line.h": "c",
         "unistd.h": "c",
         "stdlib.h": "c",
-        "ft_printf.h": "c"
+        "ft_printf.h": "c",
+        "push_swap.h": "c"
     }
 }

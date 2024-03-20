@@ -26,7 +26,9 @@ typedef struct s_list
 	int index;
 	struct s_list *next;
 }	t_list;
+
 //fichero main
+void	error_message(char *msg);
 int	main(int argc, char **argv);
 static void	sort_stack(t_list **stack_a, t_list **stack_b);
 static void	init_stack(t_list **stack, int argc, char **argv);
@@ -51,5 +53,33 @@ int	sa(t_list **stack_a);
 int	sb(t_list **stack_b);
 int	ss(t_list **stack_a, t_list **stack_b);
 
+//control de errores
+void	error_control(int argc, char **argv);
+static char	**argc2(char *av);
+static int	ft_isnum(char *num);
+static int	ft_contains(int num, char **argv, int i);
+
+//utils
+int	index_distance_head(t_list **stack, int index);
+int	get_min(t_list **stack, int val);
+static t_list	*get_next_min(t_list **stack);
+void	index_stack(t_list **stack);
+int	is_sorted(t_list **stack);
+
+//free custom
+void	free_string(char **str);
+void	free_stack(t_list **stack);
+
+//algorithm and simple cases
+void	radix_sort(t_list **stack_a, t_list **stack_b);
+static int	get_max_bits(t_list **stack);
+void	simple_sort(t_list **stack_a, t_list **stack_b);
+void	sort_5(t_list **stack_a, t_list **stack_b);
+void	sort_4(t_list **stack_a, t_list **stack_b);
+
+void	sort_3(t_list **stack_a);
+static void	sort_312(t_list **stack_a, t_list *head, int min);
+static void	sort_231(t_list **stack_a, t_list *head, int min);
+static void	sort_132(t_list **stack_a);
 
 #endif

@@ -13,6 +13,13 @@
 #include "../includes/push_swap.h"
 #include "../printf/includes/ft_printf.h"
 
+void	error_message(char *msg)
+{
+	(void)msg;
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
+
 static void	init_stack(t_list **stack, int argc, char **argv)
 {
 	t_list	*new;
@@ -56,7 +63,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (-1);
-	check_args(argc, argv);
+	error_control(argc, argv);
 	stack_a = (t_list **)malloc(sizeof(t_list));
 	*stack_a = NULL;
 	init_stack(stack_a, argc, argv);

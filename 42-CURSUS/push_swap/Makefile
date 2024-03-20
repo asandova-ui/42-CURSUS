@@ -1,5 +1,5 @@
 
-SRCS = $(addprefix src/, main.c algorithm.c) $(wildcard src/operations/*.c)
+SRCS = src/algorithm/algorithm_simple_cases.c src/algorithm/algorithm.c src/algorithm/utils.c src/error_control/custom_free.c src/error_control/error_control src/operations/pa_pb.c src/operations/ra_rb.c src/operations/rra_rrb.c src/operations/sa_sb.c src/main.c
 
 OBJS = $(SRCS:.c=.o)
 
