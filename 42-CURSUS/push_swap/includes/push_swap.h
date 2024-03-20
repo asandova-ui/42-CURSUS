@@ -20,11 +20,11 @@
 # include <string.h>
 # include <unistd.h>
 
-typedef struct s_list
+typedef struct s_list2
 {
 	int value;
 	int index;
-	struct s_list *next;
+	struct s_list2 *next;
 }	t_list;
 
 //fichero main
