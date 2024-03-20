@@ -40,7 +40,7 @@ static void	init_stack(t_list2 **stack, int argc, char **argv)
 	while (args[i])
 	{
 		new = ft_lstnew2(ft_atoi(args[i]));
-		ft_lstadd_back(stack, new);
+		ft_lstadd_back2(stack, new);
 		i++;
 	}
 	index_stack(stack);
@@ -51,7 +51,7 @@ static void	init_stack(t_list2 **stack, int argc, char **argv)
 }
 static void	sort_stack(t_list2 **stack_a, t_list2 **stack_b)
 {
-	if (ft_lstsize(*stack_a) <= 5)
+	if (ft_lstsize2(*stack_a) <= 5)
 		simple_sort(stack_a, stack_b);
 	else
 		radix_sort(stack_a, stack_b);

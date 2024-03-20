@@ -26,3 +26,35 @@ t_list2	*ft_lstnew2(int value)
 	new->next = NULL;
 	return (new);
 }
+
+void	ft_lstadd_back2(t_list2 **stack, t_list2 *new)
+{
+	t_list2	*node;
+
+	if (*stack)
+	{
+		node = ft_lstlast(*stack);
+		node->next = new;
+		new->next = NULL;
+	}
+	else
+	{
+		*stack = new;
+		(*stack)->next = NULL;
+	}
+}
+
+int	ft_lstsize2(t_list2 *head)
+{
+	size_t	i;
+	t_list2	*tmp;
+
+	tmp = head;
+	i = 0;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	return (i);
+}
