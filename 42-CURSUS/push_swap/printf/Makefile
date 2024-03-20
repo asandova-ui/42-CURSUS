@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = $(addprefix src/, ft_printf.c) $(wildcard src/format_handlers/*.c)
+SRCS = src/ft_printf.c src/format_handlers/ft_itoabase.c src/format_handlers/ft_uitoa.c src/format_handlers/print_character.c src/format_handlers/print_integer.c src/format_handlers/print_highhex.c src/format_handlers/print_lowhex.c src/format_handlers/print_nosign.c src/format_handlers/print_ptrhexa.c src/format_handlers/print_string.c
 
 OBJS = $(SRCS:.c=.o)
 
