@@ -20,7 +20,7 @@ static int	push(t_list2 **stack_to, t_list2 **stack_from)
 	t_list2	*head_to;
 	t_list2	*head_from;
 
-	if (ft_lstsize(*stack_from) == 0)
+	if (ft_lstsize2(*stack_from) == 0)
 		return (-1);
 	head_to = *stack_to;
 	head_from = *stack_from;

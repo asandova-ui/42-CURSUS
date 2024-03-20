@@ -19,7 +19,7 @@ static int	reverse(t_list2 **stack)
 	t_list2	*head;
 	t_list2	*tail;
 
-	if (ft_lstsize(*stack) < 2)
+	if (ft_lstsize2(*stack) < 2)
 		return (-1);
 	head = *stack;
 	tail = ft_lstlast(head);

@@ -21,7 +21,7 @@ static int	swap(t_list2 **stack)
 	int		tmp_val;
 	int		tmp_index;
 
-	if (ft_lstsize(*stack) < 2)
+	if (ft_lstsize2(*stack) < 2)
 		return (-1);
 	head = *stack;
 	next = head->next;
