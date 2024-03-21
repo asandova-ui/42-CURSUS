@@ -67,7 +67,7 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		exit(0);
 	}
-	if (argc < 3)
+	if (argc < 2)
 		return (-1);
 	stack_a = (t_list2 **)malloc(sizeof(t_list2));
 	*stack_a = NULL;
