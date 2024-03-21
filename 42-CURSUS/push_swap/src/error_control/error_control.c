@@ -85,7 +85,7 @@ void	error_control(int argc, char **argv)
 	if (argc == 2)
 		free_string(args);
 }
-int check_max_int(char *s)
+int check_int(char *s)
 {
 	size_t	res;
 	int		i;
@@ -152,7 +152,7 @@ int	check_args(char **args, int argc)
 
 	while (++j < argc)
 	{
-		if (check_max_int(args[j + 1]) == -1)
+		if (check_int(args[j + 1]) == -1)
 		{
 			return (-1);
 		}
