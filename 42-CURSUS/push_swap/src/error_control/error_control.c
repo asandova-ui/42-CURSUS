@@ -124,15 +124,24 @@ int	check_num(char *s)
 int	check_args(char **args, int argc)
 {
 	int	i;
+	int j;
 
 	i = -1;
+	j = -1;
 	while (++i < argc)
 	{
-		if (check_num(args[i + 1]) == -1 || *args[i + 1] == '\0' || check_max_int(args[i + 1]) == -1)
+		if (check_num(args[i + 1]) == -1 || *args[i + 1] == '\0')
 		{
 			return (-1);
 		}
 	}
 
+	while (++j < argc)
+	{
+		if (check_max_int(args[j + 1]) == -1)
+		{
+			return (-1);
+		}
+	}
 	return (0);
 }
