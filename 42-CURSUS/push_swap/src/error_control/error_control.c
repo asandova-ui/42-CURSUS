@@ -136,12 +136,12 @@ int	check_args(char **args, int argc)
 		}
 	}
 
-	/*while (++j < argc)
+	while (++j < argc)
 	{
 		if (check_max_int(args[j + 1]) == -1)
 		{
 			return (-1);
 		}
-	}*/
+	}
 	return (0);
 }
