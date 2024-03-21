@@ -14,7 +14,7 @@
 #include "../../printf/includes/ft_printf.h"
 #include "../../printf/libft/libft.h"
 
-/*static int	ft_contains(int num, char **argv, int i)
+static int	ft_contains(int num, char **argv, int i)
 {
 	i++;
 	while (argv[i])
@@ -84,7 +84,7 @@ void	error_control(int argc, char **argv)
 	}
 	if (argc == 2)
 		free_string(args);
-}*/
+}
 int check_max_int(char *s)
 {
 	int num;
