@@ -62,7 +62,11 @@ int	main(int argc, char **argv)
 	t_list2	**stack_a;
 	t_list2	**stack_b;
 
-	error_control(argc, argv);
+	if(check_args(argv, argc -1) == -1)
+	{
+		write(2, "Error\n", 6);
+		exit(0);
+	}
 	if (argc < 3)
 		return (-1);
 	stack_a = (t_list2 **)malloc(sizeof(t_list2));
