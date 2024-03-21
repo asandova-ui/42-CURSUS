@@ -90,7 +90,7 @@ int check_max_int(char *s)
 	int num;
 
 	num=ft_atoi(s);
-	if (num > 2147483647 || num < -2147483647)
+	if (num > INT_MAX || num < INT_MIN)
 	{
 		return(-1);
 	}
