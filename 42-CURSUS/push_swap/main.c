@@ -62,10 +62,8 @@ int	main(int argc, char **argv)
 	t_list2	**stack_a;
 	t_list2	**stack_b;
 
-	/*if (argc < 2)
-		return (-1);*/
 	error_control(argc, argv);
-	if (argc < 2)
+	if (argc < 3)
 		return (-1);
 	stack_a = (t_list2 **)malloc(sizeof(t_list2));
 	*stack_a = NULL;
