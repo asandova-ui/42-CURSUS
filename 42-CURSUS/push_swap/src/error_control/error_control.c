@@ -121,18 +121,27 @@ int	check_num(char *s)
 	return (-1);
 }
 
-int check_args(char **args, int argc)
+int	check_args(char **args, int argc)
 {
-    int i = 0;
-    
-    while (i < argc)
-    {
-        if (check_num(args[i]) == -1 || check_max_int(args[i]) == -1)
-        {
-            return -1; // Si algún argumento no es válido, devolver -1
-        }
-        i++; // Incrementar el índice para pasar al siguiente argumento
-    }
-    
-    return 0; // Si todos los argumentos son válidos, devolver 0
+	int	i;
+	int j;
+
+	i = -1;
+	j = -1;
+	while (++i < argc)
+	{
+		if (check_num(args[i + 1]) == -1 || *args[i + 1] == '\0')
+		{
+			return (-1);
+		}
+	}
+
+	/*while (++j < argc)
+	{
+		if (check_max_int(args[j + 1]) == -1)
+		{
+			return (-1);
+		}
+	}*/
+	return (0);
 }
