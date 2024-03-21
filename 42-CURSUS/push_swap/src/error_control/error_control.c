@@ -128,11 +128,7 @@ int	check_args(char **args, int argc)
 	i = -1;
 	while (++i < argc)
 	{
-		if (check_num(args[i + 1]) == -1 || *args[i + 1] == '\0')
-		{
-			return (-1);
-		}
-		if (check_max_int(args[i + 1]) == -1 || *args[i + 1] == '\0')
+		if (check_num(args[i + 1]) == -1 || *args[i + 1] == '\0' || check_max_int(args[i + 1]) == -1)
 		{
 			return (-1);
 		}
