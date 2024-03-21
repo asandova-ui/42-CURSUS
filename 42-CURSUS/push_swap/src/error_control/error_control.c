@@ -87,15 +87,29 @@ void	error_control(int argc, char **argv)
 }
 int check_max_int(char *s)
 {
-	int num;
+	size_t	res;
+	int		i;
 
-	num=ft_atoi(s);
-	if (num > INT_MAX || num < INT_MIN)
+	res = 0;
+	i = -1;
+	if (s[i + 1] != '-')
 	{
-		return(-1);
+		while (s[++i])
+			res = (res * 10) + s[i] - 48;
+		if (res > 2147483647)
+			return (-1);
 	}
-	return(0);
+	else
+	{
+		i++;
+		while (s[++i])
+			res = (res * 10) + s[i] - 48;
+		if (res > 2147483648)
+			return (-1);
+	}
+	return (0);
 }
+
 int	check_num(char *s)
 {
 	size_t	i;
