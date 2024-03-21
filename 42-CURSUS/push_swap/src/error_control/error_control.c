@@ -85,7 +85,17 @@ void	error_control(int argc, char **argv)
 	if (argc == 2)
 		free_string(args);
 }*/
+int check_max_int(char *s)
+{
+	int num;
 
+	num=ft_atoi(s);
+	if (num > 2147483647 || num < -2147483647)
+	{
+		return(-1);
+	}
+	return(0);
+}
 int	check_num(char *s)
 {
 	size_t	i;
@@ -122,6 +132,11 @@ int	check_args(char **args, int argc)
 		{
 			return (-1);
 		}
+		if (check_max_int(args[i + 1]) == -1 || *args[i + 1] == '\0')
+		{
+			return (-1);
+		}
 	}
+
 	return (0);
 }
