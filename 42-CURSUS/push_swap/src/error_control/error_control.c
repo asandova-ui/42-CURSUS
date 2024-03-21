@@ -88,8 +88,8 @@ void	error_control(int argc, char **argv)
 
 int	check_num(char *s)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
