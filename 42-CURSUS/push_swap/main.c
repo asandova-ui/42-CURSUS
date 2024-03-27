@@ -6,7 +6,7 @@
 /*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:23:47 by asandova          #+#    #+#             */
-/*   Updated: 2023/11/03 12:42:42 by asandova         ###   ########.fr       */
+/*   Updated: 2024/03/25 12:55:48 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	init_stack(t_list2 **stack, int argc, char **argv)
 		free_string(args);
 	}
 }
+
 static void	sort_stack(t_list2 **stack_a, t_list2 **stack_b)
 {
 	if (ft_lstsize2(*stack_a) <= 5)
