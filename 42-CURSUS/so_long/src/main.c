@@ -3,28 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 18:55:18 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/21 18:55:18 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/27 11:34:48 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void start_prog(char **argv);
+void	start_prog(char *map)
 {
-    
+	error_control(map);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    if (argc < 2)
-    {
-        ft_printf("%s", "Error, no se ha introducido mapa");
-        return (0);
-    }
-    if (check_extension(argv[1]) == 1)
-        start_prog(argv);
-    return(0);
+	arg_checker(argc, argv);
+	start_prog(argv[1]);
+	return (0);
 }
