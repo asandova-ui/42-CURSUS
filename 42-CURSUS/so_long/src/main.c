@@ -11,15 +11,32 @@
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+#include "../Mlx/mlx.h"
+#include "../Mlx/mlx_int.h"
+#include "../Mlx/mlx_new_window.h"
+#include "../Mlx/mlx_opengl.h"
+#include "../Mlx/mlx_png.h"
 
-void	start_prog(char *map)
+void	start_prog(char *map, t_game *game)
 {
-	error_control(map);
+	ft_init_map(game, map);
+	ft_init_vars(game);
+	ft_check_map(game);
+	ft_init_mlx(game);
+	ft_init_sprites(game);
+	ft_print_map(game);
+	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, ft_handle_input, game);
+	mlx_hook(game->win_ptr, DestroyNotify, \
+	ButtonPressMask, ft_close_game, game);
+	mlx_hook(game->win_ptr, Expose, ExposureMask, ft_render_map, game);
+	mlx_loop(game->mlx_ptr);
 }
 
 int	main(int argc, char **argv)
 {
-	arg_checker(argc, argv);
-	start_prog(argv[1]);
+	t_game	*game;
+
+	arg_checker(argc, argv, game);
+	start_prog(argv[1], game);
 	return (0);
 }
