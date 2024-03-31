@@ -36,7 +36,7 @@ void	ft_check_rows(t_game *game)
 	{
 		if (game->map.full[i][0] != WALL)
 			ft_error_free("Falta una pared en la primera linea", game);
-		else if (game->map.full[i][game->map.columns - 1] != WALL)
+		else if (game->map.full[i][game->map.columns] != WALL)
 			ft_error_free("Falta una pared en la última linea", game);
 		i++;
 	}
