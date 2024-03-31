@@ -49,7 +49,7 @@ t_image	ft_new_sprite(void *mlx, char *path, t_game *game)
 {
 	t_image	image;
 
-	image.xpm_ptr = mlx_xpm_file_to_image(mlx, path, &image.x, &image.y);
+	image.xpm_ptr = mlx_xpm_file_to_image(mlx, path, image.x, image.y);
 	if (image.xpm_ptr == NULL)
 		ft_error_free("Error al cargar la imagen", game);
 	return (image);
