@@ -25,6 +25,7 @@
 #include "../Mlx/mlx_png.h"*/
 # include <fcntl.h>
 #include "../printf/libft/libft.h"
+#include "../printf/includes/ft_printf.h"
 //# include <X11/keysym.h>
 
 
