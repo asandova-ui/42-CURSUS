@@ -27,7 +27,6 @@ char	*ft_strappend(char **s1, const char *s2)
 	return (str);
 }
 
-void	ft_free_map(t_game *game);
 void	ft_destroy_images(t_game *game);
 
 void	ft_free_all_allocated_memory(t_game *game)
@@ -47,16 +46,6 @@ void	ft_destroy_images(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->item.xpm_ptr);
 	mlx_destroy_image(game->mlx_ptr, game->player.xpm_ptr);
 	mlx_destroy_image(game->mlx_ptr, game->exit.xpm_ptr);
-}
-
-void	ft_free_map(t_game *game)
-{
-	int	string;
-
-	string = 0;
-	while (string < game->map.rows)
-		free(game->map.full[string++]);
-	free(game->map.full);
 }
 
 int	ft_close_game(t_game *game)
