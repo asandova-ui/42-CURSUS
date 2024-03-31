@@ -20,16 +20,18 @@ void	ft_init_mlx(t_game *game)
 	if (game->mlx_ptr == NULL)
 	{
 		free(game->mlx_ptr);
-		ft_error_msg("Couldn't find mlx pointer. Try it using a VNC.", game);
+		ft_error_free("Couldn't find mlx pointer. Try it using a VNC.", game);
 	}
 	game->win_ptr = mlx_new_window(game->mlx_ptr, \
 	game->map.columns * IMG_WIDTH, game->map.rows * IMG_HEIGHT, "so_long");
 	if (game->win_ptr == NULL)
 	{
 		free(game->mlx_ptr);
-		ft_error_msg("Couldn't create the Window.", game);
+		ft_error_free("Couldn't create the Window.", game);
 	}
 }
+
+t_image	ft_new_sprite(void *mlx, char *path, t_game *game);
 
 void	ft_init_sprites(t_game *game)
 {
