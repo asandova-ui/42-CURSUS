@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin2(char *s1, char *s2)
 {
 	char	*str;
 	int		i;
@@ -49,7 +49,7 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_substr(char *str, unsigned int start, size_t len)
+char	*ft_substr2(char *str, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*res;
@@ -76,7 +76,7 @@ char	*ft_substr(char *str, unsigned int start, size_t len)
 	return (res);
 }
 
-char	*ft_strchr(char *str, int c)
+char	*ft_strchr2(char *str, int c)
 {
 	int	i;
 
@@ -91,7 +91,7 @@ char	*ft_strchr(char *str, int c)
 	return (0);
 }
 
-char	*ft_strdup(char *str)
+char	*ft_strdup2(char *str)
 {
 	char	*ret;
 	int		i;
