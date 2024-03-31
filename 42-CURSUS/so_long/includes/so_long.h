@@ -93,10 +93,10 @@ typedef struct s_game
 	t_bool		map_alloc;
 	t_image		wall;
 	t_image		floor;
-	t_image		coins;
+	t_image		item;
 	t_image		exit;
 	t_image		player;
-}	t_game;			t_game;
+}	t_game;
 
 void	arg_checker(int argc, char **argv, t_game *game);
 void	ft_init_map(t_game *game, char *argv);

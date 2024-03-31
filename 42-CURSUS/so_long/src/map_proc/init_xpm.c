@@ -38,7 +38,7 @@ void	ft_init_sprites(t_game *game)
 	mlx = game->mlx_ptr;
 	game->wall = ft_new_sprite(mlx, WALL_XPM, game);
 	game->floor = ft_new_sprite(mlx, FLOOR_XPM, game);
-	game->coins = ft_new_sprite(mlx, ITEM_XPM, game);
+	game->item = ft_new_sprite(mlx, ITEM_XPM, game);
 	game->player = ft_new_sprite(mlx, PLAYER_XPM, game);
 	game->exit = ft_new_sprite(mlx, EXIT_XPM, game);
 }

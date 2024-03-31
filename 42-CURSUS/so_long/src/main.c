@@ -11,11 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include "../Mlx/mlx.h"
-#include "../Mlx/mlx_int.h"
-#include "../Mlx/mlx_new_window.h"
-#include "../Mlx/mlx_opengl.h"
-#include "../Mlx/mlx_png.h"
 
 void	start_prog(char *map, t_game *game)
 {

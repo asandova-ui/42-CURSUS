@@ -44,7 +44,7 @@ void	ft_identify_sprite(t_game *game, int y, int x)
 	else if (parameter == FLOOR)
 		ft_render_sprite (game, game->floor, y, x);
 	else if (parameter == ITEM)
-		ft_render_sprite (game, game->coins, y, x);
+		ft_render_sprite (game, game->item, y, x);
 	else if (parameter == EXIT)
 			ft_render_sprite (game, game->exit, y, x);
 	else if (parameter == PLAYER)
