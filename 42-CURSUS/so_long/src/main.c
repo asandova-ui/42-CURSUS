@@ -30,6 +30,8 @@ void	start_prog(char *map, t_game *game)
 int	main(int argc, char **argv)
 {
 	t_game	*game;
+
+	game = malloc(sizeof(t_game));
 	arg_checker(argc, argv, game);
 	start_prog(argv[1], game);
 	return (0);
