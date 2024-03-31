@@ -20,6 +20,7 @@
 # include <unistd.h>
 #include "../Mlx/mlx.h"
 # include <fcntl.h>
+#include "../printf/libft/libft.h"
 //# include <X11/keysym.h>
 
 
