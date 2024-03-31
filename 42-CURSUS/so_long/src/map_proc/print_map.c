@@ -14,6 +14,10 @@
 #include "../../printf/libft/libft.h"
 #include "../../get_next_line/get_next_line.h"
 
+void	ft_print_movements(t_game *game);
+void	ft_identify_sprite(t_game *game, int y, int x);
+void	ft_render_sprite(t_game *game, t_image sprite, int line, int column);
+
 int	ft_print_map(t_game *game)
 {
 	int	x;

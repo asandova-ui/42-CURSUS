@@ -112,5 +112,6 @@ int		ft_print_map(t_game *game);
 int	ft_handle_input(int keysym, t_game *game);
 int	ft_close_game(t_game *game);
 void	ft_free_all_allocated_memory(t_game *game);
+void	ft_init_sprites(t_game *game); 
 
 #endif
