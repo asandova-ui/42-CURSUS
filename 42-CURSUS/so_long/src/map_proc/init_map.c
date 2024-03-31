@@ -58,7 +58,7 @@ void	ft_init_map(t_game *game, char *argv)
 
 	map_fd = open(argv, O_RDONLY);
 	if (map_fd == -1)
-		ft_error_msg("Error al leer/cargar mapa, existe realmente??", game);
+		ft_error_free("Error al leer/cargar mapa, existe realmente??", game);
 	map_temp = ft_strdup("");
 	game->map.rows = 0;
 	while (true)
