@@ -14,6 +14,8 @@
 #include "../../printf/libft/libft.h"
 #include "../../get_next_line/get_next_line.h"
 
+void	ft_player_move(t_game *game, int new_y, int new_x);
+
 int	ft_handle_input(int keysym, t_game *game)
 {
 	if (keysym == KEY_UP || keysym == KEY_W)
@@ -27,6 +29,14 @@ int	ft_handle_input(int keysym, t_game *game)
 	if (keysym == KEY_ESC)
 		ft_close_game(game);
 	return (0);
+}
+
+int	ft_victory(t_game *game)
+{
+	ft_printf("\n			Movements: %d\n", ++game->movements);
+	ft_free_all_allocated_memory(game);
+	ft_printf("You Win!!!!!!!!");
+	exit (EXIT_FAILURE);
 }
 
 void	ft_player_move(t_game *game, int new_y, int new_x)
@@ -48,6 +58,6 @@ void	ft_player_move(t_game *game, int new_y, int new_x)
 		game->map.player.y = new_y;
 		game->map.full[new_y][new_x] = PLAYER;
 		game->movements++;
-		ft_render_map(game);
+		ft_print_map(game);
 	}
 }
