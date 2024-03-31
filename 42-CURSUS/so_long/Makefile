@@ -1,12 +1,11 @@
 SRCS = src/main.c src/utils.c src/map_proc/arg_check.c src/map_proc/init_map.c src/map_proc/init_xpm.c src/map_proc/map_check.c src/map_proc/print_map.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
-
 OBJS = $(SRCS:.c=.o)
 
 LIBFTPRINTF_PATH = ./printf
 LIBFTPRINTF = $(LIBFTPRINTF_PATH)/libftprintf.a
 
-MLX = $(MLX_PATH)/libmlx.a
 MLX_PATH = ./Mlx
+MLX = $(MLX_PATH)/libmlx.a
 
 CC = cc
 RM = rm -f
@@ -16,8 +15,11 @@ NAME = so_long
 
 all: $(NAME)
 
+.c.o:
+	$(CC) $(CFLAGS) -I$(MLX_PATH) -c $< -o $@
+
 $(NAME): $(LIBFTPRINTF) $(MLX) $(OBJS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME) $(LIBFTPRINTF) $(MLX)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFTPRINTF) $(MLX) -framework OpenGL -framework AppKit
 
 $(LIBFTPRINTF):
 	make -C $(LIBFTPRINTF_PATH) all
