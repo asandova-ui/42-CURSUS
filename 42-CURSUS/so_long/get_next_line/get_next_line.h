@@ -36,7 +36,7 @@ char		*line_getting(t_fd_storage *fd_storage);
 char		*base_file_reading(int fd, t_fd_storage *fd_storage);
 char		*get_next_line(int fd);
 
-char		*ft_strjoin(char *s1, char *s2);
+char		*ft_strjoin(char const *s1, char const *s2);
 size_t		ft_strlen(char *str);
 char		*ft_substr(char *str, unsigned int start, size_t len);
 char		*ft_strchr(char *str, int c);
