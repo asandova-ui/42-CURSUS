@@ -27,6 +27,9 @@ char	*ft_strappend(char **s1, const char *s2)
 	return (str);
 }
 
+void	ft_free_map(t_game *game);
+void	ft_destroy_images(t_game *game);
+
 void	ft_free_all_allocated_memory(t_game *game)
 {
 	ft_destroy_images(game);
@@ -54,4 +57,12 @@ void	ft_free_map(t_game *game)
 	while (string < game->map.rows)
 		free(game->map.full[string++]);
 	free(game->map.full);
+}
+
+int	ft_close_game(t_game *game)
+{
+	ft_printf("Movements: %d\n", game->movements);
+	ft_free_all_allocated_memory(game);
+	ft_printf("CLOSED\n");
+	exit (EXIT_FAILURE);
 }
