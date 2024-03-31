@@ -5,6 +5,9 @@ OBJS = $(SRCS:.c=.o)
 LIBFTPRINTF_PATH = ./printf
 LIBFTPRINTF = $(LIBFTPRINTF_PATH)/libftprintf.a
 
+MLX = $(MLX_PATH)/libmlx.a
+MLX_PATH = ./mlx
+
 CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror -Iincludes
@@ -13,14 +16,18 @@ NAME = so_long
 
 all: $(NAME)
 
-$(NAME): $(LIBFTPRINTF) $(OBJS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME) $(LIBFTPRINTF)
+$(NAME): $(LIBFTPRINTF) $(MLX) $(OBJS)
+	$(CC) $(CFLAGS) $(SRCS) -o $(NAME) $(LIBFTPRINTF) $(MLX)
 
 $(LIBFTPRINTF):
 	make -C $(LIBFTPRINTF_PATH) all
 
+$(MLX):
+	make -C $(MLX_PATH) all
+
 clean:
 	make -C $(LIBFTPRINTF_PATH) clean
+	make -C $(MLX_PATH) clean
 	$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
