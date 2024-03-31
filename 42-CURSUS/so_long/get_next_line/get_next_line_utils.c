@@ -25,7 +25,7 @@ char	*ft_strjoin2(char *s1, char *s2)
 			return (NULL);
 		s1[0] = '\0';
 	}
-	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	str = malloc(sizeof(char) * (ft_strlen2(s1) + ft_strlen2(s2) + 1));
 	if (!str)
 		return (remix_free(&s1));
 	i = -1;
@@ -39,7 +39,7 @@ char	*ft_strjoin2(char *s1, char *s2)
 	return (str);
 }
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen2(char *str)
 {
 	size_t	i;
 
@@ -57,7 +57,7 @@ char	*ft_substr2(char *str, unsigned int start, size_t len)
 	i = 0;
 	if (!str)
 		return (NULL);
-	if (start > ft_strlen(str))
+	if (start > ft_strlen2(str))
 	{
 		res = (char *)malloc(sizeof(char));
 		if (!res)
@@ -65,12 +65,12 @@ char	*ft_substr2(char *str, unsigned int start, size_t len)
 		*res = '\0';
 		return (res);
 	}
-	if (ft_strlen(str) - start < len)
-		len = ft_strlen(str) - start;
+	if (ft_strlen2(str) - start < len)
+		len = ft_strlen2(str) - start;
 	res = (char *)malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
-	while (start < ft_strlen(str) && i < len && str[start])
+	while (start < ft_strlen2(str) && i < len && str[start])
 		res[i++] = str[start++];
 	res[i] = '\0';
 	return (res);
@@ -96,7 +96,7 @@ char	*ft_strdup2(char *str)
 	char	*ret;
 	int		i;
 
-	ret = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1));
+	ret = (char *)malloc(sizeof(char) * (ft_strlen2(str) + 1));
 	if (!ret)
 		return (NULL);
 	i = -1;

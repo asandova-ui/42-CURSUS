@@ -35,7 +35,7 @@ char	*line_keep(t_fd_storage *fd_storage)
 		lo = ptr - fd_storage->storage + 1;
 	if (!fd_storage->storage[lo])
 		return (remix_free(&fd_storage->storage));
-	fd_storage->length = ft_strlen(fd_storage->storage);
+	fd_storage->length = ft_strlen2(fd_storage->storage);
 	temp_st = ft_substr2(fd_storage->storage, lo, fd_storage->length - lo);
 	remix_free(&fd_storage->storage);
 	if (!temp_st)
@@ -51,7 +51,7 @@ char	*line_getting(t_fd_storage *fd_storage)
 
 	sto = ft_strchr2(fd_storage->storage, '\n');
 	if (!sto)
-		lo = (int)ft_strlen(fd_storage->storage);
+		lo = (int)ft_strlen2(fd_storage->storage);
 	else
 		lo = sto - fd_storage->storage + 1;
 	returning_line = ft_substr2(fd_storage->storage, 0, lo);
@@ -76,7 +76,7 @@ char	*base_file_reading(int fd, t_fd_storage *fd_storage)
 		if (lo_bytes > 0)
 		{
 			buff[lo_bytes] = '\0';
-			fd_storage->storage = ft_strjoin(fd_storage->storage, buff);
+			fd_storage->storage = ft_strjoin2(fd_storage->storage, buff);
 		}
 	}
 	free(buff);
@@ -102,7 +102,7 @@ char	*get_next_line(int fd)
 	fd_storage.storage = line_keep(&fd_storage);
 	if (!ft_strchr2(line, '\n'))
 	{
-		line[ft_strlen(line)] = '\0';
+		line[ft_strlen2(line)] = '\0';
 		return (line);
 	}
 	return (line);
