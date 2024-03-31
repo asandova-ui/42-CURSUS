@@ -103,5 +103,6 @@ void	ft_check_map(t_game *game);
 void	ft_init_mlx(t_game *game);
 void	ft_init_sprites(t_game *game);
 int		ft_print_map(t_game *game);
+int	ft_handle_input(int keysym, t_game *game);
 
 #endif
