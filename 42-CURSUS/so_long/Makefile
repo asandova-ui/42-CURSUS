@@ -6,7 +6,7 @@ LIBFTPRINTF_PATH = ./printf
 LIBFTPRINTF = $(LIBFTPRINTF_PATH)/libftprintf.a
 
 MLX = $(MLX_PATH)/libmlx.a
-MLX_PATH = ./mlx
+MLX_PATH = ./Mlx
 
 CC = cc
 RM = rm -f

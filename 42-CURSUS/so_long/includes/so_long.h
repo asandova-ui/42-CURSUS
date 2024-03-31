@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-#include "../mlx/mlx.h"
+#include "../Mlx/mlx.h"
 # include <fcntl.h>
 //# include <X11/keysym.h>
 
