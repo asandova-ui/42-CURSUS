@@ -14,6 +14,17 @@
 #include "../../printf/libft/libft.h"
 #include "../../printf/includes/ft_printf.h"
 
+void	ft_free_map(t_game *game)
+{
+	int	string;
+
+	string = 0;
+	while (string < game->map.rows)
+		free(game->map.full[string++]);
+	free(game->map.full);
+}
+
+
 int	ft_error_free(char *message, t_game *game)
 {
 	if (game->map_alloc == true)
