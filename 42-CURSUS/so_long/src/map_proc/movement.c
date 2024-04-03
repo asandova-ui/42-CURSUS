@@ -58,6 +58,7 @@ void	ft_player_move(t_game *game, int new_y, int new_x)
 		game->map.player.y = new_y;
 		game->map.full[new_y][new_x] = PLAYER;
 		game->movements++;
+		ft_printf("Moves: %d\n", game->movements);
 		ft_print_map(game);
 	}
 }
