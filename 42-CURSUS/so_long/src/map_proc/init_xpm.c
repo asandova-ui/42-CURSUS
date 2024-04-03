@@ -31,7 +31,7 @@ void	ft_init_mlx(t_game *game)
 	}
 }
 
-t_image	ft_new_sprite(void *mlx, char *path, t_game *game);
+t_image	ft_new_sprite(void *mlx, char *path);
 
 void	ft_init_sprites(t_game *game)
 {
@@ -39,19 +39,19 @@ void	ft_init_sprites(t_game *game)
 
 	mlx = game->mlx_ptr;
 	ft_printf("%s", "cerote");
-	game->wall = ft_new_sprite(mlx, "images/wall.xpm", game);
+	game->wall = ft_new_sprite(mlx, "images/wall.xpm");
 	ft_printf("%s", "1");
-	game->floor = ft_new_sprite(mlx, "images/fondo.xpm", game);
+	game->floor = ft_new_sprite(mlx, "images/fondo.xpm");
 	ft_printf("%s", "2");
-	game->item = ft_new_sprite(mlx, "images/item.xpm", game);
+	game->item = ft_new_sprite(mlx, "images/item.xpm");
 	ft_printf("%s", "3");
-	game->player = ft_new_sprite(mlx, "images/player.xpm", game);
+	game->player = ft_new_sprite(mlx, "images/player.xpm");
 	ft_printf("%s", "4");
-	game->exit = ft_new_sprite(mlx, "images/scape.xpm", game);
+	game->exit = ft_new_sprite(mlx, "images/scape.xpm");
 	ft_printf("%s", "5");
 }
 
-t_image	ft_new_sprite(void *mlx, char *path, t_game *game)
+t_image	ft_new_sprite(void *mlx, char *path)
 {
 	t_image	image;
 
