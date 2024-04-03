@@ -9,9 +9,9 @@ static char *complementary_floor_xpm[] = {
 "O c #6e6e6e",
 "+ c #878787",
 /* pixels */
-"+++++++++++++++++++++++++++++++",
-"+ooooooooooooooooooooooooooooo+",
-"+oXXXXXXXXXXXXXXXXXXXXXXXXXXo+",
+"+++++++++++++++++++++++++++++",
+"+ooooooooooooooooooooooooooo+",
+"+oXXXXXXXXXXXXXXXXXXXXXXXXXX+",
 "+oXoooooooooooooooooooooooXo+",
 "+oXoXXXXXXXXXXXXXXXXXXXXXoXo+",
 "+oXoXoooooooooooooooooooXoXo+",
@@ -37,5 +37,5 @@ static char *complementary_floor_xpm[] = {
 "+oXoooooooooooooooooooooooXo+",
 "+oXXXXXXXXXXXXXXXXXXXXXXXXXo+",
 "+ooooooooooooooooooooooooooo+",
-"+++++++++++++++++++++++++++++++"
+"+++++++++++++++++++++++++++++"
 };
