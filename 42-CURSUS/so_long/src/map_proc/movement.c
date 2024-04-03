@@ -33,7 +33,7 @@ int	ft_handle_input(int keysym, t_game *game)
 
 int	ft_victory(t_game *game)
 {
-	//ft_printf("\n			Movements: %d\n", ++game->movements);
+	ft_printf("\nTOTAL de movimientos: %d\n", ++game->movements);
 	ft_free_all_allocated_memory(game);
 	ft_printf("You Win!!!!!!!!");
 	exit (EXIT_FAILURE);
