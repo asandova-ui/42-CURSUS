@@ -33,6 +33,7 @@ void	ft_free_all_allocated_memory(t_game *game)
 {
 	ft_destroy_images(game);
 	ft_free_map(game);
+	mlx_clear_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	//mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
@@ -50,8 +51,9 @@ void	ft_destroy_images(t_game *game)
 
 int	ft_close_game(t_game *game)
 {
-	ft_printf("Movements: %d\n", game->movements);
+	//ft_printf("Movements: %d\n", game->movements);
 	ft_free_all_allocated_memory(game);
 	ft_printf("CLOSED\n");
 	exit (EXIT_FAILURE);
+	return(0);
 }
