@@ -24,7 +24,7 @@ static char *collectible_xpm[] = {
 "....XXXXXXXXXXXXXXXXXXXXXXX.....",
 ".....XXXXXXXXXXXXXXXXXXXXX......",
 "......XXXXXXXXXXXXXXXXXXX.......",
-".......XXXXXXXXXXXXXXXXXX.......",
+".......XXXXXXXXXXXXXXXXX.......",
 "........XXXXXXXXXXXXXXX.........",
 ".........XXXXXXXXXXXXX..........",
 ".........XXXoooXoooXX...........",
