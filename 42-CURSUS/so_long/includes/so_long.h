@@ -49,7 +49,7 @@
 # define PLAYER				'P'
 # define EXIT 		 		'E'
 
-# define WALL_XPM			"../images/wall.xpm"
+# define WALL_XPM			"../images/wall_copy.xpm"
 # define FLOOR_XPM			"../images/floor.xpm"
 # define ITEM_XPM			"../images/item.xpm"
 # define PLAYER_XPM			"../images/player.xpm"
