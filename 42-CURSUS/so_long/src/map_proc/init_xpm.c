@@ -39,7 +39,7 @@ void	ft_init_sprites(t_game *game)
 
 	mlx = game->mlx_ptr;
 	ft_printf("%s", "cerote");
-	game->wall = ft_new_sprite(mlx, "images/wall.xpm");
+	game->wall = ft_new_sprite(mlx, "images/raro.xpm");
 	ft_printf("%s", "1");
 	game->floor = ft_new_sprite(mlx, "images/fondo.xpm");
 	ft_printf("%s", "2");
