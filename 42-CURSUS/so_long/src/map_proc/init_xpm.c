@@ -41,13 +41,13 @@ void	ft_init_sprites(t_game *game)
 	ft_printf("%s", "cerote");
 	game->wall = ft_new_sprite(mlx, "images/wall.xpm", game);
 	ft_printf("%s", "1");
-	game->floor = ft_new_sprite(mlx, "images/floor.xpm", game);
+	game->floor = ft_new_sprite(mlx, "images/fondo.xpm", game);
 	ft_printf("%s", "2");
 	game->item = ft_new_sprite(mlx, "images/item.xpm", game);
 	ft_printf("%s", "3");
 	game->player = ft_new_sprite(mlx, "images/player.xpm", game);
 	ft_printf("%s", "4");
-	game->exit = ft_new_sprite(mlx, "images/exit.xpm", game);
+	game->exit = ft_new_sprite(mlx, "images/scape.xpm", game);
 	ft_printf("%s", "5");
 }
 
