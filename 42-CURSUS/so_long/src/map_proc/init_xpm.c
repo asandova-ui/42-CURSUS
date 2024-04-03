@@ -39,18 +39,23 @@ void	ft_init_sprites(t_game *game)
 
 	mlx = game->mlx_ptr;
 	game->wall = ft_new_sprite(mlx, WALL_XPM, game);
+	ft_printf("%s", "1");
 	game->floor = ft_new_sprite(mlx, FLOOR_XPM, game);
+	ft_printf("%s", "2");
 	game->item = ft_new_sprite(mlx, ITEM_XPM, game);
+	ft_printf("%s", "3");
 	game->player = ft_new_sprite(mlx, PLAYER_XPM, game);
+	ft_printf("%s", "4");
 	game->exit = ft_new_sprite(mlx, EXIT_XPM, game);
+	ft_printf("%s", "5");
 }
 
 t_image	ft_new_sprite(void *mlx, char *path, t_game *game)
 {
 	t_image	image;
 
-	image.x = 32;
-	image.y = 32;
+	/*image.x = 32;
+	image.y = 32;*/
 	image.xpm_ptr = mlx_xpm_file_to_image(mlx, path, &image.x, &image.y);
 	if (image.xpm_ptr == NULL)
 		ft_error_free("Error al cargar la imagen", game);
