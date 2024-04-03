@@ -19,15 +19,9 @@ void	ft_player_move(t_game *game, int new_y, int new_x);
 int	ft_handle_input(int keysym, t_game *game)
 {
 	if (keysym == KEY_UP || keysym == KEY_W)
-		{
-			ft_printf("%s", "hola");
 			ft_player_move(game, game->map.player.y - 1, game->map.player.x);
-		}
 	if (keysym == KEY_LEFT || keysym == KEY_A)
-	{
-		ft_printf("%s", "adios");
 		ft_player_move(game, game->map.player.y, game->map.player.x - 1);
-	}
 	if (keysym == KEY_RIGHT || keysym == KEY_D)
 		ft_player_move(game, game->map.player.y, game->map.player.x + 1);
 	if (keysym == KEY_DOWN || keysym == KEY_S)
