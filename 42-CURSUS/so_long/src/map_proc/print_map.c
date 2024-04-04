@@ -24,7 +24,6 @@ int	ft_print_map(t_game *game)
 	int	y;
 
 	y = 0;
-	game->map.columns++;
 	while (y < game->map.rows)
 	{
 		x = 0;
