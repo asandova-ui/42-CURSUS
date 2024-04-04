@@ -18,6 +18,7 @@ void	start_prog(char *map, t_game *game)
 	ft_init_vars(game);
 	ft_check_map(game);
 	check_route(game);
+	ft_init_map(game, map);
 	ft_init_mlx(game);
 	ft_init_sprites(game);
 	ft_print_map(game);
