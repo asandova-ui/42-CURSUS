@@ -19,7 +19,7 @@ void	start_prog(char *map, t_game *game)
 	ft_check_map(game);
 	ft_init_mlx(game);
 	ft_init_sprites(game);
-	check_route(game);
+	//check_route(game);
 	ft_print_map(game);
 	mlx_key_hook(game->win_ptr, ft_handle_input, game);
 	mlx_hook(game->win_ptr, 17, 0, ft_close_game, game);
