@@ -26,6 +26,8 @@ int	ft_print_map(t_game *game)
 	y = 0;
 	for (int i = 0; i < game->map.rows; i++) {
     printf("%s\n", game->map.full[i]);
+	printf("%d\n",game->map.rows);
+	printf("%d\n",game->map.columns);
 	}
 
 	while (y < game->map.rows)
