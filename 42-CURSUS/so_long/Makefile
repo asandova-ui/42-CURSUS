@@ -1,4 +1,4 @@
-SRCS = src/main.c src/utils.c src/map_proc/arg_check.c src/map_proc/init_map.c src/map_proc/init_xpm.c src/map_proc/map_check.c src/map_proc/print_map.c src/map_proc/movement.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+SRCS = src/main.c src/utils.c src/map_proc/valid.c src/map_proc/arg_check.c src/map_proc/init_map.c src/map_proc/init_xpm.c src/map_proc/map_check.c src/map_proc/print_map.c src/map_proc/movement.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
