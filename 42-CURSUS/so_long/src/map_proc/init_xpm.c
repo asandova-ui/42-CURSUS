@@ -23,7 +23,7 @@ void	ft_init_mlx(t_game *game)
 		ft_error_free("Couldn't find mlx pointer. Try it using a VNC.", game);
 	}
 	game->win_ptr = mlx_new_window(game->mlx_ptr, \
-	game->map.columns * IMG_WIDTH, game->map.rows * IMG_HEIGHT, "so_long");
+	(game->map.columns+1) * IMG_WIDTH, game->map.rows * IMG_HEIGHT, "so_long");
 	if (game->win_ptr == NULL)
 	{
 		free(game->mlx_ptr);
