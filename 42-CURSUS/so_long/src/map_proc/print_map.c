@@ -49,7 +49,7 @@ void	ft_identify_sprite(t_game *game, int y, int x)
 	char	parameter;
 
 	parameter = game->map.full[y][x];
-	printf("\n%c\n", game->map.full[x][y]);
+	printf("\n%c\n", parameter);
 	if (parameter == WALL)
 		ft_render_sprite (game, game->wall, y, x);
 	else if (parameter == FLOOR)
