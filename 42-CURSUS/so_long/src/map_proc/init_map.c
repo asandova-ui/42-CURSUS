@@ -69,7 +69,6 @@ void	ft_init_map(t_game *game, char *argv)
 		map_temp = ft_strappend(&map_temp, line_temp);
 		free(line_temp);
 		game->map.rows++;
-		game->map.rows++;
 	}
 	close(map_fd);
 	ft_check_for_empty_line(map_temp, game);
