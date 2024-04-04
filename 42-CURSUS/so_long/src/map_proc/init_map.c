@@ -21,7 +21,7 @@ void	ft_init_vars(t_game *game)
 	game->map.exit = 0;
 	game->map.players = 0;
 	game->movements = 0;
-	game->map.columns = ft_strlen(game->map.full[0]);
+	game->map.columns = ft_strlen(game->map.full[0] - 1);
 }
 
 void	ft_check_for_empty_line(char *map, t_game *game)
