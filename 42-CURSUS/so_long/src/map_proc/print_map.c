@@ -27,7 +27,7 @@ int	ft_print_map(t_game *game)
 	while (y < game->map.rows)
 	{
 		x = 0;
-		while (x < game->map.columns)
+		while (x <= game->map.columns)
 		{
 			ft_identify_sprite(game, y, x);
 			x++;
