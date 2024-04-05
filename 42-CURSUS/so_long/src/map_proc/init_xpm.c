@@ -31,7 +31,7 @@ void	ft_init_mlx(t_game *game)
 	}
 }
 
-t_image	ft_new_sprite(void *mlx, char *path);
+t_image	ft_new_sprite(void *mlx, char *path, t_game *game);
 
 void	ft_init_sprites(t_game *game)
 {
@@ -39,24 +39,24 @@ void	ft_init_sprites(t_game *game)
 
 	mlx = game->mlx_ptr;
 	ft_printf("%s", "cerote");
-	game->wall = ft_new_sprite(mlx, "images/wall.xpm");
+	game->wall = ft_new_sprite(mlx, "images/wall.xpm", game);
 	ft_printf("%s", "1");
-	game->floor = ft_new_sprite(mlx, "images/fondo.xpm");
+	game->floor = ft_new_sprite(mlx, "images/fondo.xpm", game);
 	ft_printf("%s", "2");
-	game->item = ft_new_sprite(mlx, "images/item.xpm");
+	game->item = ft_new_sprite(mlx, "images/item.xpm", game);
 	ft_printf("%s", "3");
-	game->player = ft_new_sprite(mlx, "images/player.xpm");
+	game->player = ft_new_sprite(mlx, "images/player.xpm", game);
 	ft_printf("%s", "4");
-	game->exit = ft_new_sprite(mlx, "images/scape.xpm");
+	game->exit = ft_new_sprite(mlx, "images/scape.xpm", game);
 	ft_printf("%s", "5");
 }
 
-t_image	ft_new_sprite(void *mlx, char *path)
+t_image	ft_new_sprite(void *mlx, char *path, t_game *game)
 {
 	t_image	image;
 
 	image.xpm_ptr = mlx_xpm_file_to_image(mlx, path, &image.x, &image.y);
-	/*if (image.xpm_ptr == NULL)
-		ft_error_free("Error al cargar la imagen", game);*/
+	if (image.xpm_ptr == NULL)
+		ft_error_free("Error al cargar la imagen", game);
 	return (image);
 }
