@@ -67,7 +67,7 @@ void	ft_print_movements(t_game *game)
 	char	*phrase;
 
 	movements = ft_itoa(game->movements);
-	phrase = ft_strjoin("Movements : ", movements);
+	phrase = ft_strjoin("Movimientos : ", movements);
 	mlx_string_put(game->mlx_ptr, game->win_ptr, 30, 20, 0xFF0000, phrase);
 	free(movements);
 	free(phrase);

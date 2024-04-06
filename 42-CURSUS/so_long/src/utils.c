@@ -53,7 +53,7 @@ int	ft_close_game(t_game *game)
 {
 	//ft_printf("Movements: %d\n", game->movements);
 	ft_free_all_allocated_memory(game);
-	ft_printf("CLOSED\n");
+	ft_printf("CERRANDO VENTANA....\n");
 	exit (EXIT_FAILURE);
 	return(0);
 }
