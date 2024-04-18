@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asandova <asandova@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 17:09:56 by asandova            #+#    #+#             */
-/*   Updated: 2023/10/02 16:29:57 by asandova           ###   ########.fr       */
+/*   Created: 2023/09/25 17:09:56 by marvin            #+#    #+#             */
+/*   Updated: 2023/11/03 10:10:01 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 int		print_integer(va_list args, int fd);
 int		print_nosign(va_list args, int fd);
-int		print_mayushex(va_list args, int fd);
-int		print_minushex(va_list args, int fd);
+int		print_highhex(va_list args, int fd);
+int		print_lowhex(va_list args, int fd);
 int		print_character(va_list args, int fd);
 int		print_string(va_list args, int fd);
 int		print_ptrhexa(va_list args, int fd);
