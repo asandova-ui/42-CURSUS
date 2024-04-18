@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 11:15:17 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/30 11:15:17 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/18 14:52:29 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	ft_free_all_allocated_memory(t_game *game)
 	ft_free_map(game);
 	mlx_clear_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	//mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
 	free(game);
 }
@@ -51,9 +50,8 @@ void	ft_destroy_images(t_game *game)
 
 int	ft_close_game(t_game *game)
 {
-	//ft_printf("Movements: %d\n", game->movements);
 	ft_free_all_allocated_memory(game);
 	ft_printf("CERRANDO VENTANA....\n");
 	exit (EXIT_FAILURE);
-	return(0);
+	return (0);
 }

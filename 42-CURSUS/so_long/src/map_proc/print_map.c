@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:04:21 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/30 20:04:21 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/18 14:55:30 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_print_map(t_game *game)
 }
 
 void	ft_identify_sprite(t_game *game, int y, int x)
-{	
+{
 	char	parameter;
 
 	parameter = game->map.full[y][x];
@@ -50,7 +50,7 @@ void	ft_identify_sprite(t_game *game, int y, int x)
 	else if (parameter == ITEM)
 		ft_render_sprite (game, game->item, y, x);
 	else if (parameter == EXIT)
-			ft_render_sprite (game, game->exit, y, x);
+		ft_render_sprite (game, game->exit, y, x);
 	else if (parameter == PLAYER)
 		ft_render_sprite (game, game->player, y, x);
 }

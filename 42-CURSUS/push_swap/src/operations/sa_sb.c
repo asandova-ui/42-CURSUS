@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sa_sb.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asandova <asandova@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 21:43:28 by asandova            #+#    #+#             */
-/*   Updated: 2024/03/19 21:43:28 by asandova           ###   ########.fr       */
+/*   Created: 2024/03/19 21:43:28 by asandova          #+#    #+#             */
+/*   Updated: 2024/04/18 15:29:24 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	sb(t_list2 **stack_b)
 }
 
 int	ss(t_list2 **stack_a, t_list2 **stack_b)
-{	
+{
 	if ((ft_lstsize2(*stack_a) < 2) || (ft_lstsize2(*stack_b) < 2))
 		return (-1);
 	swap(stack_a);

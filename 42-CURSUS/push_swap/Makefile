@@ -1,5 +1,5 @@
 
-SRCS = src/algorithm/algorithm_simple_cases.c src/algorithm/algorithm.c src/algorithm/utils.c src/algorithm/extras.c src/error_control/custom_free.c src/error_control/error_control.c src/operations/pa_pb.c src/operations/ra_rb.c src/operations/rra_rrb.c src/operations/sa_sb.c main.c 
+SRCS = src/algorithm/algorithm_simple_cases.c src/algorithm/algorithm.c src/algorithm/utils.c src/algorithm/extras.c src/error_control/custom_free.c src/error_control/error_control.c src/error_control/error_control2.c src/operations/pa_pb.c src/operations/ra_rb.c src/operations/rra_rrb.c src/operations/sa_sb.c main.c 
 
 OBJS = $(SRCS:.c=.o)
 

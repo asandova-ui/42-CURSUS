@@ -6,7 +6,7 @@
 /*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 18:55:18 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/27 11:34:48 by asandova         ###   ########.fr       */
+/*   Updated: 2024/04/18 14:52:13 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	start_prog(char *map, t_game *game)
 	ft_print_map(game);
 	mlx_key_hook(game->win_ptr, ft_handle_input, game);
 	mlx_hook(game->win_ptr, 17, 0, ft_close_game, game);
-	//mlx_hook(game->win_ptr, 17, 0, ft_print_map, game);
 	mlx_loop(game->mlx_ptr);
 	ft_free_all_allocated_memory(game);
 }

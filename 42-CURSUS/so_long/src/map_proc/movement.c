@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 12:32:51 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/31 12:32:51 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/18 14:55:14 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_player_move(t_game *game, int new_y, int new_x);
 int	ft_handle_input(int keysym, t_game *game)
 {
 	if (keysym == KEY_UP || keysym == KEY_W)
-			ft_player_move(game, game->map.player.y - 1, game->map.player.x);
+		ft_player_move(game, game->map.player.y - 1, game->map.player.x);
 	if (keysym == KEY_LEFT || keysym == KEY_A)
 		ft_player_move(game, game->map.player.y, game->map.player.x - 1);
 	if (keysym == KEY_RIGHT || keysym == KEY_D)
