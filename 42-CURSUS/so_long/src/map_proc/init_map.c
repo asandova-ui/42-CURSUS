@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 11:01:26 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/30 11:01:26 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/18 14:53:37 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 #include "../../printf/libft/libft.h"
 #include "../../get_next_line/get_next_line.h"
 
-
 void	ft_init_vars(t_game *game)
 {
 	game->map.coins = 0;
 	game->map.exit = 0;
 	game->map.players = 0;
 	game->movements = 0;
-	game->map.columns = ft_strlen(game->map.full[0]) -1;
+	game->map.columns = ft_strlen(game->map.full[0]) - 1;
 }
 
 void	ft_check_for_empty_line(char *map, t_game *game)

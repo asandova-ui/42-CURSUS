@@ -6,7 +6,7 @@
 /*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 18:56:14 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/27 12:15:13 by asandova         ###   ########.fr       */
+/*   Updated: 2024/04/18 15:13:36 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-#include "../Mlx/mlx.h"
-/*#include "../Mlx/mlx_int.h"
-#include "../Mlx/mlx_new_window.h"
-#include "../Mlx/mlx_opengl.h"
-#include "../Mlx/mlx_png.h"*/
+# include "../Mlx/mlx.h"
 # include <fcntl.h>
-#include "../printf/libft/libft.h"
-#include "../printf/includes/ft_printf.h"
-//# include <X11/keysym.h>
-
+# include "../printf/libft/libft.h"
+# include "../printf/includes/ft_printf.h"
 
 # define IMG_HEIGHT			32
 # define IMG_WIDTH			32
@@ -49,16 +43,10 @@
 # define PLAYER				'P'
 # define EXIT 		 		'E'
 
-//# define WALL_XPM			"images/wall.xpm"
-//# define FLOOR_XPM			"images/floor.xpm"
-//# define ITEM_XPM			"images/item.xpm"
-//# define PLAYER_XPM			"images/player.xpm"
-//# define EXIT_XPM			"images/exit.xpm"
-
 typedef enum e_bool
 {
-	false,
-	true
+	FALSE,
+	TRUE
 }	t_bool;
 
 typedef struct s_position
@@ -109,11 +97,11 @@ void	ft_check_map(t_game *game);
 void	ft_init_mlx(t_game *game);
 void	ft_init_sprites(t_game *game);
 int		ft_print_map(t_game *game);
-int	ft_handle_input(int keysym, t_game *game);
-int	ft_close_game(t_game *game);
+int		ft_handle_input(int keysym, t_game *game);
+int		ft_close_game(t_game *game);
 void	ft_free_all_allocated_memory(t_game *game);
 void	ft_init_sprites(t_game *game);
 void	ft_free_map(t_game *game);
-int	check_route(t_game *game);
+int		check_route(t_game *game);
 
 #endif

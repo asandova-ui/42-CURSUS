@@ -6,7 +6,7 @@
 /*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:23:47 by asandova          #+#    #+#             */
-/*   Updated: 2024/03/25 12:55:48 by asandova         ###   ########.fr       */
+/*   Updated: 2024/04/18 15:18:59 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 	t_list2	**stack_a;
 	t_list2	**stack_b;
 
-	if(check_args(argv, argc -1) == -1)
+	if (check_args(argv, argc - 1) == -1)
 	{
 		write(2, "Error\n", 6);
 		exit(0);
@@ -75,7 +75,7 @@ int	main(int argc, char **argv)
 	*stack_a = NULL;
 	init_stack(stack_a, argc, argv);
 	if (is_sorted(stack_a) == 1)
-		exit (EXIT_SUCCESS);
+		exit(EXIT_SUCCESS);
 	stack_b = (t_list2 **)malloc(sizeof(t_list2));
 	*stack_b = NULL;
 	sort_stack(stack_a, stack_b);

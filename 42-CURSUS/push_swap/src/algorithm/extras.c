@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extras.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 18:15:22 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/20 18:15:22 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/18 15:25:21 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list2	*ft_lstnew2(int value)
 {
 	t_list2	*new;
 
-	new = (t_list2 *) malloc(sizeof(*new));
+	new = (t_list2 *)malloc(sizeof(*new));
 	if (!new)
 		return (NULL);
 	new->value = value;

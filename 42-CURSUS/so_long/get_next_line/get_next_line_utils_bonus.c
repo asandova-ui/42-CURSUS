@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asandova <asandova@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 10:50:13 by asandova            #+#    #+#             */
-/*   Updated: 2023/10/04 10:50:13 by asandova           ###   ########.fr       */
+/*   Created: 2023/10/04 10:50:13 by asandova          #+#    #+#             */
+/*   Updated: 2024/04/18 15:08:08 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

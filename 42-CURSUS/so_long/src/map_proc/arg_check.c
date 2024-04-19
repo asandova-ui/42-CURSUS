@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check.c                                        :+:      :+:    :+:   */
+/*   arg_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 19:05:39 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/27 12:15:06 by asandova         ###   ########.fr       */
+/*   Updated: 2024/04/18 15:13:56 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ void	ft_free_map(t_game *game)
 	free(game->map.full);
 }
 
-
 int	ft_error_free(char *message, t_game *game)
 {
-	if (game->map_alloc == true)
+	if (game->map_alloc == TRUE)
 		ft_free_map(game);
 	free(game);
 	ft_printf(message);
@@ -38,7 +37,7 @@ void	arg_checker(int argc, char **argv, t_game *game)
 {
 	int	map_parameter_len;
 
-	game->map_alloc = false;
+	game->map_alloc = FALSE;
 	if (argc == 1)
 		ft_error_free("Error: no has cargado ningún mapa", game);
 	if (argc > 2)
