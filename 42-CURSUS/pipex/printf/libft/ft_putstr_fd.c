@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 16:52:10 by asandova          #+#    #+#             */
-/*   Updated: 2024/04/26 12:02:16 by asandova         ###   ########.fr       */
+/*   Created: 2023/09/22 11:24:27 by asandova          #+#    #+#             */
+/*   Updated: 2023/09/29 18:04:26 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "./libft.h"
 
-# include <fcntl.h>
-# include <stddef.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/types.h>
-# include <unistd.h>
+void	ft_putstr_fd(char *s, int fd)
+{
+	char	*temp;
 
-void	custom_error(char *str, int n);
-void	custom_free(char **free_me);
-char	*ft_strjoin_3args(char const *s1, char connector, char const *s2);
-char	**splitting_paths(char *envp[]);
-
-#endif
+	temp = s;
+	while (*temp)
+	{
+		ft_putchar_fd(*temp, fd);
+		temp++;
+	}
+}

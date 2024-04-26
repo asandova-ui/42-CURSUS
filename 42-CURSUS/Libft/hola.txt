@@ -1,7 +1,0 @@
-strtrim-->elimina caracteres especific al principio y al final
-strchr-->encuentra el carac que quiero
-strnstr-->busca primera ap de subcadena en cadena
-strmapi-->aplica una fun cion a todos los carac de una cadena
-strdup-->duplica y alloca la cadena
-memchr-->busco la primera aparicion de carac en las n posiciones
-lstmap-->a todos los elementos de una lista le aplicas una funcion y devuelves otra lista con los resultados de aplicarles esa funcion

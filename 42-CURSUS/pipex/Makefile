@@ -1,8 +1,8 @@
-SRCS = main.c utils.c
+SRCS = src/main.c src/utils.c
 
 OBJS = $(SRCS:.c=.o)
 
-LIBFTPRINTF_PATH = ./ft_printf
+LIBFTPRINTF_PATH = ./printf
 LIBFTPRINTF = $(LIBFTPRINTF_PATH)/libftprintf.a
 
 CC = cc

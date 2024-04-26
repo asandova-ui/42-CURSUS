@@ -6,39 +6,42 @@
 /*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 17:39:59 by asandova          #+#    #+#             */
-/*   Updated: 2024/04/18 18:10:37 by asandova         ###   ########.fr       */
+/*   Updated: 2024/04/26 12:38:35 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pipex.h"
-#include "ft_printf/includes/ft_printf.h"
-#include "ft_printf/libft/libft.h"
+#include "../includes/pipex.h"
+#include "../printf/includes/ft_printf.h"
+#include "../printf/libft/libft.h"
 
-void	custom_error(char *str)
+void	custom_error(char *str, int n)
 {
-	ft_printf("%s", str);
+	if (n == 0)
+		ft_printf("%s", str);
+	if (n == 1)
+		perror(str);
 	exit(EXIT_FAILURE);
 }
 
 char	**splitting_paths(char *envp[])
 {
-	int		it;
+	int		i;
 	char	**paths;
 
-	it = 0;
-	while (envp[it])
+	i = 0;
+	while (envp[i])
 	{
-		if (!ft_strncmp(envp[it], "PATH=", 5))
+		if (!ft_strncmp(envp[i], "PATH=", 5))
 		{
-			paths = ft_split(envp[it] + 5, ':');
+			paths = ft_split(envp[i] + 5, ':');
 			return (paths);
 		}
-		it++;
+		i++;
 	}
 	return (NULL);
 }
 
-char	*ft_strjoin_mod(char const *s1, char connector, char const *s2)
+char	*ft_strjoin_3args(char const *s1, char connector, char const *s2)
 {
 	char	*str;
 	size_t	x;
@@ -46,7 +49,7 @@ char	*ft_strjoin_mod(char const *s1, char connector, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	str = (char *) malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 2));
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 2));
 	if (!str)
 		return (NULL);
 	x = 0;
@@ -63,7 +66,7 @@ char	*ft_strjoin_mod(char const *s1, char connector, char const *s2)
 
 void	custom_free(char **free_me)
 {
-	int		it;
+	int	it;
 
 	it = 0;
 	while (free_me[it])

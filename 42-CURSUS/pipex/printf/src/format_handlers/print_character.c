@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   print_character.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 16:52:10 by asandova          #+#    #+#             */
-/*   Updated: 2024/04/26 12:02:16 by asandova         ###   ########.fr       */
+/*   Created: 2023/09/26 16:46:42 by marvin            #+#    #+#             */
+/*   Updated: 2023/09/29 18:31:17 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../../includes/ft_printf.h"
+#include "../../libft/libft.h"
 
-# include <fcntl.h>
-# include <stddef.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/types.h>
-# include <unistd.h>
+int	print_character(va_list args, int fd)
+{
+	char	value;
+	int		length;
 
-void	custom_error(char *str, int n);
-void	custom_free(char **free_me);
-char	*ft_strjoin_3args(char const *s1, char connector, char const *s2);
-char	**splitting_paths(char *envp[]);
-
-#endif
+	value = va_arg(args, int);
+	ft_putchar_fd(value, fd);
+	length = 1;
+	return (length);
+}
