@@ -6,7 +6,7 @@
 /*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:23:47 by asandova          #+#    #+#             */
-/*   Updated: 2024/04/18 15:18:59 by asandova         ###   ########.fr       */
+/*   Updated: 2024/04/26 14:32:55 by asandova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		exit(0);
 	}
-	error_control(argc, argv);
 	if (argc < 2)
 		return (-1);
 	stack_a = (t_list2 **)malloc(sizeof(t_list2));
