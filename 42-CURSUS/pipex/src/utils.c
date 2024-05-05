@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 17:39:59 by asandova          #+#    #+#             */
-/*   Updated: 2024/04/26 12:38:35 by asandova         ###   ########.fr       */
+/*   Updated: 2024/05/05 21:22:16 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 #include "../printf/includes/ft_printf.h"
 #include "../printf/libft/libft.h"
 
-void	custom_error(char *str, int n)
+void	custom_error(const char *msg, int code)
 {
-	if (n == 0)
-		ft_printf("%s", str);
-	if (n == 1)
-		perror(str);
-	exit(EXIT_FAILURE);
+	fprintf(stderr, "%s\n", msg);
+	exit(code);
 }
 
 char	**splitting_paths(char *envp[])
