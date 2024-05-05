@@ -6,14 +6,14 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:27:27 by marvin            #+#    #+#             */
-/*   Updated: 2023/10/02 17:16:26 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/05 21:38:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 #include "../../libft/libft.h"
 
-static void	ft_putnbr_hex(uintptr_t n, int fd)
+static void	ft_putnbr_hex(intptr_t n, int fd)
 {
 	const char	*hex_chars = "0123456789abcdef";
 
@@ -24,10 +24,10 @@ static void	ft_putnbr_hex(uintptr_t n, int fd)
 
 int	print_ptrhexa(va_list args, int fd)
 {
-	uintptr_t	ptr_value;
+	intptr_t	ptr_value;
 	int			chars_written;
 
-	ptr_value = va_arg(args, uintptr_t);
+	ptr_value = va_arg(args, intptr_t);
 	chars_written = 0;
 	ft_putchar_fd('0', fd);
 	ft_putchar_fd('x', fd);
