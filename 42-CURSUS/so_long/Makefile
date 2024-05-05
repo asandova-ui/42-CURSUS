@@ -5,20 +5,20 @@ OBJS = $(SRCS:.c=.o)
 LIBFTPRINTF_PATH = ./printf
 LIBFTPRINTF = $(LIBFTPRINTF_PATH)/libftprintf.a
 
+MLX_PATH = ./Mlx_linux
 MLX = $(MLX_PATH)/libmlx.a
-MLX_PATH = ./Mlx
 
 CC = cc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -Iincludes
-LINKS = -framework OpenGL -framework AppKit
+CFLAGS = -Wall -Wextra -Werror -I$(MLX_PATH)
+LDFLAGS = -L$(MLX_PATH) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 
 NAME = so_long
 
 all: $(NAME)
 
 $(NAME): $(LIBFTPRINTF) $(MLX) $(OBJS)
-	$(CC) $(CFLAGS) $(SRCS) $(LINKS) -o $(NAME) $(LIBFTPRINTF) $(MLX)
+	$(CC) $(OBJS) $(LIBFTPRINTF) $(LDFLAGS) -o $(NAME)
 
 $(LIBFTPRINTF):
 	make -C $(LIBFTPRINTF_PATH) all
@@ -29,7 +29,7 @@ $(MLX):
 clean:
 	make -C $(LIBFTPRINTF_PATH) clean
 	make -C $(MLX_PATH) clean
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
 	make -C $(LIBFTPRINTF_PATH) fclean

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 18:56:14 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/18 15:13:36 by asandova         ###   ########.fr       */
+/*   Updated: 2024/05/05 22:49:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@
 # define IMG_HEIGHT			32
 # define IMG_WIDTH			32
 
-# define KEY_W				13
-# define KEY_A				0
-# define KEY_S				1
-# define KEY_D				2
+# define KEY_W				119
+# define KEY_A				97
+# define KEY_S				115
+# define KEY_D				100
 
-# define KEY_UP  			126
-# define KEY_LEFT  			123
-# define KEY_RIGHT 			124
-# define KEY_DOWN  			125
-# define KEY_ESC  			53
+# define KEY_UP  			65362
+# define KEY_LEFT  			65361
+# define KEY_RIGHT 			65363
+# define KEY_DOWN  			65364
+# define KEY_ESC  			65307
 
 # define WALL				'1'
 # define FLOOR 				'0'

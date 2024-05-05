@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asandova <asandova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 19:05:39 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/18 15:13:56 by asandova         ###   ########.fr       */
+/*   Updated: 2024/05/05 22:53:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	ft_error_free(char *message, t_game *game)
 		ft_free_map(game);
 	free(game);
 	ft_printf(message);
+	ft_printf("\n");
 	exit (EXIT_FAILURE);
 }
 
