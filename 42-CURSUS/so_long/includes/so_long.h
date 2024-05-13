@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 18:56:14 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/05 22:49:28 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/13 20:19:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "../Mlx/mlx.h"
+# include "../mmllxx/mlx.h"
 # include <fcntl.h>
 # include "../printf/libft/libft.h"
 # include "../printf/includes/ft_printf.h"

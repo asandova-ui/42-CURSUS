@@ -5,7 +5,7 @@ OBJS = $(SRCS:.c=.o)
 LIBFTPRINTF_PATH = ./printf
 LIBFTPRINTF = $(LIBFTPRINTF_PATH)/libftprintf.a
 
-MLX_PATH = ./Mlx_linux
+MLX_PATH = ./mmllxx
 MLX = $(MLX_PATH)/libmlx.a
 
 CC = cc
