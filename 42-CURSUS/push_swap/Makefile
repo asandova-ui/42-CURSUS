@@ -1,4 +1,3 @@
-
 SRCS = src/algorithm/algorithm_simple_cases.c src/algorithm/algorithm.c src/algorithm/utils.c src/algorithm/extras.c src/error_control/custom_free.c src/error_control/error_control.c src/error_control/error_control2.c src/operations/pa_pb.c src/operations/ra_rb.c src/operations/rra_rrb.c src/operations/sa_sb.c main.c 
 
 OBJS = $(SRCS:.c=.o)
@@ -12,21 +11,57 @@ CFLAGS = -Wall -Wextra -Werror -Iincludes
 
 NAME = push_swap
 
+# ANSI escape codes for colors and effects
+GREEN = \033[0;32m
+YELLOW = \033[1;33m
+RED = \033[0;31m
+BLUE = \033[0;34m
+CYAN = \033[0;36m
+MAGENTA = \033[0;35m
+RESET = \033[0m
+BOLD = \033[1m
+BLINK = \033[5m
+
 all: $(NAME)
 
 $(NAME): $(LIBFTPRINTF) $(OBJS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME) $(LIBFTPRINTF)
+	@echo "$(YELLOW)Linking object files...$(RESET)"
+	@$(CC) $(CFLAGS) $(SRCS) -o $(NAME) $(LIBFTPRINTF) > /dev/null 2>&1
+	@echo "$(GREEN)Executable $(NAME) created successfully!$(RESET)"
+	@echo "$(MAGENTA)✨✨ Compilation Complete! Enjoy! ✨✨$(RESET)"
 
 $(LIBFTPRINTF):
-	make -C $(LIBFTPRINTF_PATH) all
+	@echo "$(BLUE)Building libftprintf library...$(RESET)"
+	@make -C $(LIBFTPRINTF_PATH) all > /dev/null 2>&1
+	@echo "$(GREEN)libftprintf library built successfully!$(RESET)"
+
+# Animation for compiling
+define compile_animation
+	@echo -n "$(CYAN)Compiling: ["
+	@for i in `seq 1 25`; do \
+		echo -n "="; \
+		sleep 0.01; \
+	done
+	@echo "]$(RESET)"
+	@echo "$(BOLD)$(MAGENTA) -> $@ Compiled! $(RESET)"
+endef
+
+%.o: %.c
+	@echo "$(MAGENTA)Compiling $<...$(RESET)"
+	@$(CC) $(CFLAGS) -c $< -o $@ > /dev/null 2>&1
+	@$(compile_animation)
 
 clean:
-	make -C $(LIBFTPRINTF_PATH) clean
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	@echo "$(RED)Cleaning object files...$(RESET)"
+	@make -C $(LIBFTPRINTF_PATH) clean > /dev/null 2>&1
+	@$(RM) $(OBJS)
+	@echo "$(GREEN)Cleaned successfully!$(RESET)"
 
 fclean: clean
-	make -C $(LIBFTPRINTF_PATH) fclean
-	$(RM) $(NAME)
+	@echo "$(RED)Removing executable...$(RESET)"
+	@make -C $(LIBFTPRINTF_PATH) fclean > /dev/null 2>&1
+	@$(RM) $(NAME)
+	@echo "$(GREEN)Full clean completed successfully!$(RESET)"
 
 re: fclean all
 
