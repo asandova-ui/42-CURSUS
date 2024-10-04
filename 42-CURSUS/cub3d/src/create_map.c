@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 13:08:20 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/04 11:02:44 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 12:16:42 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	count_map_lines(t_cubi *cubi, char **file, int i)
 	{
 		j = 0;
 		while (file[i][j] == ' ' || file[i][j] == '\t' || file[i][j] == '\r'
-		|| file[i][j] == '\v' || file[i][j] == '\f')
+			|| file[i][j] == '\v' || file[i][j] == '\f')
 			j++;
 		if (file[i][j] != '1')
 			break ;
@@ -34,8 +34,8 @@ static int	count_map_lines(t_cubi *cubi, char **file, int i)
 
 static int	fill_map_tab(t_mapinfo *mapinfo, char **map_tab, int index)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	mapinfo->width = find_biggest_len(mapinfo, index);
 	i = 0;
@@ -49,7 +49,7 @@ static int	fill_map_tab(t_mapinfo *mapinfo, char **map_tab, int index)
 		{
 			map_tab[i][j] = mapinfo->file[index][j];
 			j++;
-		}	
+		}
 		while (j < mapinfo->width)
 			map_tab[i][j++] = '\0';
 		i++;
@@ -80,8 +80,8 @@ static void	change_space_into_wall(t_cubi *cubi)
 	{
 		j = 0;
 		while (cubi->map[i][j] == ' ' || cubi->map[i][j] == '\t'
-		|| cubi->map[i][j] == '\r'
-		|| cubi->map[i][j] == '\v' || cubi->map[i][j] == '\f')
+			|| cubi->map[i][j] == '\r' || cubi->map[i][j] == '\v'
+			|| cubi->map[i][j] == '\f')
 			j++;
 		while (cubi->map[i][++j])
 		{

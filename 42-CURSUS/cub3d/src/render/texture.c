@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:30:33 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/10/04 11:05:52 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 12:00:28 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	init_texture_pixels(t_cubi *cubi)
 	cubi->texture_pixels = ft_calloc(cubi->win_height + 1,
 			sizeof * cubi->texture_pixels);
 	if (!cubi->texture_pixels)
-		full_exit(cubi, custom_error(NULL, ERR_MALLOC, 1));
+		full_exit(cubi, custom_error(NULL, "error malloc", 1));
 	i = 0;
 	while (i < cubi->win_height)
 	{
 		cubi->texture_pixels[i] = ft_calloc(cubi->win_width + 1,
 				sizeof * cubi->texture_pixels);
 		if (!cubi->texture_pixels[i])
-			full_exit(cubi, custom_error(NULL, ERR_MALLOC, 1));
+			full_exit(cubi, custom_error(NULL, "error malloc", 1));
 		i++;
 	}
 }

@@ -6,28 +6,11 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 10:54:12 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/04 11:03:02 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 12:21:09 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void	init_texinfo(t_texinfo *textures)
-{
-	textures->north = NULL;
-	textures->south = NULL;
-	textures->west = NULL;
-	textures->east = NULL;
-	textures->floor = 0;
-	textures->ceiling = 0;
-	textures->hex_floor = 0x0;
-	textures->hex_ceiling = 0x0;
-	textures->size = TEX_SIZE;
-	textures->step = 0.0;
-	textures->pos = 0.0;
-	textures->x = 0;
-	textures->y = 0;
-}
 
 void	init_img_clean(t_img *img)
 {

@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:31:24 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/10/04 11:03:24 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 12:10:12 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static int	move_player_forward(t_cubi *cubi)
 	double	new_x;
 	double	new_y;
 
-	new_x = cubi->player.pos_x + cubi->player.dir_x * MOVESPEED;
-	new_y = cubi->player.pos_y + cubi->player.dir_y * MOVESPEED;
+	new_x = cubi->player.pos_x + cubi->player.dir_x * MOVEMENTSPEED;
+	new_y = cubi->player.pos_y + cubi->player.dir_y * MOVEMENTSPEED;
 	return (validate_move(cubi, new_x, new_y));
 }
 
@@ -27,8 +27,8 @@ static int	move_player_backward(t_cubi *cubi)
 	double	new_x;
 	double	new_y;
 
-	new_x = cubi->player.pos_x - cubi->player.dir_x * MOVESPEED;
-	new_y = cubi->player.pos_y - cubi->player.dir_y * MOVESPEED;
+	new_x = cubi->player.pos_x - cubi->player.dir_x * MOVEMENTSPEED;
+	new_y = cubi->player.pos_y - cubi->player.dir_y * MOVEMENTSPEED;
 	return (validate_move(cubi, new_x, new_y));
 }
 
@@ -37,8 +37,8 @@ static int	move_player_left(t_cubi *cubi)
 	double	new_x;
 	double	new_y;
 
-	new_x = cubi->player.pos_x + cubi->player.dir_y * MOVESPEED;
-	new_y = cubi->player.pos_y - cubi->player.dir_x * MOVESPEED;
+	new_x = cubi->player.pos_x + cubi->player.dir_y * MOVEMENTSPEED;
+	new_y = cubi->player.pos_y - cubi->player.dir_x * MOVEMENTSPEED;
 	return (validate_move(cubi, new_x, new_y));
 }
 
@@ -47,8 +47,8 @@ static int	move_player_right(t_cubi *cubi)
 	double	new_x;
 	double	new_y;
 
-	new_x = cubi->player.pos_x - cubi->player.dir_y * MOVESPEED;
-	new_y = cubi->player.pos_y + cubi->player.dir_x * MOVESPEED;
+	new_x = cubi->player.pos_x - cubi->player.dir_y * MOVEMENTSPEED;
+	new_y = cubi->player.pos_y + cubi->player.dir_x * MOVEMENTSPEED;
 	return (validate_move(cubi, new_x, new_y));
 }
 

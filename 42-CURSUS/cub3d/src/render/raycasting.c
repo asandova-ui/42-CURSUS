@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 22:40:40 by alexa             #+#    #+#             */
-/*   Updated: 2024/10/04 11:03:31 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 12:08:30 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,5 +136,5 @@ int	raycasting(t_player *player, t_cubi *cubi)
 		update_texture_pixels(cubi, &cubi->texinfo, &ray, x);
 		x++;
 	}
-	return (SUCCESS);
+	return (0);
 }

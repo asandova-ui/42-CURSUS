@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:14:01 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/04 11:03:11 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 12:04:31 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	fill_tab(int row, int column, int i, t_cubi *cubi)
 		cubi->mapinfo.file[row] = ft_calloc(ft_strlen(line) + 1, sizeof(char));
 		if (!cubi->mapinfo.file[row])
 		{
-			custom_error(NULL, ERR_MALLOC, 0);
+			custom_error(NULL, "eror malloc", 0);
 			return (free_tab((void **)cubi->mapinfo.file));
 		}
 		while (line[i] != '\0')
@@ -75,12 +75,12 @@ void	parse_cubi(char *path, t_cubi *cubi)
 			+ 1, sizeof(char *));
 	if (!(cubi->mapinfo.file))
 	{
-		custom_error(NULL, ERR_MALLOC, 0);
+		custom_error(NULL, "error malloc", 0);
 		return ;
 	}
 	cubi->mapinfo.fd = open(path, O_RDONLY);
 	if (cubi->mapinfo.fd < 0)
-		custom_error(path, strerror(errno), FAILURE);
+		custom_error(path, strerror(errno), 1);
 	else
 	{
 		fill_tab(row, column, i, cubi);

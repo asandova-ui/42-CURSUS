@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 11:20:11 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/04 11:05:52 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:14:24 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	full_exit(t_cubi *cubi, int code)
 		mlx_loop_end(cubi->mlx);
 		free(cubi->mlx);
 	}
-	free_cubi(cubi);
+	cubi_freeall(cubi);
 	exit(code);
 }
 

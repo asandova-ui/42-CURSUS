@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:31:34 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/10/04 11:03:28 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 12:15:18 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	rotate_player(t_cubi *cubi, double rotdir)
 	double	rotspeed;
 
 	moved = 0;
-	rotspeed = ROTSPEED * rotdir;
+	rotspeed = ROTATIONSPEED * rotdir;
 	moved += rotate_left_right(cubi, rotspeed);
 	return (moved);
 }

@@ -1,7 +1,7 @@
 SRCS = src/main.c src/custom_error.c src/init_things.c src/parsing.c src/exit.c \
 		src/color_textures.c src/free_things.c src/init_things_2.c\
 		src/mlx_create.c src/parsing_data.c src/read_file.c src/valid_map.c \
-		src/valid_textures.c src/create_map.c src/utils.c \
+		src/valid_map_2.c src/valid_textures.c src/create_map.c src/utils.c \
 		get_next_line/get_next_line.c get_next_line/get_next_line_utils.c\
 		src/render/render.c src/render/minimap_image.c src/render/minimap_render.c \
 		src/render/raycasting.c src/render/texture.c src/render/image_utils.c \
@@ -16,9 +16,11 @@ LIBFTPRINTF = $(LIBFTPRINTF_PATH)/libftprintf.a
 MLX_PATH = ./mmllxx
 MLX = $(MLX_PATH)/libmlx.a
 
+BONUS = 0
+
 CC = cc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -I$(MLX_PATH)
+CFLAGS = -Wall -Wextra -Werror -I$(MLX_PATH) -DBONUS=$(BONUS)
 LDFLAGS = -L$(MLX_PATH) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 
 NAME = cub3d
@@ -75,6 +77,9 @@ clean:
 	@$(RM) $(OBJS)
 	@echo "$(GREEN)Cleaned successfully!$(RESET)"
 
+bonus:
+	make all BONUS=1
+	
 fclean: clean
 	@echo "$(RED)Removing executable and all libraries...$(RESET)"
 	@make -C $(LIBFTPRINTF_PATH) fclean
@@ -84,4 +89,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-

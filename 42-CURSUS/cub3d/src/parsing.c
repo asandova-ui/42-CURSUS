@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 11:14:43 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/04 11:02:01 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 12:04:32 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,19 @@ static bool	is_xpm_file(char *arg)
 	return (true);
 }
 
-int	file_validity(char *arg, bool cub)
+int	file_correct(char *arg, bool cub)
 {
 	int	fd;
 
 	if (is_dir(arg))
-		return (custom_error(arg, ERR_FILE_IS_DIR, FAILURE));
+		return (custom_error(arg, "Eso es un directorio", 1));
 	fd = open(arg, O_RDONLY);
 	if (fd == -1)
-		return (custom_error(arg, strerror(errno), FAILURE));
+		return (custom_error(arg, strerror(errno), 1));
 	close(fd);
 	if (cub && !is_cub_file(arg))
-		return (custom_error(arg, ERR_FILE_NOT_CUB, FAILURE));
+		return (custom_error(arg, "Eso no es un .cub", 1));
 	if (!cub && !is_xpm_file(arg))
-		return (custom_error(arg, ERR_FILE_NOT_XPM, FAILURE));
-	return (SUCCESS);
+		return (custom_error(arg, "Eso no es un .xpm", 1));
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:29:15 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/10/04 11:03:30 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 12:01:20 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,9 @@ void	render_minimap(t_cubi *cubi)
 	minimap.map = generate_minimap(cubi, &minimap);
 	if (!minimap.map)
 	{
-		custom_error(NULL, ERR_MALLOC, 0);
+		custom_error(NULL, "error malloc", 0);
 		return ;
 	}
-	if (MMAP_DEBUG_MSG)
-		debug_display_minimap(&minimap);
 	render_minimap_image(cubi, &minimap);
 	free_tab((void **)minimap.map);
 }

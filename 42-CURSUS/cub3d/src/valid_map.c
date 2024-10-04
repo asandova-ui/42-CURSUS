@@ -6,13 +6,13 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:41:27 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/04 11:03:15 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 12:26:49 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static int	check_top_or_bottom(char **map_tab, int i, int j)
+int	check_top_or_bottom(char **map_tab, int i, int j)
 {
 	if (!map_tab || !map_tab[i] || !map_tab[i][j])
 		return (1);
@@ -49,7 +49,7 @@ int	check_map_sides(t_mapinfo *map, char **map_tab)
 	return (0);
 }
 
-static int	check_map_elements(t_cubi *cubi, char **map_tab)
+int	check_map_elements(t_cubi *cubi, char **map_tab)
 {
 	int	i;
 	int	j;
@@ -66,9 +66,9 @@ static int	check_map_elements(t_cubi *cubi, char **map_tab)
 			|| cubi->map[i][j] == '\v' || cubi->map[i][j] == '\f')
 				j++;
 			if (!(ft_strchr("10NSEW", map_tab[i][j])))
-				return (custom_error(cubi->mapinfo.path, "invalid character", 1));
+				return (custom_error(cubi->mapinfo.path, "Char invalido", 1));
 			if (ft_strchr("NSEW", map_tab[i][j]) && cubi->player.dir != '0')
-				return (custom_error(cubi->mapinfo.path, "more than 1 player", 1));
+				return (custom_error(cubi->mapinfo.path, "Solo 1 player", 1));
 			if (ft_strchr("NSEW", map_tab[i][j]) && cubi->player.dir == '0')
 				cubi->player.dir = map_tab[i][j];
 			j++;
@@ -78,7 +78,7 @@ static int	check_map_elements(t_cubi *cubi, char **map_tab)
 	return (0);
 }
 
-static int	check_position_is_valid(t_cubi *cubi, char **map_tab)
+int	check_position_is_valid(t_cubi *cubi, char **map_tab)
 {
 	int	i;
 	int	j;
@@ -95,13 +95,13 @@ static int	check_position_is_valid(t_cubi *cubi, char **map_tab)
 	return (0);
 }
 
-static int	check_player_position(t_cubi *cubi, char **map_tab)
+int	check_player_position(t_cubi *cubi, char **map_tab)
 {
 	int	i;
 	int	j;
 
 	if (cubi->player.dir == '0')
-		return (custom_error(cubi->mapinfo.path, "player sin direccion", 1));
+		return (custom_error(cubi->mapinfo.path, "Falta direccion", 1));
 	i = 0;
 	while (map_tab[i])
 	{
@@ -119,45 +119,6 @@ static int	check_player_position(t_cubi *cubi, char **map_tab)
 		i++;
 	}
 	if (check_position_is_valid(cubi, map_tab) == 1)
-		return (custom_error(cubi->mapinfo.path, "posicion de player invalida", 1));
-	return (0);
-}
-
-static int	check_map_is_at_the_end(t_mapinfo *map)
-{
-	int	i;
-	int	j;
-
-	i = map->index_end_of_map;
-	while (map->file[i])
-	{
-		j = 0;
-		while (map->file[i][j])
-		{
-			if (map->file[i][j] != ' ' && map->file[i][j] != '\t'
-				&& map->file[i][j] != '\r' && map->file[i][j] != '\n'
-				&& map->file[i][j] != '\v' && map->file[i][j] != '\f')
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-int	check_map_validity(t_cubi *cubi, char **map_tab)
-{
-	if (!cubi->map)
-		return (custom_error(cubi->mapinfo.path, "No hay mapa", 1));
-	if (check_map_sides(&cubi->mapinfo, map_tab) == 1)
-		return (custom_error(cubi->mapinfo.path, "Mapa debe estar rodeado de paredes", 1));
-	if (cubi->mapinfo.height < 3)
-		return (custom_error(cubi->mapinfo.path, "Mapa pequeño, al menos debe ser de 3 alturas", 1));
-	if (check_map_elements(cubi, map_tab) == 1)
-		return (1);
-	if (check_player_position(cubi, map_tab) == 1)
-		return (1);
-	if (check_map_is_at_the_end(&cubi->mapinfo) == 1)
-		return (custom_error(cubi->mapinfo.path, "Mapa debe ser lo ultimo del fichero", 1));
+		return (custom_error(cubi->mapinfo.path, "Posicion invalida", 1));
 	return (0);
 }

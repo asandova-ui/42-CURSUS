@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:30:19 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/04 11:02:55 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:14:24 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	free_map(t_cubi *cubi)
 		free_tab((void **)cubi->map);
 }
 
-int	free_cubi(t_cubi *cubi)
+int	cubi_freeall(t_cubi *cubi)
 {
 	if (cubi->textures)
 		free_tab((void **)cubi->textures);

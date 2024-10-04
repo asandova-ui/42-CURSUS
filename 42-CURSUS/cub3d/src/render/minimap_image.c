@@ -6,11 +6,12 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:26:51 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/10/04 11:03:29 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 12:13:01 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
 static void	set_minimap_tile_pixels(t_minimap *minimap, int x, int y, int color)
 {
 	int	i;

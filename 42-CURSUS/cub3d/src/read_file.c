@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:21:51 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/04 11:10:29 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 12:16:34 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*get_texture_path(char *line, int j)
 static int	fill_direction_textures(t_texinfo *textures, char *line, int j)
 {
 	if (line[j + 2] && ft_isprint(line[j + 2]))
-		return (ERR);
+		return (2);
 	if (line[j] == 'N' && line[j + 1] == 'O' && !(textures->north))
 		textures->north = get_texture_path(line, j + 2);
 	else if (line[j] == 'S' && line[j + 1] == 'O' && !(textures->south))
@@ -53,9 +53,10 @@ static int	fill_direction_textures(t_texinfo *textures, char *line, int j)
 	else if (line[j] == 'E' && line[j + 1] == 'A' && !(textures->east))
 		textures->east = get_texture_path(line, j + 2);
 	else
-		return (ERR);
-	return (SUCCESS);
+		return (2);
+	return (0);
 }
+
 static int	ignore_whitespaces_get_info(t_cubi *cubi, char **map, int i, int j)
 {
 	while (map[i][j] == ' ' || map[i][j] == '\t' || map[i][j] == '\n')
@@ -65,24 +66,24 @@ static int	ignore_whitespaces_get_info(t_cubi *cubi, char **map, int i, int j)
 		if (map[i][j + 1] && ft_isprint(map[i][j + 1])
 			&& !ft_isdigit(map[i][j]))
 		{
-			if (fill_direction_textures(&cubi->texinfo, map[i], j) == ERR)
-				return (custom_error(cubi->mapinfo.path, ERR_TEX_INVALID, FAILURE));
-			return (BREAK);
-		}	
+			if (fill_direction_textures(&cubi->texinfo, map[i], j) == 2)
+				return (custom_error(cubi->mapinfo.path, "Texturas malas", 1));
+			return (3);
+		}
 		else
 		{
-			if (fill_color_textures(cubi, &cubi->texinfo, map[i], j) == ERR)
-				return (FAILURE);
-			return (BREAK);
-		}	
+			if (fill_color_textures(cubi, &cubi->texinfo, map[i], j) == 2)
+				return (1);
+			return (3);
+		}
 	}
 	else if (ft_isdigit(map[i][j]))
 	{
-		if (create_map(cubi, map, i) == FAILURE)
-			return (custom_error(cubi->mapinfo.path, ERR_INVALID_MAP, FAILURE));
-		return (SUCCESS);
+		if (create_map(cubi, map, i) == 1)
+			return (custom_error(cubi->mapinfo.path, "Mapa incorrecto", 1));
+		return (0);
 	}
-	return (CONTINUE);
+	return (4);
 }
 
 int	get_cubi_file(t_cubi *cubi, char **map)
@@ -98,15 +99,15 @@ int	get_cubi_file(t_cubi *cubi, char **map)
 		while (map[i][j])
 		{
 			ret = ignore_whitespaces_get_info(cubi, map, i, j);
-			if (ret == BREAK)
+			if (ret == 3)
 				break ;
-			else if (ret == FAILURE)
-				return (FAILURE);
-			else if (ret == SUCCESS)
-				return (SUCCESS);
+			else if (ret == 1)
+				return (1);
+			else if (ret == 0)
+				return (0);
 			j++;
 		}
 		i++;
 	}
-	return (SUCCESS);
+	return (0);
 }

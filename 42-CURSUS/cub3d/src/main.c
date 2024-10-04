@@ -6,28 +6,28 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 10:44:27 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/04 11:08:47 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 12:17:09 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int parse_args(t_cubi *cubi, char **argv)
+int	parse_args(t_cubi *cubi, char **argv)
 {
-    if (file_validity(argv[1], true) == 1)
+	if (file_correct(argv[1], true) == 1)
 		full_exit(cubi, 1);
 	parse_cubi(argv[1], cubi);
 	if (get_cubi_file(cubi, cubi->mapinfo.file) == 1)
-		return (free_cubi(cubi));
-	if (check_map_validity(cubi, cubi->map) == 1)
-		return (free_cubi(cubi));
-	if (check_textures_validity(cubi, &cubi->texinfo) == 1)
-		return (free_cubi(cubi));
-	init_player_direction(cubi);
+		return (cubi_freeall(cubi));
+	if (map_correct(cubi, cubi->map) == 1)
+		return (cubi_freeall(cubi));
+	if (textures_correct(cubi, &cubi->texinfo) == 1)
+		return (cubi_freeall(cubi));
+	dir_and_ply(cubi);
 	return (0);
 }
 
-int cub3d(t_cubi *cubi, char **argv)
+int	cub3d(t_cubi *cubi, char **argv)
 {
 	if (parse_args(cubi, argv) != 0)
 		return (1);
@@ -40,13 +40,15 @@ int cub3d(t_cubi *cubi, char **argv)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_cubi cubi;
+	t_cubi	cubi;
 
-    if (argc != 2)
-        return(custom_error("Numero incorrecto de parametros", "dale bien", 1));
-    init_cubi(&cubi);
+	printf("%d\n", BONUS);
+	if (argc != 2)
+		return (custom_error("Numero incorrecto de parametros", "dale bien",
+				1));
+	init_cubi(&cubi);
 	if (cub3d(&cubi, argv) == 1)
 		return (1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:56:04 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/04 11:05:52 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 12:50:24 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,29 @@ void	init_textures(t_cubi *cubi)
 	cubi->textures = ft_calloc(5, sizeof * cubi->textures);
 	if (!cubi->textures)
 		full_exit(cubi, custom_error(NULL, "error malloc", 1));
+	printf("%s\n", cubi->texinfo.north);
 	cubi->textures[NORTH] = xpm_to_img(cubi, cubi->texinfo.north);
+	printf("b\n");
 	cubi->textures[SOUTH] = xpm_to_img(cubi, cubi->texinfo.south);
+	printf("c\n");
 	cubi->textures[EAST] = xpm_to_img(cubi, cubi->texinfo.east);
+	printf("d\n");
 	cubi->textures[WEST] = xpm_to_img(cubi, cubi->texinfo.west);
+}
+
+void	init_texinfo(t_texinfo *textures)
+{
+	textures->north = NULL;
+	textures->south = NULL;
+	textures->west = NULL;
+	textures->east = NULL;
+	textures->floor = 0;
+	textures->ceiling = 0;
+	textures->hex_floor = 0x0;
+	textures->hex_ceiling = 0x0;
+	textures->size = TEX_SIZE;
+	textures->step = 0.0;
+	textures->pos = 0.0;
+	textures->x = 0;
+	textures->y = 0;
 }
