@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:41:27 by alonso            #+#    #+#             */
-/*   Updated: 2024/09/29 13:07:53 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:03:15 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,28 +49,28 @@ int	check_map_sides(t_mapinfo *map, char **map_tab)
 	return (0);
 }
 
-static int	check_map_elements(t_data *data, char **map_tab)
+static int	check_map_elements(t_cubi *cubi, char **map_tab)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	data->player.dir = '0';
+	cubi->player.dir = '0';
 	while (map_tab[i] != NULL)
 	{
 		j = 0;
 		while (map_tab[i][j])
 		{
-			while (data->map[i][j] == ' ' || data->map[i][j] == '\t'
-			|| data->map[i][j] == '\r'
-			|| data->map[i][j] == '\v' || data->map[i][j] == '\f')
+			while (cubi->map[i][j] == ' ' || cubi->map[i][j] == '\t'
+			|| cubi->map[i][j] == '\r'
+			|| cubi->map[i][j] == '\v' || cubi->map[i][j] == '\f')
 				j++;
 			if (!(ft_strchr("10NSEW", map_tab[i][j])))
-				return (custom_error(data->mapinfo.path, "invalid character", 1));
-			if (ft_strchr("NSEW", map_tab[i][j]) && data->player.dir != '0')
-				return (custom_error(data->mapinfo.path, "more than 1 player", 1));
-			if (ft_strchr("NSEW", map_tab[i][j]) && data->player.dir == '0')
-				data->player.dir = map_tab[i][j];
+				return (custom_error(cubi->mapinfo.path, "invalid character", 1));
+			if (ft_strchr("NSEW", map_tab[i][j]) && cubi->player.dir != '0')
+				return (custom_error(cubi->mapinfo.path, "more than 1 player", 1));
+			if (ft_strchr("NSEW", map_tab[i][j]) && cubi->player.dir == '0')
+				cubi->player.dir = map_tab[i][j];
 			j++;
 		}
 		i++;
@@ -78,13 +78,13 @@ static int	check_map_elements(t_data *data, char **map_tab)
 	return (0);
 }
 
-static int	check_position_is_valid(t_data *data, char **map_tab)
+static int	check_position_is_valid(t_cubi *cubi, char **map_tab)
 {
 	int	i;
 	int	j;
 
-	i = (int)data->player.pos_y;
-	j = (int)data->player.pos_x;
+	i = (int)cubi->player.pos_y;
+	j = (int)cubi->player.pos_x;
 	if (ft_strlen(map_tab[i - 1]) < (size_t)j
 		|| ft_strlen(map_tab[i + 1]) < (size_t)j
 		|| is_a_white_space(map_tab[i][j - 1]) == 0
@@ -95,13 +95,13 @@ static int	check_position_is_valid(t_data *data, char **map_tab)
 	return (0);
 }
 
-static int	check_player_position(t_data *data, char **map_tab)
+static int	check_player_position(t_cubi *cubi, char **map_tab)
 {
 	int	i;
 	int	j;
 
-	if (data->player.dir == '0')
-		return (custom_error(data->mapinfo.path, "player sin direccion", 1));
+	if (cubi->player.dir == '0')
+		return (custom_error(cubi->mapinfo.path, "player sin direccion", 1));
 	i = 0;
 	while (map_tab[i])
 	{
@@ -110,16 +110,16 @@ static int	check_player_position(t_data *data, char **map_tab)
 		{
 			if (ft_strchr("NSEW", map_tab[i][j]))
 			{
-				data->player.pos_x = (double)j + 0.5;
-				data->player.pos_y = (double)i + 0.5;
+				cubi->player.pos_x = (double)j + 0.5;
+				cubi->player.pos_y = (double)i + 0.5;
 				map_tab[i][j] = '0';
 			}
 			j++;
 		}
 		i++;
 	}
-	if (check_position_is_valid(data, map_tab) == 1)
-		return (custom_error(data->mapinfo.path, "posicion de player invalida", 1));
+	if (check_position_is_valid(cubi, map_tab) == 1)
+		return (custom_error(cubi->mapinfo.path, "posicion de player invalida", 1));
 	return (0);
 }
 
@@ -145,19 +145,19 @@ static int	check_map_is_at_the_end(t_mapinfo *map)
 	return (0);
 }
 
-int	check_map_validity(t_data *data, char **map_tab)
+int	check_map_validity(t_cubi *cubi, char **map_tab)
 {
-	if (!data->map)
-		return (custom_error(data->mapinfo.path, "No hay mapa", 1));
-	if (check_map_sides(&data->mapinfo, map_tab) == 1)
-		return (custom_error(data->mapinfo.path, "Mapa debe estar rodeado de paredes", 1));
-	if (data->mapinfo.height < 3)
-		return (custom_error(data->mapinfo.path, "Mapa pequeño, al menos debe ser de 3 alturas", 1));
-	if (check_map_elements(data, map_tab) == 1)
+	if (!cubi->map)
+		return (custom_error(cubi->mapinfo.path, "No hay mapa", 1));
+	if (check_map_sides(&cubi->mapinfo, map_tab) == 1)
+		return (custom_error(cubi->mapinfo.path, "Mapa debe estar rodeado de paredes", 1));
+	if (cubi->mapinfo.height < 3)
+		return (custom_error(cubi->mapinfo.path, "Mapa pequeño, al menos debe ser de 3 alturas", 1));
+	if (check_map_elements(cubi, map_tab) == 1)
 		return (1);
-	if (check_player_position(data, map_tab) == 1)
+	if (check_player_position(cubi, map_tab) == 1)
 		return (1);
-	if (check_map_is_at_the_end(&data->mapinfo) == 1)
-		return (custom_error(data->mapinfo.path, "Mapa debe ser lo ultimo del fichero", 1));
+	if (check_map_is_at_the_end(&cubi->mapinfo) == 1)
+		return (custom_error(cubi->mapinfo.path, "Mapa debe ser lo ultimo del fichero", 1));
 	return (0);
 }

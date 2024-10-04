@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:26:51 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/09/28 18:16:59 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:03:29 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,15 +88,15 @@ static void	draw_minimap(t_minimap *minimap)
 	set_minimap_border_image_pixels(minimap, MMAP_COLOR_SPACE);
 }
 
-void	render_minimap_image(t_data *data, t_minimap *minimap)
+void	render_minimap_image(t_cubi *cubi, t_minimap *minimap)
 {
 	int	img_size;
 
 	img_size = MMAP_PIXEL_SIZE + minimap->tile_size;
-	init_img(data, &data->minimap, img_size, img_size);
+	init_img(cubi, &cubi->minimap, img_size, img_size);
 	draw_minimap(minimap);
-	mlx_put_image_to_window(data->mlx, data->win, data->minimap.img,
-		minimap->tile_size, data->win_height
+	mlx_put_image_to_window(cubi->mlx, cubi->win, cubi->minimap.img,
+		minimap->tile_size, cubi->win_height
 		- (MMAP_PIXEL_SIZE + (minimap->tile_size * 2)));
-	mlx_destroy_image(data->mlx, data->minimap.img);
+	mlx_destroy_image(cubi->mlx, cubi->minimap.img);
 }

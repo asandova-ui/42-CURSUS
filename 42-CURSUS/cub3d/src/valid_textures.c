@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:49:02 by alonso            #+#    #+#             */
-/*   Updated: 2024/09/28 12:52:30 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:03:16 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,17 @@ static unsigned long	convert_rgb_to_hex(int *rgb_tab)
 	return (result);
 }
 
-int	check_textures_validity(t_data *data, t_texinfo *textures)
+int	check_textures_validity(t_cubi *cubi, t_texinfo *textures)
 {
 	if (!textures->north || !textures->south || !textures->west
 		|| !textures->east)
-		return (custom_error(data->mapinfo.path, "Falta textura/texturas", 1));
+		return (custom_error(cubi->mapinfo.path, "Falta textura/texturas", 1));
 	if (!textures->floor || !textures->ceiling)
-		return (custom_error(data->mapinfo.path, "Falta color/colores", 1));
-	if (check_file(textures->north, false) == 1
-		|| check_file(textures->south, false) == 1
-		|| check_file(textures->west, false) == 1
-		|| check_file(textures->east, false) == 1
+		return (custom_error(cubi->mapinfo.path, "Falta color/colores", 1));
+	if (file_validity(textures->north, false) == 1
+		|| file_validity(textures->south, false) == 1
+		|| file_validity(textures->west, false) == 1
+		|| file_validity(textures->east, false) == 1
 		|| check_valid_rgb(textures->floor) == 1
 		|| check_valid_rgb(textures->ceiling) == 1)
 		return (1);

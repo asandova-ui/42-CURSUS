@@ -6,18 +6,18 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:31:34 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/09/28 18:26:42 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:03:28 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static int	rotate_left_right(t_data *data, double rotspeed)
+static int	rotate_left_right(t_cubi *cubi, double rotspeed)
 {
 	t_player	*p;
 	double		tmp_x;
 
-	p = &data->player;
+	p = &cubi->player;
 	tmp_x = p->dir_x;
 	p->dir_x = p->dir_x * cos(rotspeed) - p->dir_y * sin(rotspeed);
 	p->dir_y = tmp_x * sin(rotspeed) + p->dir_y * cos(rotspeed);
@@ -27,13 +27,13 @@ static int	rotate_left_right(t_data *data, double rotspeed)
 	return (1);
 }
 
-int	rotate_player(t_data *data, double rotdir)
+int	rotate_player(t_cubi *cubi, double rotdir)
 {
 	int		moved;
 	double	rotspeed;
 
 	moved = 0;
 	rotspeed = ROTSPEED * rotdir;
-	moved += rotate_left_right(data, rotspeed);
+	moved += rotate_left_right(cubi, rotspeed);
 	return (moved);
 }

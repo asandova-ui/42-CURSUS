@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 10:54:12 by alonso            #+#    #+#             */
-/*   Updated: 2024/09/28 12:19:04 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:03:02 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,17 @@ static void	init_player(t_player *player)
 	player->rotate = 0;
 }
 
-void	init_data(t_data *data)
+void	init_cubi(t_cubi *cubi)
 {
-	data->mlx = NULL;
-	data->win = NULL;
-	data->win_height = WIN_HEIGHT;
-	data->win_width = WIN_WIDTH;
-	init_player(&data->player);
-	init_texinfo(&data->texinfo);
-	data->map = NULL;
-	init_mapinfo(&data->mapinfo);
-	init_img_clean(&data->minimap);
-	data->texture_pixels = NULL;
-	data->textures = NULL;
+	cubi->mlx = NULL;
+	cubi->win = NULL;
+	cubi->win_height = WIN_HEIGHT;
+	cubi->win_width = WIN_WIDTH;
+	init_player(&cubi->player);
+	init_texinfo(&cubi->texinfo);
+	cubi->map = NULL;
+	init_mapinfo(&cubi->mapinfo);
+	init_img_clean(&cubi->minimap);
+	cubi->texture_pixels = NULL;
+	cubi->textures = NULL;
 }

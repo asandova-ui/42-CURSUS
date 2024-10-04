@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 22:40:40 by alexa             #+#    #+#             */
-/*   Updated: 2024/09/28 18:17:08 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:03:31 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	set_dda(t_ray *ray, t_player *player)
 - If the sidedistx < sidedisty, x is the closest point from the ray
 */
 
-static void	perform_dda(t_data *data, t_ray *ray)
+static void	perform_dda(t_cubi *cubi, t_ray *ray)
 {
 	int	hit;
 
@@ -92,27 +92,27 @@ static void	perform_dda(t_data *data, t_ray *ray)
 		}
 		if (ray->map_y < 0.25
 			|| ray->map_x < 0.25
-			|| ray->map_y > data->mapinfo.height - 0.25
-			|| ray->map_x > data->mapinfo.width - 1.25)
+			|| ray->map_y > cubi->mapinfo.height - 0.25
+			|| ray->map_x > cubi->mapinfo.width - 1.25)
 			break ;
-		else if (data->map[ray->map_y][ray->map_x] > '0')
+		else if (cubi->map[ray->map_y][ray->map_x] > '0')
 			hit = 1;
 	}
 }
 
-static void	calculate_line_height(t_ray *ray, t_data *data, t_player *player)
+static void	calculate_line_height(t_ray *ray, t_cubi *cubi, t_player *player)
 {
 	if (ray->side == 0)
 		ray->wall_dist = (ray->sidedist_x - ray->deltadist_x);
 	else
 		ray->wall_dist = (ray->sidedist_y - ray->deltadist_y);
-	ray->line_height = (int)(data->win_height / ray->wall_dist);
-	ray->draw_start = -(ray->line_height) / 2 + data->win_height / 2;
+	ray->line_height = (int)(cubi->win_height / ray->wall_dist);
+	ray->draw_start = -(ray->line_height) / 2 + cubi->win_height / 2;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
-	ray->draw_end = ray->line_height / 2 + data->win_height / 2;
-	if (ray->draw_end >= data->win_height)
-		ray->draw_end = data->win_height - 1;
+	ray->draw_end = ray->line_height / 2 + cubi->win_height / 2;
+	if (ray->draw_end >= cubi->win_height)
+		ray->draw_end = cubi->win_height - 1;
 	if (ray->side == 0)
 		ray->wall_x = player->pos_y + ray->wall_dist * ray->dir_y;
 	else
@@ -120,20 +120,20 @@ static void	calculate_line_height(t_ray *ray, t_data *data, t_player *player)
 	ray->wall_x -= floor(ray->wall_x);
 }
 
-int	raycasting(t_player *player, t_data *data)
+int	raycasting(t_player *player, t_cubi *cubi)
 {
 	t_ray	ray;
 	int		x;
 
 	x = 0;
-	ray = data->ray;
-	while (x < data->win_width)
+	ray = cubi->ray;
+	while (x < cubi->win_width)
 	{
 		init_raycasting_info(x, &ray, player);
 		set_dda(&ray, player);
-		perform_dda(data, &ray);
-		calculate_line_height(&ray, data, player);
-		update_texture_pixels(data, &data->texinfo, &ray, x);
+		perform_dda(cubi, &ray);
+		calculate_line_height(&ray, cubi, player);
+		update_texture_pixels(cubi, &cubi->texinfo, &ray, x);
 		x++;
 	}
 	return (SUCCESS);

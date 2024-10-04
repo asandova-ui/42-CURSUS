@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:30:19 by alonso            #+#    #+#             */
-/*   Updated: 2024/09/28 12:40:33 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:02:55 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,23 @@ static void	free_texinfo(t_texinfo *textures)
 		free(textures->ceiling);
 }
 
-static void	free_map(t_data *data)
+static void	free_map(t_cubi *cubi)
 {
-	if (data->mapinfo.fd > 0)
-		close(data->mapinfo.fd);
-	if (data->mapinfo.file)
-		free_tab((void **)data->mapinfo.file);
-	if (data->map)
-		free_tab((void **)data->map);
+	if (cubi->mapinfo.fd > 0)
+		close(cubi->mapinfo.fd);
+	if (cubi->mapinfo.file)
+		free_tab((void **)cubi->mapinfo.file);
+	if (cubi->map)
+		free_tab((void **)cubi->map);
 }
 
-int	free_data(t_data *data)
+int	free_cubi(t_cubi *cubi)
 {
-	if (data->textures)
-		free_tab((void **)data->textures);
-	if (data->texture_pixels)
-		free_tab((void **)data->texture_pixels);
-	free_texinfo(&data->texinfo);
-	free_map(data);
+	if (cubi->textures)
+		free_tab((void **)cubi->textures);
+	if (cubi->texture_pixels)
+		free_tab((void **)cubi->texture_pixels);
+	free_texinfo(&cubi->texinfo);
+	free_map(cubi);
 	return (1);
 }

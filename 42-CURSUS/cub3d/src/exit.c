@@ -6,30 +6,30 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 11:20:11 by alonso            #+#    #+#             */
-/*   Updated: 2024/09/28 12:19:01 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:05:52 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	clean_exit(t_data *data, int code)
+void	full_exit(t_cubi *cubi, int code)
 {
-	if (!data)
+	if (!cubi)
 		exit(code);
-	if (data->win && data->mlx)
-		mlx_destroy_window(data->mlx, data->win);
-	if (data->mlx)
+	if (cubi->win && cubi->mlx)
+		mlx_destroy_window(cubi->mlx, cubi->win);
+	if (cubi->mlx)
 	{
-		mlx_destroy_display(data->mlx);
-		mlx_loop_end(data->mlx);
-		free(data->mlx);
+		mlx_destroy_display(cubi->mlx);
+		mlx_loop_end(cubi->mlx);
+		free(cubi->mlx);
 	}
-	free_data(data);
+	free_cubi(cubi);
 	exit(code);
 }
 
-int	quit_cub3d(t_data *data)
+int	quit_cub3d(t_cubi *cubi)
 {
-	clean_exit(data, 0);
+	full_exit(cubi, 0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:26:32 by alonso            #+#    #+#             */
-/*   Updated: 2024/09/28 13:04:53 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:02:33 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,23 +71,23 @@ static int	*set_rgb_colors(char *line)
 	return (copy_into_rgb_array(rgb_to_convert, rgb));
 }
 
-int	fill_color_textures(t_data *data, t_texinfo *textures, char *line, int j)
+int	fill_color_textures(t_cubi *cubi, t_texinfo *textures, char *line, int j)
 {
 	if (line[j + 1] && ft_isprint(line[j + 1]))
-		return (custom_error(data->mapinfo.path, "SUELO/TECHO CON RGB NO VALIDO", 2));
+		return (custom_error(cubi->mapinfo.path, "SUELO/TECHO CON RGB NO VALIDO", 2));
 	if (!textures->ceiling && line[j] == 'C')
 	{
 		textures->ceiling = set_rgb_colors(line + j + 1);
 		if (textures->ceiling == 0)
-			return (custom_error(data->mapinfo.path, "TECHO CON RGB NO VALIDO", 2));
+			return (custom_error(cubi->mapinfo.path, "TECHO CON RGB NO VALIDO", 2));
 	}
 	else if (!textures->floor && line[j] == 'F')
 	{
 		textures->floor = set_rgb_colors(line + j + 1);
 		if (textures->floor == 0)
-			return (custom_error(data->mapinfo.path, "SUELO CON RGB NO VALIDO", 2));
+			return (custom_error(cubi->mapinfo.path, "SUELO CON RGB NO VALIDO", 2));
 	}
 	else
-		return (custom_error(data->mapinfo.path, "SUELO/TECHO CON RGB NO VALIDO", 2));
+		return (custom_error(cubi->mapinfo.path, "SUELO/TECHO CON RGB NO VALIDO", 2));
 	return (0);
 }

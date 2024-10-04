@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 10:44:46 by alonso            #+#    #+#             */
-/*   Updated: 2024/09/29 12:50:42 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:08:21 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,7 +234,7 @@ typedef struct s_player
 	int		rotate;
 }	t_player;
 
-typedef struct s_data
+typedef struct s_cubi
 {
 	void		*mlx;
 	void		*win;
@@ -248,7 +248,7 @@ typedef struct s_data
 	int			**textures;
 	t_texinfo	texinfo;
 	t_img		minimap;
-}	t_data;
+}	t_cubi;
 
 typedef struct s_minimap
 {
@@ -267,41 +267,41 @@ typedef struct s_minimap
 
 
 int	custom_error(char *detail, char *str, int code);
-void	init_data(t_data *data);
-int	check_file(char *arg, bool cub);
-void	clean_exit(t_data *data, int code);
-void	parse_data(char *path, t_data *data);
-int	get_file_data(t_data *data, char **map);
+void	init_cubi(t_cubi *cubi);
+int	file_validity(char *arg, bool cub);
+void	full_exit(t_cubi *cubi, int code);
+void	parse_cubi(char *path, t_cubi *cubi);
+int	get_cubi_file(t_cubi *cubi, char **map);
 void	free_tab(void **tab);
-int	fill_color_textures(t_data *data, t_texinfo *textures, char *line, int j);
-void	init_mlx(t_data *data);
-int	free_data(t_data *data);
+int	fill_color_textures(t_cubi *cubi, t_texinfo *textures, char *line, int j);
+void	init_mlx(t_cubi *cubi);
+int	free_cubi(t_cubi *cubi);
 int	custom_error_val(int detail, char *str, int code);
-int	check_textures_validity(t_data *data, t_texinfo *textures);
-void	init_player_direction(t_data *data);
-void	debug_display_data(t_data *data);
-int	check_map_validity(t_data *data, char **map_tab);
+int	check_textures_validity(t_cubi *cubi, t_texinfo *textures);
+void	init_player_direction(t_cubi *cubi);
+void	debug_display_data(t_cubi *cubi);
+int	check_map_validity(t_cubi *cubi, char **map_tab);
 void	init_img_clean(t_img *img);
-int	create_map(t_data *data, char **file, int i);
+int	create_map(t_cubi *cubi, char **file, int i);
 int	is_a_white_space(char c);
 size_t	find_biggest_len(t_mapinfo *map, int i);
-void	init_textures(t_data *data);
-void	init_texture_img(t_data *data, t_img *image, char *path);
-int	render(t_data *data);
-void	render_images(t_data *data);
+void	init_textures(t_cubi *cubi);
+void	init_texture_img(t_cubi *cubi, t_img *image, char *path);
+int	render(t_cubi *cubi);
+void	render_images(t_cubi *cubi);
 void	set_image_pixel(t_img *image, int x, int y, int color);
-void	init_img(t_data *data, t_img *image, int width, int height);
-void	init_texture_pixels(t_data *data);
+void	init_img(t_cubi *cubi, t_img *image, int width, int height);
+void	init_texture_pixels(t_cubi *cubi);
 void	init_ray(t_ray *ray);
-int	raycasting(t_player *player, t_data *data);
-void	render_minimap_image(t_data *data, t_minimap *minimap);
-void	render_minimap(t_data *data);
-int	move_player(t_data *data);
+int	raycasting(t_player *player, t_cubi *cubi);
+void	render_minimap_image(t_cubi *cubi, t_minimap *minimap);
+void	render_minimap(t_cubi *cubi);
+int	move_player(t_cubi *cubi);
 void	debug_display_minimap(t_minimap *minimap);
-void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x);
-int	rotate_player(t_data *data, double rotdir);
-int	quit_cub3d(t_data *data);
-int	validate_move(t_data *data, double new_x, double new_y);
-void	listen_for_input(t_data *data);
+void	update_texture_pixels(t_cubi *cubi, t_texinfo *tex, t_ray *ray, int x);
+int	rotate_player(t_cubi *cubi, double rotdir);
+int	quit_cub3d(t_cubi *cubi);
+int	validate_move(t_cubi *cubi, double new_x, double new_y);
+void	listen_for_input(t_cubi *cubi);
 
 #endif

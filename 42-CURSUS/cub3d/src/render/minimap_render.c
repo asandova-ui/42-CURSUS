@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:29:15 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/09/28 18:28:22 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:03:30 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static bool	is_valid_map_coord(int coord, int size)
 	return (false);
 }
 
-static char	*add_minimap_line(t_data *d, t_minimap *m, int y)
+static char	*add_minimap_line(t_cubi *d, t_minimap *m, int y)
 {
 	char	*line;
 	int		x;
@@ -56,7 +56,7 @@ static char	*add_minimap_line(t_data *d, t_minimap *m, int y)
 	return (line);
 }
 
-static char	**generate_minimap(t_data *data, t_minimap *minimap)
+static char	**generate_minimap(t_cubi *cubi, t_minimap *minimap)
 {
 	char	**mmap;
 	int		y;
@@ -65,9 +65,9 @@ static char	**generate_minimap(t_data *data, t_minimap *minimap)
 	if (!mmap)
 		return (NULL);
 	y = 0;
-	while (y < minimap->size && y < data->mapinfo.height)
+	while (y < minimap->size && y < cubi->mapinfo.height)
 	{
-		mmap[y] = add_minimap_line(data, minimap, y);
+		mmap[y] = add_minimap_line(cubi, minimap, y);
 		if (!mmap[y])
 		{
 			free_tab((void **)mmap);
@@ -78,20 +78,20 @@ static char	**generate_minimap(t_data *data, t_minimap *minimap)
 	return (mmap);
 }
 
-void	render_minimap(t_data *data)
+void	render_minimap(t_cubi *cubi)
 {
 	t_minimap	minimap;
 
 	minimap.map = NULL;
-	minimap.img = &data->minimap;
+	minimap.img = &cubi->minimap;
 	minimap.view_dist = MMAP_VIEW_DIST;
 	minimap.size = (2 * minimap.view_dist) + 1;
 	minimap.tile_size = MMAP_PIXEL_SIZE / (2 * minimap.view_dist);
 	minimap.offset_x = get_mmap_offset(&minimap,
-			data->mapinfo.width, (int)data->player.pos_x);
+			cubi->mapinfo.width, (int)cubi->player.pos_x);
 	minimap.offset_y = get_mmap_offset(&minimap,
-			data->mapinfo.height, (int)data->player.pos_y);
-	minimap.map = generate_minimap(data, &minimap);
+			cubi->mapinfo.height, (int)cubi->player.pos_y);
+	minimap.map = generate_minimap(cubi, &minimap);
 	if (!minimap.map)
 	{
 		custom_error(NULL, ERR_MALLOC, 0);
@@ -99,6 +99,6 @@ void	render_minimap(t_data *data)
 	}
 	if (MMAP_DEBUG_MSG)
 		debug_display_minimap(&minimap);
-	render_minimap_image(data, &minimap);
+	render_minimap_image(cubi, &minimap);
 	free_tab((void **)minimap.map);
 }

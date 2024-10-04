@@ -6,47 +6,47 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:56:04 by alonso            #+#    #+#             */
-/*   Updated: 2024/09/28 18:34:22 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:05:52 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static int	*xpm_to_img(t_data *data, char *path)
+static int	*xpm_to_img(t_cubi *cubi, char *path)
 {
 	t_img	tmp;
 	int		*buffer;
 	int		x;
 	int		y;
 
-	init_texture_img(data, &tmp, path);
+	init_texture_img(cubi, &tmp, path);
 	buffer = ft_calloc(1,
-			sizeof * buffer * data->texinfo.size * data->texinfo.size);
+			sizeof * buffer * cubi->texinfo.size * cubi->texinfo.size);
 	if (!buffer)
-		clean_exit(data, custom_error(NULL, "error malloc", 1));
+		full_exit(cubi, custom_error(NULL, "error malloc", 1));
 	y = 0;
-	while (y < data->texinfo.size)
+	while (y < cubi->texinfo.size)
 	{
 		x = 0;
-		while (x < data->texinfo.size)
+		while (x < cubi->texinfo.size)
 		{
-			buffer[y * data->texinfo.size + x]
-				= tmp.addr[y * data->texinfo.size + x];
+			buffer[y * cubi->texinfo.size + x]
+				= tmp.addr[y * cubi->texinfo.size + x];
 			++x;
 		}
 		y++;
 	}
-	mlx_destroy_image(data->mlx, tmp.img);
+	mlx_destroy_image(cubi->mlx, tmp.img);
 	return (buffer);
 }
 
-void	init_textures(t_data *data)
+void	init_textures(t_cubi *cubi)
 {
-	data->textures = ft_calloc(5, sizeof * data->textures);
-	if (!data->textures)
-		clean_exit(data, custom_error(NULL, "error malloc", 1));
-	data->textures[NORTH] = xpm_to_img(data, data->texinfo.north);
-	data->textures[SOUTH] = xpm_to_img(data, data->texinfo.south);
-	data->textures[EAST] = xpm_to_img(data, data->texinfo.east);
-	data->textures[WEST] = xpm_to_img(data, data->texinfo.west);
+	cubi->textures = ft_calloc(5, sizeof * cubi->textures);
+	if (!cubi->textures)
+		full_exit(cubi, custom_error(NULL, "error malloc", 1));
+	cubi->textures[NORTH] = xpm_to_img(cubi, cubi->texinfo.north);
+	cubi->textures[SOUTH] = xpm_to_img(cubi, cubi->texinfo.south);
+	cubi->textures[EAST] = xpm_to_img(cubi, cubi->texinfo.east);
+	cubi->textures[WEST] = xpm_to_img(cubi, cubi->texinfo.west);
 }

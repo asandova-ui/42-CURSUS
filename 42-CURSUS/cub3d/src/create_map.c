@@ -6,13 +6,13 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 13:08:20 by alonso            #+#    #+#             */
-/*   Updated: 2024/09/28 13:09:57 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:02:44 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static int	count_map_lines(t_data *data, char **file, int i)
+static int	count_map_lines(t_cubi *cubi, char **file, int i)
 {
 	int	index_value;
 	int	j;
@@ -28,7 +28,7 @@ static int	count_map_lines(t_data *data, char **file, int i)
 			break ;
 		i++;
 	}
-	data->mapinfo.index_end_of_map = i;
+	cubi->mapinfo.index_end_of_map = i;
 	return (i - index_value);
 }
 
@@ -59,44 +59,44 @@ static int	fill_map_tab(t_mapinfo *mapinfo, char **map_tab, int index)
 	return (0);
 }
 
-static int	get_map_info(t_data *data, char **file, int i)
+static int	get_map_info(t_cubi *cubi, char **file, int i)
 {
-	data->mapinfo.height = count_map_lines(data, file, i);
-	data->map = malloc(sizeof(char *) * (data->mapinfo.height + 1));
-	if (!data->map)
+	cubi->mapinfo.height = count_map_lines(cubi, file, i);
+	cubi->map = malloc(sizeof(char *) * (cubi->mapinfo.height + 1));
+	if (!cubi->map)
 		return (custom_error(NULL, "error malloc", 1));
-	if (fill_map_tab(&data->mapinfo, data->map, i) == 1)
+	if (fill_map_tab(&cubi->mapinfo, cubi->map, i) == 1)
 		return (1);
 	return (0);
 }
 
-static void	change_space_into_wall(t_data *data)
+static void	change_space_into_wall(t_cubi *cubi)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (data->map[i])
+	while (cubi->map[i])
 	{
 		j = 0;
-		while (data->map[i][j] == ' ' || data->map[i][j] == '\t'
-		|| data->map[i][j] == '\r'
-		|| data->map[i][j] == '\v' || data->map[i][j] == '\f')
+		while (cubi->map[i][j] == ' ' || cubi->map[i][j] == '\t'
+		|| cubi->map[i][j] == '\r'
+		|| cubi->map[i][j] == '\v' || cubi->map[i][j] == '\f')
 			j++;
-		while (data->map[i][++j])
+		while (cubi->map[i][++j])
 		{
-			if (data->map[i][j] == ' '
-				&& j != data->map[i][ft_strlen(data->map[i]) - 1])
-				data->map[i][j] = '1';
+			if (cubi->map[i][j] == ' '
+				&& j != cubi->map[i][ft_strlen(cubi->map[i]) - 1])
+				cubi->map[i][j] = '1';
 		}
 		i++;
 	}
 }
 
-int	create_map(t_data *data, char **file, int i)
+int	create_map(t_cubi *cubi, char **file, int i)
 {
-	if (get_map_info(data, file, i) == 1)
+	if (get_map_info(cubi, file, i) == 1)
 		return (1);
-	change_space_into_wall(data);
+	change_space_into_wall(cubi);
 	return (0);
 }

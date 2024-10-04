@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 11:14:43 by alonso            #+#    #+#             */
-/*   Updated: 2024/09/28 18:02:33 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:02:01 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static bool	is_xpm_file(char *arg)
 	return (true);
 }
 
-int	check_file(char *arg, bool cub)
+int	file_validity(char *arg, bool cub)
 {
 	int	fd;
 

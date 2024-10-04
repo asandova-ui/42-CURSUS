@@ -6,65 +6,65 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:30:04 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/09/28 18:17:11 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:03:33 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	set_frame_image_pixel(t_data *data, t_img *image, int x, int y)
+static void	set_frame_image_pixel(t_cubi *cubi, t_img *image, int x, int y)
 {
-	if (data->texture_pixels[y][x] > 0)
-		set_image_pixel(image, x, y, data->texture_pixels[y][x]);
-	else if (y < data->win_height / 2)
-		set_image_pixel(image, x, y, data->texinfo.hex_ceiling);
-	else if (y < data->win_height -1)
-		set_image_pixel(image, x, y, data->texinfo.hex_floor);
+	if (cubi->texture_pixels[y][x] > 0)
+		set_image_pixel(image, x, y, cubi->texture_pixels[y][x]);
+	else if (y < cubi->win_height / 2)
+		set_image_pixel(image, x, y, cubi->texinfo.hex_ceiling);
+	else if (y < cubi->win_height -1)
+		set_image_pixel(image, x, y, cubi->texinfo.hex_floor);
 }
 
-static void	render_frame(t_data *data)
+static void	render_frame(t_cubi *cubi)
 {
 	t_img	image;
 	int		x;
 	int		y;
 
 	image.img = NULL;
-	init_img(data, &image, data->win_width, data->win_height);
+	init_img(cubi, &image, cubi->win_width, cubi->win_height);
 	y = 0;
-	while (y < data->win_height)
+	while (y < cubi->win_height)
 	{
 		x = 0;
-		while (x < data->win_width)
+		while (x < cubi->win_width)
 		{
-			set_frame_image_pixel(data, &image, x, y);
+			set_frame_image_pixel(cubi, &image, x, y);
 			x++;
 		}
 		y++;
 	}
-	mlx_put_image_to_window(data->mlx, data->win, image.img, 0, 0);
-	mlx_destroy_image(data->mlx, image.img);
+	mlx_put_image_to_window(cubi->mlx, cubi->win, image.img, 0, 0);
+	mlx_destroy_image(cubi->mlx, image.img);
 }
 
-static void	render_raycast(t_data *data)
+static void	render_raycast(t_cubi *cubi)
 {
-	init_texture_pixels(data);
-	init_ray(&data->ray);
-	raycasting(&data->player, data);
-	render_frame(data);
+	init_texture_pixels(cubi);
+	init_ray(&cubi->ray);
+	raycasting(&cubi->player, cubi);
+	render_frame(cubi);
 }
 
-void	render_images(t_data *data)
+void	render_images(t_cubi *cubi)
 {
-	render_raycast(data);
+	render_raycast(cubi);
 	if (BONUS)
-		render_minimap(data);
+		render_minimap(cubi);
 }
 
-int	render(t_data *data)
+int	render(t_cubi *cubi)
 {
-	data->player.has_moved += move_player(data);
-	if (data->player.has_moved == 0)
+	cubi->player.has_moved += move_player(cubi);
+	if (cubi->player.has_moved == 0)
 		return (0);
-	render_images(data);
+	render_images(cubi);
 	return (0);
 }

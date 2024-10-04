@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:31:14 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/09/28 18:26:51 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:03:23 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ static void	init_player_east_west(t_player *player)
 		return ;
 }
 
-void	init_player_direction(t_data *data)
+void	init_player_direction(t_cubi *cubi)
 {
-	init_player_north_south(&data->player);
-	init_player_east_west(&data->player);
+	init_player_north_south(&cubi->player);
+	init_player_east_west(&cubi->player);
 }

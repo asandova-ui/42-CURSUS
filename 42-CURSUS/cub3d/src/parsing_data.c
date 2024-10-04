@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:14:01 by alonso            #+#    #+#             */
-/*   Updated: 2024/09/28 18:02:33 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:03:11 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,31 @@ static int	get_number_of_lines(char *path)
 	return (line_count);
 }
 
-static void	fill_tab(int row, int column, int i, t_data *data)
+static void	fill_tab(int row, int column, int i, t_cubi *cubi)
 {
 	char	*line;
 
-	line = get_next_line(data->mapinfo.fd);
+	line = get_next_line(cubi->mapinfo.fd);
 	while (line != NULL)
 	{
-		data->mapinfo.file[row] = ft_calloc(ft_strlen(line) + 1, sizeof(char));
-		if (!data->mapinfo.file[row])
+		cubi->mapinfo.file[row] = ft_calloc(ft_strlen(line) + 1, sizeof(char));
+		if (!cubi->mapinfo.file[row])
 		{
 			custom_error(NULL, ERR_MALLOC, 0);
-			return (free_tab((void **)data->mapinfo.file));
+			return (free_tab((void **)cubi->mapinfo.file));
 		}
 		while (line[i] != '\0')
-			data->mapinfo.file[row][column++] = line[i++];
-		data->mapinfo.file[row++][column] = '\0';
+			cubi->mapinfo.file[row][column++] = line[i++];
+		cubi->mapinfo.file[row++][column] = '\0';
 		column = 0;
 		i = 0;
 		free(line);
-		line = get_next_line(data->mapinfo.fd);
+		line = get_next_line(cubi->mapinfo.fd);
 	}
-	data->mapinfo.file[row] = NULL;
+	cubi->mapinfo.file[row] = NULL;
 }
 
-void	parse_data(char *path, t_data *data)
+void	parse_cubi(char *path, t_cubi *cubi)
 {
 	int		row;
 	int		i;
@@ -69,21 +69,21 @@ void	parse_data(char *path, t_data *data)
 	i = 0;
 	row = 0;
 	column = 0;
-	data->mapinfo.line_count = get_number_of_lines(path);
-	data->mapinfo.path = path;
-	data->mapinfo.file = ft_calloc(data->mapinfo.line_count \
+	cubi->mapinfo.line_count = get_number_of_lines(path);
+	cubi->mapinfo.path = path;
+	cubi->mapinfo.file = ft_calloc(cubi->mapinfo.line_count \
 			+ 1, sizeof(char *));
-	if (!(data->mapinfo.file))
+	if (!(cubi->mapinfo.file))
 	{
 		custom_error(NULL, ERR_MALLOC, 0);
 		return ;
 	}
-	data->mapinfo.fd = open(path, O_RDONLY);
-	if (data->mapinfo.fd < 0)
+	cubi->mapinfo.fd = open(path, O_RDONLY);
+	if (cubi->mapinfo.fd < 0)
 		custom_error(path, strerror(errno), FAILURE);
 	else
 	{
-		fill_tab(row, column, i, data);
-		close(data->mapinfo.fd);
+		fill_tab(row, column, i, cubi);
+		close(cubi->mapinfo.fd);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:21:51 by alonso            #+#    #+#             */
-/*   Updated: 2024/09/28 18:07:01 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/04 11:10:29 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	fill_direction_textures(t_texinfo *textures, char *line, int j)
 		return (ERR);
 	return (SUCCESS);
 }
-static int	ignore_whitespaces_get_info(t_data *data, char **map, int i, int j)
+static int	ignore_whitespaces_get_info(t_cubi *cubi, char **map, int i, int j)
 {
 	while (map[i][j] == ' ' || map[i][j] == '\t' || map[i][j] == '\n')
 		j++;
@@ -65,27 +65,27 @@ static int	ignore_whitespaces_get_info(t_data *data, char **map, int i, int j)
 		if (map[i][j + 1] && ft_isprint(map[i][j + 1])
 			&& !ft_isdigit(map[i][j]))
 		{
-			if (fill_direction_textures(&data->texinfo, map[i], j) == ERR)
-				return (custom_error(data->mapinfo.path, ERR_TEX_INVALID, FAILURE));
+			if (fill_direction_textures(&cubi->texinfo, map[i], j) == ERR)
+				return (custom_error(cubi->mapinfo.path, ERR_TEX_INVALID, FAILURE));
 			return (BREAK);
 		}	
 		else
 		{
-			if (fill_color_textures(data, &data->texinfo, map[i], j) == ERR)
+			if (fill_color_textures(cubi, &cubi->texinfo, map[i], j) == ERR)
 				return (FAILURE);
 			return (BREAK);
 		}	
 	}
 	else if (ft_isdigit(map[i][j]))
 	{
-		if (create_map(data, map, i) == FAILURE)
-			return (custom_error(data->mapinfo.path, ERR_INVALID_MAP, FAILURE));
+		if (create_map(cubi, map, i) == FAILURE)
+			return (custom_error(cubi->mapinfo.path, ERR_INVALID_MAP, FAILURE));
 		return (SUCCESS);
 	}
 	return (CONTINUE);
 }
 
-int	get_file_data(t_data *data, char **map)
+int	get_cubi_file(t_cubi *cubi, char **map)
 {
 	int	i;
 	int	j;
@@ -97,7 +97,7 @@ int	get_file_data(t_data *data, char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			ret = ignore_whitespaces_get_info(data, map, i, j);
+			ret = ignore_whitespaces_get_info(cubi, map, i, j);
 			if (ret == BREAK)
 				break ;
 			else if (ret == FAILURE)

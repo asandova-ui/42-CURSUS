@@ -1,5 +1,5 @@
 SRCS = src/main.c src/custom_error.c src/init_things.c src/parsing.c src/exit.c \
-		src/color_textures.c src/debug.c src/free_things.c src/init_things_2.c\
+		src/color_textures.c src/free_things.c src/init_things_2.c\
 		src/mlx_create.c src/parsing_data.c src/read_file.c src/valid_map.c \
 		src/valid_textures.c src/create_map.c src/utils.c \
 		get_next_line/get_next_line.c get_next_line/get_next_line_utils.c\
