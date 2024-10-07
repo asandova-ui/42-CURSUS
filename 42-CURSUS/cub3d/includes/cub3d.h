@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 10:44:46 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/04 12:41:52 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/07 11:05:45 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,7 +241,7 @@ int					move_player(t_cubi *cubi);
 void				debug_display_minimap(t_minimap *minimap);
 void				update_texture_pixels(t_cubi *cubi, t_texinfo *tex,
 						t_ray *ray, int x);
-int					rotate_player(t_cubi *cubi, double rotdir);
+int					player_rotate(t_cubi *cubi, double rotdir);
 int					quit_cub3d(t_cubi *cubi);
 int					validate_move(t_cubi *cubi, double new_x, double new_y);
 void				listen_for_input(t_cubi *cubi);

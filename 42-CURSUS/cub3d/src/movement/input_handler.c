@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:31:03 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/10/04 11:03:18 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/07 11:05:45 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ static int	mouse_motion_handler(int x, int y, t_cubi *cubi)
 	if (x == old_x)
 		return (0);
 	else if (x < old_x)
-		cubi->player.has_moved += rotate_player(cubi, -1);
+		cubi->player.has_moved += player_rotate(cubi, -1);
 	else if (x > old_x)
-		cubi->player.has_moved += rotate_player(cubi, 1);
+		cubi->player.has_moved += player_rotate(cubi, 1);
 	old_x = x;
 	return (0);
 }

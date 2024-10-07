@@ -59,7 +59,7 @@ define compile_animation
 	@echo -n "$(CYAN)Compiling: ["
 	@for i in `seq 1 25`; do \
 		echo -n "="; \
-		sleep 0.01; \
+		sleep 0.001; \
 	done
 	@echo "]$(RESET)"
 	@echo "$(BOLD)$(MAGENTA) -> $@ Compiled! $(RESET)"

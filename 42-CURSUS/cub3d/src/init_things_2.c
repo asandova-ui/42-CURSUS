@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:56:04 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/04 12:50:24 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/07 11:01:33 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,9 @@ void	init_textures(t_cubi *cubi)
 	cubi->textures = ft_calloc(5, sizeof * cubi->textures);
 	if (!cubi->textures)
 		full_exit(cubi, custom_error(NULL, "error malloc", 1));
-	printf("%s\n", cubi->texinfo.north);
 	cubi->textures[NORTH] = xpm_to_img(cubi, cubi->texinfo.north);
-	printf("b\n");
 	cubi->textures[SOUTH] = xpm_to_img(cubi, cubi->texinfo.south);
-	printf("c\n");
 	cubi->textures[EAST] = xpm_to_img(cubi, cubi->texinfo.east);
-	printf("d\n");
 	cubi->textures[WEST] = xpm_to_img(cubi, cubi->texinfo.west);
 }
 
