@@ -21,8 +21,8 @@
 a.out
 
 # Ignore debug files and directories
-*.dSYM/
-*.stackdump
+
+
 
 # Ignore backup and temporary files
 *~
