@@ -6,13 +6,13 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:42:12 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/07 11:42:14 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/07 21:04:31 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(/* args */)
+PhoneBook::PhoneBook() : _numberContacts(0)
 {
 }
 
@@ -22,12 +22,12 @@ PhoneBook::~PhoneBook()
 
 void    PhoneBook::welcome(void) const {
     std::cout << std::endl;
-    std::cout << "📞 Welcome to Your Awesome PhoneBook 📖" << std::endl;
+    std::cout << "ESTO ES EL PHONEBOOK" << std::endl;
     std::cout << std::endl;
-    std::cout << "--------------USAGE---------------" << std::endl;
-    std::cout << "ADD\t: To add a contact." << std::endl;
-    std::cout << "SEARCH\t: To search for a contact." << std::endl;
-    std::cout << "EXIT\t: to quite the PhoneBook." << std::endl;
+    std::cout << "--------------COMANDOS---------------" << std::endl;
+    std::cout << "ADD\t--> Añadir contacto." << std::endl;
+    std::cout << "SEARCH\t--> Buscar contacto." << std::endl;
+    std::cout << "EXIT\t--> Finalizar Phonebook." << std::endl;
     std::cout << "----------------------------------" << std::endl;
     std::cout << std::endl;
 }
@@ -36,6 +36,8 @@ void    PhoneBook::addContact(void) {
     static int  i;
     this->_contacts[i % 8].init();
     this->_contacts[i % 8].setIndex(i % 8);
+    if (_numberContacts < 8)
+        _numberContacts++;
     i++;
 }
 
@@ -70,5 +72,7 @@ int     PhoneBook::_readInput() const {
 
 void    PhoneBook::search(void) const {
     int i = this->_readInput();
+    if (i < 0 || i >= _numberContacts)
+        std::cout << "Ponme un buen numerin" << std::endl;
     this->_contacts[i].display(i);
 }

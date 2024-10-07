@@ -6,14 +6,14 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:42:45 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/07 12:41:10 by alonso           ###   ########.fr       */
+/*   Updated: 2024/10/07 20:58:24 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
 
-Contact::Contact(/* args */)
+Contact::Contact()
 {
 }
 
@@ -33,7 +33,7 @@ std::string Contact::_getInput(std::string str) const
             valid = true;
         else {
             std::cin.clear();
-            std::cout << "Invalid input; please try again." << std::endl;
+            std::cout << "Input incorrecto" << std::endl;
         }
     } while (!valid);
     return (input);
@@ -41,11 +41,11 @@ std::string Contact::_getInput(std::string str) const
 
 void    Contact::init(void) {
     std::cin.ignore();
-    this->_firstName = this->_getInput("Please enter you first name: ");
-    this->_lastName = this->_getInput("Please enter your last name: ");
-    this->_nickname = this->_getInput("Please enter your nickname: ");
-    this->_nickname = this->_getInput("Please enter your phone number: ");
-    this->_nickname = this->_getInput("Please enter your darkest secret: ");
+    this->_firstName = this->_getInput("Nombre: ");
+    this->_lastName = this->_getInput("Apellido: ");
+    this->_nickname = this->_getInput("Nick: ");
+    this->_nickname = this->_getInput("Numero de telefono: ");
+    this->_nickname = this->_getInput("Darkest secret: ");
     std::cout << std::endl;
 }
 
@@ -75,8 +75,8 @@ void    Contact::display(int index) const {
         return ;
     std::cout << std::endl;
     std::cout << "---->> CONTACT #" << index << " <<----" << std::endl;
-    std::cout << "First Name:\t" << this->_firstName << std::endl;
-    std::cout << "Last Name:\t" << this->_lastName << std::endl;
-    std::cout << "Nickname:\t" << this->_nickname << std::endl;
+    std::cout << "Nombre:\t" << this->_firstName << std::endl;
+    std::cout << "Apellido:\t" << this->_lastName << std::endl;
+    std::cout << "Nick:\t" << this->_nickname << std::endl;
     std::cout << std::endl;
 }
