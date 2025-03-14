@@ -5,22 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 09:52:49 by alonso            #+#    #+#             */
-/*   Updated: 2025/03/14 10:24:59 by alonso           ###   ########.fr       */
+/*   Created: 2025/03/14 10:38:55 by alonso            #+#    #+#             */
+/*   Updated: 2025/03/14 10:38:56 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
-#include <iostream>
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
-int main(int ac, char **av) {
-    if (ac != 2) {
-        std::cout << "Invalid Arguments!" << std::endl;
+int main()
+{
+    Base*   p;
+
+    for (int i = 0; i < 10; i++)
+    {
+        std::cout << "Test " << i << std::endl;
+        p = generate();
+        identify(p);
+        identify(*p);
+        delete p;
     }
-    try {
-        ScalarConverter::convert(av[1]);
-    } catch (std::exception &e) {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
-    }
-    return (0);
-} 
+    return 0;
+}

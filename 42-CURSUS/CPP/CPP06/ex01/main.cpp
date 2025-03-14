@@ -5,22 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 09:52:49 by alonso            #+#    #+#             */
-/*   Updated: 2025/03/14 10:24:59 by alonso           ###   ########.fr       */
+/*   Created: 2025/03/14 10:21:44 by alonso            #+#    #+#             */
+/*   Updated: 2025/03/14 10:22:42 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
-#include <iostream>
+#include "Serialization.hpp"
 
-int main(int ac, char **av) {
-    if (ac != 2) {
-        std::cout << "Invalid Arguments!" << std::endl;
+int main() {
+    Data       data = {0, 0};
+    Data*      data_ptr = &data;
+    Data*      data_ptr2;
+
+    data_ptr2 = Serialization::deserialize(Serialization::serialize(data_ptr));
+    std::cout << data_ptr << std::endl;
+    std::cout << data_ptr2 << std::endl;
+    if (data_ptr == data_ptr2)
+    {
+        std::cout << "Equal pointers" << std::endl;
     }
-    try {
-        ScalarConverter::convert(av[1]);
-    } catch (std::exception &e) {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
+    else
+    {
+        std::cout << "Different pointers" << std::endl;
     }
-    return (0);
-} 
+    return 0;
+}
