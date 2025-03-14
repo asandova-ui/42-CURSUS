@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:15:44 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/18 10:37:07 by alonso           ###   ########.fr       */
+/*   Updated: 2025/03/14 09:14:21 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ void Bureaucrat::incrementGrade()
 
 std::ostream& operator<<( std::ostream& os, const Bureaucrat& b )
 {
-    os << b.getName() << ", bureaucrat grade " << b.getGrade();
+    os << b.getName() << ", bureaucrat grade is: " << b.getGrade();
     return os;
 }

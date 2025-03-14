@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:41:03 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/18 11:57:50 by alonso           ###   ########.fr       */
+/*   Updated: 2025/03/14 09:43:36 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ void    ShrubberyCreationForm::execute( const Bureaucrat& executor ) const
     file << "      o       .dHFdH|HbTHb.          o /" << std::endl;
     file << "\\  Y  |  \\__,dHHFdHH|HHhoHHb.__Krogg  Y" << std::endl;
     file << "##########################################" << std::endl;
+    
     file.close();
 }

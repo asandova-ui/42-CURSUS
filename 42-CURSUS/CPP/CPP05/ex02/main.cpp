@@ -6,7 +6,7 @@
 /*   By: alonso <alonso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:40:48 by alonso            #+#    #+#             */
-/*   Updated: 2024/10/18 11:44:31 by alonso           ###   ########.fr       */
+/*   Updated: 2025/03/14 09:54:14 by alonso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main( void )
         RobotomyRequestForm form2("Robotomy");
         PresidentialPardonForm form3("President");
 
-        std::cout << "\n--------------- Form 1 ( Shrubbery ) ---------------" << std::endl;
+        /*std::cout << "\n--------------- Form 1 ( Shrubbery ) ---------------" << std::endl;
         bureaucrat.signForm(form1);
         bureaucrat.executeForm(form1);
         std::cout << "\n--------------- Form 2 ( Robotomy ) ---------------" << std::endl;
@@ -36,7 +36,7 @@ int main( void )
         bureaucrat.executeForm(form2);
         std::cout << "\n--------------- Form 3 ( President ) ---------------" << std::endl;
         bureaucrat.signForm(form3);
-        bureaucrat.executeForm(form3);
+        bureaucrat.executeForm(form3);*/
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
