@@ -1,27 +1,27 @@
-NAME		= btc
+NAME        = PmergeMe
 
-CC			= c++
-FLAGS		= -Wall -Wextra -Werror -std=c++98 -g
-RM			= rm -rf
+CC          = c++
+FLAGS       = -Wall -Wextra -Werror -std=c++98 -g
+RM          = rm -rf
 
-OBJDIR = build
+OBJDIR      = build
 
-FILES		= main BitcoinExchange
+FILES       = main ${NAME}
 
-SRC			= $(FILES:=.cpp)
-OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER		= BitcoinExchange.hpp
+SRC         = $(FILES:=.cpp)
+OBJ         = $(addprefix $(OBJDIR)/, $(FILES:=.o))
+HEADER      = ${NAME}.hpp
 
 #Colors:
-GREEN		=	\e[92;5;118m
-YELLOW		=	\e[93;5;226m
-GRAY		=	\e[33;2;37m
-RESET		=	\e[0m
-CURSIVE		=	\e[33;3m
+GREEN       =	\e[92;5;118m
+YELLOW      =	\e[93;5;226m
+GRAY        =	\e[33;2;37m
+RESET       =	\e[0m
+CURSIVE     =	\e[33;3m
 
 #Debug
 ifeq ($(DEBUG), 1)
-   OPTS = -g
+	OPTS = -g
 endif
 
 .PHONY: all clean fclean re

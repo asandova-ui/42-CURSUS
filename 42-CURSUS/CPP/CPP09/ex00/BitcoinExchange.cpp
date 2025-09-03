@@ -17,7 +17,7 @@ BitcoinExchange::BitcoinExchange()
     std::ifstream file("data.csv");
     string line;
 
-    std::getline(file, line); // skip first line
+    std::getline(file, line);
     while (std::getline(file, line))
     {
         size_t delim = line.find(',');
@@ -62,7 +62,7 @@ void BitcoinExchange::run(const string &filename)
         exit(EXIT_FAILURE);
     }
 
-    std::getline(file, line); // skip first line
+    std::getline(file, line);
 
     if (line != "date | value") {
         std::cout << "Error: invalid file format" << std::endl;
@@ -151,21 +151,18 @@ string BitcoinExchange::previousDate(const string& date) {
     int month = ft_stoi(date.substr(5, 2));
     int day = ft_stoi(date.substr(8, 2));
 
-    // Days in each month (for non-leap years)
+    //dias de cada mes para no bisiestos
     int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     if (isLeapYear(year)) {
-        daysInMonth[2] = 29; // February has 29 days in a leap year
+        daysInMonth[2] = 29; //febrero tiene 29 dias en un año bisiesto
     }
 
-    // Decrement the day
     day--;
 
-    // Check if day is 0 (previous month)
     if (day == 0) {
         month--;
 
-        // Check if month is 0 (December)
         if (month == 0) {
             month = 12;
             year--;
@@ -174,7 +171,6 @@ string BitcoinExchange::previousDate(const string& date) {
         day = daysInMonth[month];
     }
 
-    // Format the previous date
     string newYear = ft_to_string(year);
     string newMonth = (month < 10) ? "0" + ft_to_string(month) : ft_to_string(month);
     string newDay = (day < 10) ? "0" + ft_to_string(day) : ft_to_string(day);
